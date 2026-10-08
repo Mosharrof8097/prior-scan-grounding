@@ -1,0 +1,34 @@
+# ---- data & environment: never version these ----
+3D-RAD_Dataset/
+thesis_env/
+.cache/
+preview_images/*.npy
+
+# the de-leaked variant is regenerable from leak_analysis/build_3drad_t.py
+3D-RAD-T/
+
+# split manifests are regenerable from leak_analysis/save_split_manifests.py,
+# and train_qa.csv is ~27k rows; keep the summary, drop the bulk
+split_manifests/*_qa.csv
+
+# ---- model weights (large binaries) ----
+*.pt
+*.pth
+*.safetensors
+*.zip
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# ---- reference papers ----
+# 20 published PDFs, ~168 MB. Redistributing paywalled papers publicly breaches
+# publisher licences, and git history would keep them permanently. Kept locally only;
+# every one of them is cited in the literature review.
+perper ref/
+
+# ---- editor / os ----
+.DS_Store
+__MACOSX/
+.~lock.*#

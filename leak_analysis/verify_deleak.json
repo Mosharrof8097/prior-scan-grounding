@@ -1,0 +1,30 @@
+{
+  "Task 5 (control, never leaked)": {
+    "n_test": 578,
+    "majority": 0.6539792387543253,
+    "bracket_only": null,
+    "tfidf_lr": 0.6332179930795848,
+    "best_text_only": 0.6539792387543253
+  },
+  "Task 6 original": {
+    "n_test": 578,
+    "majority": 0.6539792387543253,
+    "bracket_only": 0.7958477508650519,
+    "tfidf_lr": 0.6332179930795848,
+    "best_text_only": 0.7958477508650519
+  },
+  "Task 6 3D-RAD-T / T-mask": {
+    "n_test": 578,
+    "majority": 0.6539792387543253,
+    "bracket_only": null,
+    "tfidf_lr": 0.6314878892733564,
+    "best_text_only": 0.6539792387543253
+  },
+  "Task 6 3D-RAD-T / T-strip": {
+    "n_test": 578,
+    "majority": 0.6539792387543253,
+    "bracket_only": null,
+    "tfidf_lr": 0.6280276816608996,
+    "best_text_only": 0.6539792387543253
+  }
+}

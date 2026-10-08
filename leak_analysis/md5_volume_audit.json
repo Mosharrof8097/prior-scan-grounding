@@ -1,0 +1,15 @@
+{
+  "total_hashed_volumes": 3039,
+  "unique_md5": 3039,
+  "bitwise_identical_scan_clusters": 0,
+  "volumes_inside_a_duplicate_cluster": 0,
+  "clusters_within_one_patient": 0,
+  "clusters_spanning_different_patients": 0,
+  "cross_split_hash_leakage": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "example_clusters": [],
+  "note": "Completed run. Supersedes the all-zero algo4 block in duplicate_audit_report.json, which was an interrupted run, not a passed check."
+}

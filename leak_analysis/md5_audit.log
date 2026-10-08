@@ -1,0 +1,28 @@
+[algo4] hashing 3,039 volumes ...
+  250/3,039
+  500/3,039
+  750/3,039
+  1,000/3,039
+  1,250/3,039
+  1,500/3,039
+  1,750/3,039
+  2,000/3,039
+  2,250/3,039
+  2,500/3,039
+  2,750/3,039
+  3,000/3,039
+  3,039/3,039
+
+======================================================================
+  ALGORITHM 4 - BITWISE VOLUME HASH AUDIT (COMPLETED)
+======================================================================
+  total_hashed_volumes: 3039
+  unique_md5: 3039
+  bitwise_identical_scan_clusters: 0
+  volumes_inside_a_duplicate_cluster: 0
+  clusters_within_one_patient: 0
+  clusters_spanning_different_patients: 0
+  cross_split_hash_leakage: {'train_val': 0, 'train_test': 0, 'val_test': 0}
+  note: Completed run. Supersedes the all-zero algo4 block in duplicate_audit_report.json, which was an interrupted run, not a passed check.
+
+[saved] /home/mosharrof/medical_thesis/leak_analysis/md5_volume_audit.json

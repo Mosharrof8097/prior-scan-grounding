@@ -1,0 +1,7 @@
+{
+  "n_matched_pairs": 16031,
+  "answer_agreement_rate": 1.0,
+  "majority_floor": 0.5552367288378766,
+  "bracket_floor": 0.7538519119206537,
+  "leak_value": 0.19861518308277715
+}

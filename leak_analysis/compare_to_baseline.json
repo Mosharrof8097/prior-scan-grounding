@@ -1,0 +1,56 @@
+{
+  "buckets": [
+    {
+      "bucket": "single",
+      "n": 2778,
+      "text_only": 0.6969042476601872,
+      "vlm_reported_em": 0.7667,
+      "gain_from_vision": 0.06979575233981283
+    },
+    {
+      "bucket": "longitudinal",
+      "n": 476,
+      "text_only": 0.7121848739495799,
+      "vlm_reported_em": 0.7733,
+      "gain_from_vision": 0.06111512605042013
+    }
+  ],
+  "per_task": [
+    {
+      "task": "Task1_Image_Observation",
+      "n": 88,
+      "n_answers_in_val": 75,
+      "text_only": 0.011363636363636364
+    },
+    {
+      "task": "Task2_Anomaly_Detection",
+      "n": 242,
+      "n_answers_in_val": 170,
+      "text_only": 0.012396694214876033
+    },
+    {
+      "task": "Task3_Medical_Computation",
+      "n": 108,
+      "n_answers_in_val": 54,
+      "text_only": 0.0
+    },
+    {
+      "task": "Task4_Existence_Detection",
+      "n": 2340,
+      "n_answers_in_val": 2,
+      "text_only": 0.8256410256410256
+    },
+    {
+      "task": "Task5_Static_Temporal_Diagnosis",
+      "n": 238,
+      "n_answers_in_val": 4,
+      "text_only": 0.6176470588235294
+    },
+    {
+      "task": "Task6_Longitudinal_Temporal_Diagnosis",
+      "n": 238,
+      "n_answers_in_val": 4,
+      "text_only": 0.8067226890756303
+    }
+  ]
+}

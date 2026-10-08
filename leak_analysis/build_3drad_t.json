@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "T-mask": {
+      "files": 92,
+      "rows": 170105,
+      "task6_questions_rewritten": 16031,
+      "path": "3D-RAD-T/T-mask"
+    },
+    "T-strip": {
+      "files": 92,
+      "rows": 170105,
+      "task6_questions_rewritten": 16031,
+      "path": "3D-RAD-T/T-strip"
+    }
+  }
+}

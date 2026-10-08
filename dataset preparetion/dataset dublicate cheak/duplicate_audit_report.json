@@ -1,0 +1,67 @@
+{
+  "algo1_exact_duplicates": {
+    "train": {
+      "total_records": 27197,
+      "duplicate_records": 9,
+      "duplicate_rate_pct": 0.033,
+      "conflicting_answer_cases": 0
+    },
+    "val": {
+      "total_records": 3254,
+      "duplicate_records": 0,
+      "duplicate_rate_pct": 0.0,
+      "conflicting_answer_cases": 0
+    },
+    "test": {
+      "total_records": 3459,
+      "duplicate_records": 0,
+      "duplicate_rate_pct": 0.0,
+      "conflicting_answer_cases": 0
+    }
+  },
+  "algo2_cross_split_leakage": {
+    "train_vs_val": {
+      "patient_leakage_count": 0,
+      "volume_leakage_count": 0,
+      "vqa_pair_leakage_count": 0
+    },
+    "train_vs_test": {
+      "patient_leakage_count": 0,
+      "volume_leakage_count": 0,
+      "vqa_pair_leakage_count": 0
+    },
+    "val_vs_test": {
+      "patient_leakage_count": 0,
+      "volume_leakage_count": 0,
+      "vqa_pair_leakage_count": 0
+    }
+  },
+  "algo3_normalized_text_duplicates": {
+    "train": {
+      "near_duplicate_questions": 9,
+      "near_duplicate_pct": 0.033
+    },
+    "val": {
+      "near_duplicate_questions": 0,
+      "near_duplicate_pct": 0.0
+    },
+    "test": {
+      "near_duplicate_questions": 0,
+      "near_duplicate_pct": 0.0
+    }
+  },
+  "algo4_image_bitwise_hashes": {
+    "total_hashed_volumes": 0,
+    "bitwise_identical_scan_clusters": 0,
+    "cross_split_hash_leakage": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    }
+  },
+  "algo5_global_templates": {
+    "unique_questions_overall": 6027,
+    "unique_answers_overall": 1389,
+    "top_question_frequency": 99
+  }
+}

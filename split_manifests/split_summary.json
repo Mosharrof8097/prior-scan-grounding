@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "total_qa": 33910,
+  "splits": {
+    "train": {
+      "qa_pairs": 27197,
+      "unique_volumes": 2181,
+      "unique_patients": 1043
+    },
+    "val": {
+      "qa_pairs": 3254,
+      "unique_volumes": 255,
+      "unique_patients": 130
+    },
+    "test": {
+      "qa_pairs": 3459,
+      "unique_volumes": 260,
+      "unique_patients": 131
+    }
+  },
+  "patient_leakage": "0 overlap verified across all three split pairs"
+}

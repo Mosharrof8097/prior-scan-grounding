@@ -1,0 +1,8 @@
+{
+  "n_items": 16031,
+  "task5_text_floor": 0.5552367288378766,
+  "task5_ceiling_single_volume": 0.7391928139230242,
+  "task5_ceiling_with_prior_scan": 1.0,
+  "task6_text_floor_bracket": 0.7538519119206537,
+  "bracket_equals_past_bit": true
+}
