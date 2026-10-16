@@ -10,6 +10,13 @@ preview_images/*.npy
 # split manifests are regenerable from leak_analysis/save_split_manifests.py,
 # and train_qa.csv is ~27k rows; keep the summary, drop the bulk
 split_manifests/*_qa.csv
+**/split_*_qa.csv
+
+# ---- Kaggle run outputs ----
+# Weights and optimizer state (700 MB) plus their trimmed upload copy. The metrics that the
+# write-up actually cites are copied into retrain/metrics/ and tracked there.
+retrain/results/
+retrain/audit_upload/
 
 # ---- model weights (large binaries) ----
 *.pt

@@ -125,29 +125,83 @@ def patch_peft_torchao_check():
 # ==================================================================================================
 # path discovery
 # ==================================================================================================
+SEARCH_ROOTS = ("/kaggle/input", "/kaggle/working")
+
+
+def _hunt(pattern: str) -> List[str]:
+    out = []
+    for root in SEARCH_ROOTS:
+        if os.path.isdir(root):
+            out += glob.glob(os.path.join(root, "**", pattern), recursive=True)
+    return out
+
+
 def autodetect_data_dir(explicit: Optional[str]) -> str:
+    """The dataset root, not whatever directory happens to sit above several datasets.
+
+    Kaggle mounts each dataset under a shared parent, so "the first directory containing a .npy"
+    resolves to that parent and sweeps in every sibling dataset -- including this pipeline's own
+    outputs, whose split manifests then get counted as source QA data. The invariant that actually
+    identifies the dataset is that the CT volumes and the Task* question files share a root, so the
+    deepest directory containing both is the answer.
+    """
     if explicit:
         return explicit
-    for cand in sorted(glob.glob("/kaggle/input/*")):
-        if glob.glob(os.path.join(cand, "**", "*.npy"), recursive=True)[:1]:
-            return cand
+    npys = _hunt("*.npy")
+    tasks = [f for f in _hunt(os.path.join("Task*", "*.csv"))]
+    if npys and tasks:
+        root = os.path.commonpath(npys + tasks)
+        if os.path.isdir(root):
+            return root
+    if npys:
+        return os.path.commonpath(npys)
     raise FileNotFoundError(
-        "Could not find a /kaggle/input/* directory containing .npy volumes. "
-        "Pass --data_dir explicitly.")
+        "Found no .npy volumes under /kaggle/input or /kaggle/working. Pass --data_dir.")
 
 
 def autodetect_ckpt_dir(explicit: Optional[str]) -> str:
+    """A usable checkpoint directory holds BOTH the projector and lora_adapters/.
+
+    Without the adapters the language model is the untouched base model, so a directory carrying
+    only the projector is not a candidate at all.
+    """
     if explicit:
         return explicit
-    cands = []
-    for root in ("/kaggle/working", "/kaggle/input"):
-        cands += glob.glob(os.path.join(root, "**", "multimodal_projector_best.pt"), recursive=True)
-    if not cands:
+    dirs = sorted({os.path.dirname(p) for p in _hunt("multimodal_projector_best.pt")})
+    usable = [d for d in dirs if os.path.isdir(os.path.join(d, "lora_adapters"))]
+    if not usable:
+        extra = (f"\n  Found a projector without lora_adapters/ at: {dirs[0]}" if dirs else "")
         raise FileNotFoundError(
-            "Could not find multimodal_projector_best.pt under /kaggle/working or /kaggle/input. "
-            "Pass --ckpt_dir explicitly (the folder that holds multimodal_projector_best.pt "
-            "and lora_adapters/).")
-    return os.path.dirname(sorted(cands)[0])
+            "Found no directory holding both multimodal_projector_best.pt and lora_adapters/."
+            + extra + "\n  Pass --ckpt_dir explicitly.")
+    # Accuracy peaked at epoch 1 while val_loss kept falling, so 'best' (chosen on loss) is not
+    # the most accurate checkpoint. Prefer epoch_1, and say what else was available.
+    order = ["epoch_1", "best", "last"]
+    pick = next((d for name in order for d in usable if os.path.basename(d) == name), usable[0])
+    if len(usable) > 1:
+        others = ", ".join(os.path.basename(d) for d in usable if d != pick)
+        LOG(f"[paths] checkpoint candidates: {os.path.basename(pick)} (picked), {others}")
+        LOG("[paths] epoch_1 is preferred over best: best was selected on validation loss, which "
+            "kept improving after accuracy had already peaked. Override with --ckpt_dir.")
+    return pick
+
+
+def autodetect_manifest_dir(explicit: Optional[str]) -> Optional[str]:
+    """The directory holding the saved split manifests, if one was mounted.
+
+    Using them skips regeneration entirely and guarantees the evaluation split is byte-for-byte
+    the one training used.
+    """
+    if explicit:
+        return explicit
+    for stem in ("split_train_qa.csv", "train_qa.csv"):
+        for hit in sorted(_hunt(stem)):
+            d = os.path.dirname(hit)
+            mates = [os.path.exists(os.path.join(d, stem.replace("train", s)))
+                     for s in ("val", "test")]
+            if all(mates):
+                return d
+    return None
 
 
 # ==================================================================================================
@@ -156,13 +210,22 @@ def autodetect_ckpt_dir(explicit: Optional[str]) -> str:
 def _assemble(csv_paths, image_map) -> pd.DataFrame:
     frames = []
     for f in csv_paths:
+        # A split manifest written by an earlier run carries VolumeName and Question too, so it
+        # passes the column test and its rows get counted a second time. That happens whenever the
+        # retrain output is mounted under the same /kaggle/input as the dataset. The invariant that
+        # actually holds for source data is that it lives in a Task* directory.
+        parent = os.path.basename(os.path.dirname(f))
+        if "task" not in parent.lower() or os.path.basename(f).startswith("split_"):
+            continue
         try:
             d = pd.read_csv(f)
         except Exception:
             continue
         if "VolumeName" not in d.columns or "Question" not in d.columns:
             continue
-        d["TaskCategory"] = os.path.basename(os.path.dirname(f))
+        if "Split" in d.columns:          # a manifest, not source data
+            continue
+        d["TaskCategory"] = parent
         frames.append(d)
     if not frames:
         raise FileNotFoundError("No usable QA csv files found.")
@@ -249,9 +312,14 @@ def load_split_from_manifests(manifest_dir: str, data_dir: str) -> pd.DataFrame:
     image_map = {os.path.basename(p): p for p in img_paths}
     frames = []
     for s in ("train", "val", "test"):
-        p = os.path.join(manifest_dir, f"{s}_qa.csv")
-        if not os.path.exists(p):
-            raise FileNotFoundError(f"missing {p}")
+        # the retrain writes split_<name>_qa.csv; accept either spelling
+        cands = [os.path.join(manifest_dir, f"split_{s}_qa.csv"),
+                 os.path.join(manifest_dir, f"{s}_qa.csv")]
+        p = next((c for c in cands if os.path.exists(c)), None)
+        if p is None:
+            raise FileNotFoundError(
+                f"no manifest for '{s}' in {manifest_dir} "
+                f"(looked for split_{s}_qa.csv and {s}_qa.csv)")
         d = pd.read_csv(p)
         d["Split"] = s
         frames.append(d)
@@ -787,7 +855,8 @@ def main():
     ap.add_argument("--ckpt_dir", default=None)
     ap.add_argument("--output_dir", default="/kaggle/working/inference_audit")
     ap.add_argument("--split_manifests", default=None,
-                    help="Directory with train_qa.csv/val_qa.csv/test_qa.csv. Skips regeneration.")
+                    help="Directory holding the split manifests (split_train_qa.csv or "
+                         "train_qa.csv, and the val/test equivalents). Skips regeneration.")
     ap.add_argument("--splits", nargs="+", default=["val", "test"])
     ap.add_argument("--llm_model", default="Qwen/Qwen2.5-1.5B-Instruct")
     ap.add_argument("--max_seq_len", type=int, default=128)
@@ -813,6 +882,7 @@ def main():
         f"({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'cpu'})")
 
     data_dir = autodetect_data_dir(args.data_dir)
+    manifest_dir = autodetect_manifest_dir(args.split_manifests)
     try:
         ckpt_dir = autodetect_ckpt_dir(args.ckpt_dir)
     except FileNotFoundError:
@@ -824,13 +894,31 @@ def main():
         LOG("[warn] no checkpoint found; preflight continues and reports it below")
     LOG(f"data_dir      : {data_dir}")
     LOG(f"ckpt_dir      : {ckpt_dir if ckpt_dir else '(none found)'}")
+    LOG(f"manifests     : {manifest_dir if manifest_dir else '(none found, split will be regenerated)'}")
     LOG(f"output_dir    : {args.output_dir}")
     if args.limit:
         LOG(f"*** SMOKE TEST: only {args.limit} items per split ***")
 
     # 1. split
-    df = (load_split_from_manifests(args.split_manifests, data_dir) if args.split_manifests
-          else build_verified_split(data_dir))
+    if manifest_dir:
+        df = load_split_from_manifests(manifest_dir, data_dir)
+        got = _counts(df)
+        if all(got[s] == REFERENCE[s] for s in REFERENCE):
+            LOG("[split] manifest counts match the trained split exactly "
+                + " ".join(f"{s}={got[s]['qa']:,}" for s in ("train", "val", "test")))
+        else:
+            # The manifests ARE the split training used, so this is a warning rather than a stop,
+            # but a mismatch means the write-up's numbers describe a different partition.
+            LOG("\n" + "!" * 92)
+            LOG("  [split][WARNING] manifest counts differ from the recorded trained split.")
+            for s in ("train", "val", "test"):
+                LOG(f"    {s}: manifest {got[s]['qa']:,} qa / {got[s]['volumes']} vol"
+                    f"   expected {REFERENCE[s]['qa']:,} qa / {REFERENCE[s]['volumes']} vol")
+            LOG("  Proceeding, because a manifest is authoritative about its own run -- but any")
+            LOG("  number produced here describes that partition, not the one already written up.")
+            LOG("!" * 92 + "\n")
+    else:
+        df = build_verified_split(data_dir)
     for s in ("train", "val", "test"):
         df[df.Split == s].to_csv(os.path.join(args.output_dir, f"split_{s}_qa.csv"), index=False)
     LOG(f"[split] manifests written to {args.output_dir}/split_*_qa.csv")

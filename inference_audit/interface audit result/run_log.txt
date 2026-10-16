@@ -1,0 +1,167 @@
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+data_dir      : /kaggle/input/datasets/mosharrof8097/medi-data-3d
+ckpt_dir      : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1
+manifests     : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+output_dir    : /kaggle/working/inference_audit
+[split] loaded from manifests: train 27,197 | val 3,254 | test 3,459
+[split] manifest counts match the trained split exactly train=27,197 val=3,254 test=3,459
+[split] manifests written to /kaggle/working/inference_audit/split_*_qa.csv
+[setup] timeline for 1,304 patients
+[model] loading Qwen/Qwen2.5-1.5B-Instruct in torch.bfloat16
+[peft-patch] applied=True
+[model] LoRA adapters loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/lora_adapters
+[model] vision weights loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/multimodal_projector_best.pt (epoch 1, val_loss 0.3115)
+
+====================================================================================================
+  SPLIT = val   (3,254 items)
+====================================================================================================
+[val/real] 200/3,254  (0.25s/item, eta 12.8 min)  cache hit 91.50%
+[val/real] 400/3,254  (0.25s/item, eta 11.8 min)  cache hit 92.00%
+[val/real] 600/3,254  (0.26s/item, eta 11.4 min)  cache hit 91.83%
+[val/real] 800/3,254  (0.26s/item, eta 10.5 min)  cache hit 91.62%
+[val/real] 1,000/3,254  (0.25s/item, eta 9.6 min)  cache hit 92.00%
+[val/real] 1,200/3,254  (0.26s/item, eta 8.9 min)  cache hit 92.22%
+[val/real] 1,400/3,254  (0.27s/item, eta 8.3 min)  cache hit 92.49%
+[val/real] 1,600/3,254  (0.28s/item, eta 7.7 min)  cache hit 92.60%
+[val/real] 1,800/3,254  (0.29s/item, eta 6.9 min)  cache hit 92.81%
+[val/real] 2,000/3,254  (0.29s/item, eta 6.0 min)  cache hit 92.85%
+[val/real] 2,200/3,254  (0.29s/item, eta 5.0 min)  cache hit 92.90%
+[val/real] 2,400/3,254  (0.29s/item, eta 4.1 min)  cache hit 92.96%
+[val/real] 2,600/3,254  (0.29s/item, eta 3.1 min)  cache hit 92.86%
+[val/real] 2,800/3,254  (0.29s/item, eta 2.2 min)  cache hit 92.89%
+[val/real] 3,000/3,254  (0.29s/item, eta 1.2 min)  cache hit 93.13%
+[val/real] 3,200/3,254  (0.30s/item, eta 0.3 min)  cache hit 93.17%
+[val/real] 3,254/3,254  (0.30s/item, eta 0.0 min)  cache hit 93.14%
+[val/blank] 200/3,254  (0.26s/item, eta 13.1 min)  cache hit 93.14%
+[val/blank] 400/3,254  (0.25s/item, eta 11.9 min)  cache hit 93.14%
+[val/blank] 600/3,254  (0.26s/item, eta 11.4 min)  cache hit 93.14%
+[val/blank] 800/3,254  (0.26s/item, eta 10.5 min)  cache hit 93.14%
+[val/blank] 1,000/3,254  (0.25s/item, eta 9.5 min)  cache hit 93.14%
+[val/blank] 1,200/3,254  (0.26s/item, eta 8.8 min)  cache hit 93.14%
+[val/blank] 1,400/3,254  (0.27s/item, eta 8.2 min)  cache hit 93.14%
+[val/blank] 1,600/3,254  (0.27s/item, eta 7.5 min)  cache hit 93.14%
+[val/blank] 1,800/3,254  (0.28s/item, eta 6.8 min)  cache hit 93.14%
+[val/blank] 2,000/3,254  (0.28s/item, eta 5.9 min)  cache hit 93.14%
+[val/blank] 2,200/3,254  (0.28s/item, eta 4.9 min)  cache hit 93.14%
+[val/blank] 2,400/3,254  (0.28s/item, eta 4.0 min)  cache hit 93.14%
+[val/blank] 2,600/3,254  (0.28s/item, eta 3.1 min)  cache hit 93.14%
+[val/blank] 2,800/3,254  (0.28s/item, eta 2.1 min)  cache hit 93.14%
+[val/blank] 3,000/3,254  (0.29s/item, eta 1.2 min)  cache hit 93.14%
+[val/blank] 3,200/3,254  (0.29s/item, eta 0.3 min)  cache hit 93.14%
+[val/blank] 3,254/3,254  (0.29s/item, eta 0.0 min)  cache hit 93.14%
+
+  PER-TASK RESULTS (val)
+                                   task condition    n  headline_acc  text_only_floor  gain_over_text_floor  mcq_acc_lennorm  mcq_acc_sumlogp  gen_exact_match  gen_token_f1  tf_token_acc     loss  recency_T1_over_T0  recency_n_paired
+                Task1_Image_Observation     blank   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.503562      0.667874 1.027368                 NaN               NaN
+                Task1_Image_Observation      real   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.508297      0.674503 1.029802                 NaN               NaN
+                Task2_Anomaly_Detection     blank  242      0.161157         0.008264              0.152893              NaN              NaN         0.161157      0.429678      0.650965 1.088236                 NaN               NaN
+                Task2_Anomaly_Detection      real  242      0.161157         0.008264              0.152893              NaN              NaN         0.161157      0.430596      0.648835 1.091112                 NaN               NaN
+              Task3_Medical_Computation     blank  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.401235      0.602888 1.195052                 NaN               NaN
+              Task3_Medical_Computation      real  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.415123      0.599802 1.195069                 NaN               NaN
+              Task4_Existence_Detection     blank 2340      0.810256         0.825641             -0.015385         0.810256         0.810256              NaN           NaN      0.909829 0.214020                 NaN               NaN
+              Task4_Existence_Detection      real 2340      0.811538         0.825641             -0.014103         0.811538         0.811538              NaN           NaN      0.909402 0.214370                 NaN               NaN
+        Task5_Static_Temporal_Diagnosis     blank  238      0.617647         0.617647              0.000000         0.617647         0.621849              NaN           NaN      0.970085 0.089149            0.999968             238.0
+        Task5_Static_Temporal_Diagnosis      real  238      0.621849         0.617647              0.004202         0.621849         0.617647              NaN           NaN      0.970085 0.089268            1.001896             238.0
+  Task6_Longitudinal_Temporal_Diagnosis     blank  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038550            0.999968             238.0
+  Task6_Longitudinal_Temporal_Diagnosis      real  238      0.802521         0.806723             -0.004202         0.802521         0.806723              NaN           NaN      0.983749 0.038622            1.001896             238.0
+
+  VISION CONTRIBUTION (val): real - blank, per task
+    Task1_Image_Observation                  real 0.2159  blank 0.2159  delta +0.0000  (text-only floor 0.0114)
+    Task2_Anomaly_Detection                  real 0.1612  blank 0.1612  delta +0.0000  (text-only floor 0.0083)
+    Task3_Medical_Computation                real 0.0093  blank 0.0093  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8115  blank 0.8103  delta +0.0013  (text-only floor 0.8256)
+    Task5_Static_Temporal_Diagnosis          real 0.6218  blank 0.6176  delta +0.0042  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  blank 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+====================================================================================================
+  SPLIT = test   (3,459 items)
+====================================================================================================
+[test/real] 200/3,459  (0.35s/item, eta 18.8 min)  cache hit 95.15%
+[test/real] 400/3,459  (0.32s/item, eta 16.3 min)  cache hit 94.22%
+[test/real] 600/3,459  (0.31s/item, eta 14.7 min)  cache hit 94.16%
+[test/real] 800/3,459  (0.31s/item, eta 13.6 min)  cache hit 94.12%
+[test/real] 1,000/3,459  (0.31s/item, eta 12.9 min)  cache hit 94.32%
+[test/real] 1,200/3,459  (0.31s/item, eta 11.7 min)  cache hit 94.09%
+[test/real] 1,400/3,459  (0.31s/item, eta 10.6 min)  cache hit 93.96%
+[test/real] 1,600/3,459  (0.31s/item, eta 9.7 min)  cache hit 94.07%
+[test/real] 1,800/3,459  (0.31s/item, eta 8.6 min)  cache hit 93.89%
+[test/real] 2,000/3,459  (0.31s/item, eta 7.4 min)  cache hit 93.65%
+[test/real] 2,200/3,459  (0.30s/item, eta 6.4 min)  cache hit 93.67%
+[test/real] 2,400/3,459  (0.30s/item, eta 5.4 min)  cache hit 93.60%
+[test/real] 2,600/3,459  (0.30s/item, eta 4.4 min)  cache hit 93.63%
+[test/real] 2,800/3,459  (0.31s/item, eta 3.4 min)  cache hit 93.75%
+[test/real] 3,000/3,459  (0.31s/item, eta 2.3 min)  cache hit 93.69%
+[test/real] 3,200/3,459  (0.31s/item, eta 1.3 min)  cache hit 93.68%
+[test/real] 3,400/3,459  (0.31s/item, eta 0.3 min)  cache hit 93.65%
+[test/real] 3,459/3,459  (0.31s/item, eta 0.0 min)  cache hit 93.65%
+[test/blank] 200/3,459  (0.34s/item, eta 18.5 min)  cache hit 93.65%
+[test/blank] 400/3,459  (0.31s/item, eta 16.1 min)  cache hit 93.65%
+[test/blank] 600/3,459  (0.30s/item, eta 14.4 min)  cache hit 93.65%
+[test/blank] 800/3,459  (0.30s/item, eta 13.3 min)  cache hit 93.65%
+[test/blank] 1,000/3,459  (0.31s/item, eta 12.6 min)  cache hit 93.65%
+[test/blank] 1,200/3,459  (0.31s/item, eta 11.5 min)  cache hit 93.65%
+[test/blank] 1,400/3,459  (0.30s/item, eta 10.3 min)  cache hit 93.65%
+[test/blank] 1,600/3,459  (0.31s/item, eta 9.5 min)  cache hit 93.65%
+[test/blank] 1,800/3,459  (0.30s/item, eta 8.4 min)  cache hit 93.65%
+[test/blank] 2,000/3,459  (0.30s/item, eta 7.3 min)  cache hit 93.65%
+[test/blank] 2,200/3,459  (0.30s/item, eta 6.2 min)  cache hit 93.65%
+[test/blank] 2,400/3,459  (0.30s/item, eta 5.3 min)  cache hit 93.65%
+[test/blank] 2,600/3,459  (0.30s/item, eta 4.3 min)  cache hit 93.65%
+[test/blank] 2,800/3,459  (0.30s/item, eta 3.3 min)  cache hit 93.65%
+[test/blank] 3,000/3,459  (0.30s/item, eta 2.3 min)  cache hit 93.65%
+[test/blank] 3,200/3,459  (0.30s/item, eta 1.3 min)  cache hit 93.65%
+[test/blank] 3,400/3,459  (0.30s/item, eta 0.3 min)  cache hit 93.65%
+[test/blank] 3,459/3,459  (0.30s/item, eta 0.0 min)  cache hit 93.65%
+
+  PER-TASK RESULTS (test)
+                                   task condition    n  headline_acc  text_only_floor  gain_over_text_floor  mcq_acc_lennorm  mcq_acc_sumlogp  gen_exact_match  gen_token_f1  tf_token_acc     loss  recency_T1_over_T0  recency_n_paired
+                Task1_Image_Observation     blank   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.442251      0.697835 1.013246                 NaN               NaN
+                Task1_Image_Observation      real   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.445119      0.699985 1.012162                 NaN               NaN
+                Task2_Anomaly_Detection     blank  244      0.209016         0.012295              0.196721              NaN              NaN         0.209016      0.449307      0.655812 1.065073                 NaN               NaN
+                Task2_Anomaly_Detection      real  244      0.213115         0.012295              0.200820              NaN              NaN         0.213115      0.451356      0.653102 1.064265                 NaN               NaN
+              Task3_Medical_Computation     blank   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.567149 1.190134                 NaN               NaN
+              Task3_Medical_Computation      real   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.569728 1.187281                 NaN               NaN
+              Task4_Existence_Detection     blank 2358      0.815522         0.835454             -0.019932         0.815522         0.815522              NaN           NaN      0.912214 0.214309                 NaN               NaN
+              Task4_Existence_Detection      real 2358      0.819763         0.835454             -0.015691         0.819763         0.819763              NaN           NaN      0.911366 0.214059                 NaN               NaN
+        Task5_Static_Temporal_Diagnosis     blank  340      0.635294         0.647059             -0.011765         0.635294         0.638235              NaN           NaN      0.971172 0.089185            0.999968             340.0
+        Task5_Static_Temporal_Diagnosis      real  340      0.635294         0.647059             -0.011765         0.635294         0.638235              NaN           NaN      0.971172 0.089330            1.000946             340.0
+  Task6_Longitudinal_Temporal_Diagnosis     blank  340      0.794118         0.805882             -0.011765         0.794118         0.794118              NaN           NaN      0.983305 0.038957            0.999968             340.0
+  Task6_Longitudinal_Temporal_Diagnosis      real  340      0.794118         0.805882             -0.011765         0.794118         0.794118              NaN           NaN      0.983305 0.038910            1.000946             340.0
+
+  VISION CONTRIBUTION (test): real - blank, per task
+    Task1_Image_Observation                  real 0.1398  blank 0.1398  delta +0.0000  (text-only floor 0.0108)
+    Task2_Anomaly_Detection                  real 0.2131  blank 0.2090  delta +0.0041  (text-only floor 0.0123)
+    Task3_Medical_Computation                real 0.0000  blank 0.0000  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8198  blank 0.8155  delta +0.0042  (text-only floor 0.8355)
+    Task5_Static_Temporal_Diagnosis          real 0.6353  blank 0.6353  delta +0.0000  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  blank 0.7941  delta +0.0000  (text-only floor 0.8059)
+
+====================================================================================================
+  DONE. Files in /kaggle/working/inference_audit (not zipped -- download individually):
+    inference_audit_summary.json  (12 KB)
+    inference_audit_test.json  (5 KB)
+    inference_audit_val.json  (5 KB)
+    per_item_test.csv  (1655 KB)
+    per_item_val.csv  (1502 KB)
+    per_task_test.csv  (2 KB)
+    per_task_val.csv  (2 KB)
+    run_log.txt  (15 KB)
+    split_test_qa.csv  (1074 KB)
+    split_train_qa.csv  (8243 KB)
+    split_val_qa.csv  (955 KB)
+====================================================================================================
