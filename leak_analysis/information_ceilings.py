@@ -11,9 +11,19 @@ model can possibly score is fixed by which bits its input actually carries.
                     per row, so the past bit has no source at all unless the
                     prior scan is fed in separately.
 
-That yields hard, assumption-free bounds:
-  floor   = best achievable with text only (guess the unknown bit by its prior)
-  ceiling = best achievable reading the current CT perfectly, past bit still guessed
+The bounds below are label-structure bounds: they assume noise-free labels and
+ignore any evidence of the past that is visible in the current scan, so they are
+upper bounds on what each input set can support, not measured human ceilings.
+
+Population matters. The released CSVs hold 16,031 Task 5 / Task 6 rows, but only
+the 2,873 rows from the official `test/` directory (169 volumes) have CT volumes;
+the 13,158 `train/` rows (774 volumes) have no images. Every number is therefore
+reported for the pooled rows AND for the rows that can actually be evaluated.
+
+"Prior scan" ceilings are reported two ways, because the bracket holds the whole
+history. Its length equals the number of earlier studies, and the answer's past bit
+is "present at ANY earlier study". The nearest prior scan alone only reveals the
+LAST bracket element, which is what the baseline in this repo is fed.
 """
 import glob, os, re, json
 import pandas as pd
@@ -25,16 +35,39 @@ BITS = {"New Lesion (Absent previously, now present)": (False, True),
         "No Abnormality (Always absent)": (False, False),
         "Refractory Lesion (Persistent or recurrent, now present)": (True, True),
         "Resolved Lesion (Previously present or recurrent, now absent)": (True, False)}
+T5_DIR = "Task5_Static_Temporal_Diagnosis"
+T6_DIR = "Task6_Longitudinal_Temporal_Diagnosis"
 
 
-def load(task):
-    rows = []
-    for f in glob.glob(os.path.join(ROOT, f"3D-RAD_Dataset/*/{task}*/*.csv")):
-        rows.append(pd.read_csv(f))
-    d = pd.concat(rows, ignore_index=True)
-    d["NpyName"] = d["VolumeName"].astype(str).str.replace(".nii.gz", "", regex=False)
-    d["past"] = d["Answer"].map(lambda a: BITS[a][0])
-    d["now"] = d["Answer"].map(lambda a: BITS[a][1])
+def parse_bracket(question):
+    m = BRACKET_RE.search(str(question))
+    return [int(x) for x in m.group(1).replace(" ", "").split(",")] if m else None
+
+
+def load_pairs():
+    """Task 5 rows with the matching Task 6 bracket attached, aligned row by row.
+
+    Task 5 and Task 6 ship as parallel files (same name, same row order). The
+    alignment is asserted on volume and answer, not assumed.
+    """
+    frames = []
+    for split_dir in ("test", "train"):
+        for f5 in sorted(glob.glob(os.path.join(ROOT, f"3D-RAD_Dataset/{split_dir}/{T5_DIR}/*.csv"))):
+            f6 = f5.replace(T5_DIR, T6_DIR)
+            a, b = pd.read_csv(f5), pd.read_csv(f6)
+            assert len(a) == len(b), f"row count differs: {f5}"
+            assert (a["VolumeName"].values == b["VolumeName"].values).all(), f"volumes misaligned: {f5}"
+            assert (a["Answer"].values == b["Answer"].values).all(), f"answers differ: {f5}"
+            a = a.copy()
+            a["source_dir"] = split_dir
+            a["bracket"] = b["Question"].map(parse_bracket)
+            frames.append(a)
+    d = pd.concat(frames, ignore_index=True)
+    d["past"] = d["Answer"].map(lambda x: BITS[x][0])
+    d["now"] = d["Answer"].map(lambda x: BITS[x][1])
+    d["bracket_any"] = d["bracket"].map(lambda b: bool(max(b)))
+    d["bracket_last"] = d["bracket"].map(lambda b: bool(b[-1]))
+    d["n_earlier"] = d["bracket"].map(len)
     return d
 
 
@@ -45,51 +78,67 @@ def best_given(df, cols):
     return df.groupby(cols)["Answer"].agg(lambda s: s.value_counts().iloc[0]).sum() / len(df)
 
 
+def summarise(df):
+    return {
+        "n_items": int(len(df)),
+        "n_volumes": int(df["VolumeName"].nunique()),
+        "p_past_present": float(df["past"].mean()),
+        "task5_text_floor": float(best_given(df, [])),
+        "task5_ceiling_single_volume": float(best_given(df, ["now"])),
+        "task5_ceiling_with_nearest_prior_scan": float(best_given(df, ["bracket_last", "now"])),
+        "task5_ceiling_with_all_prior_scans": float(best_given(df, ["bracket_any", "now"])),
+        "task6_text_floor_bracket": float(best_given(df, ["bracket_any"])),
+        "share_with_exactly_one_prior": float((df["n_earlier"] == 1).mean()),
+    }
+
+
 def main():
-    t6 = load("Task6")
-    t6["bracket_past"] = t6["Question"].map(
-        lambda q: (lambda m: any(int(x) for x in m.group(1).replace(" ", "").split(","))
-                   if m else None)(BRACKET_RE.search(str(q))))
-    assert (t6["bracket_past"] == t6["past"]).all(), "bracket does not equal the past bit"
+    d = load_pairs()
+    assert (d["bracket_any"] == d["past"]).all(), "bracket does not equal the past bit"
     print(f"[check] the Task 6 bracket equals the ground-truth past bit on all "
-          f"{len(t6):,} rows -- it is a label, not a hint.\n")
+          f"{len(d):,} rows -- it is a label, not a hint.\n")
 
-    t5 = load("Task5")
-    n = len(t5)
-    rows = [
-        ("blind majority guess",              best_given(t5, [])),
-        ("Task 5: text only",                 best_given(t5, [])),
-        ("Task 5: + perfect current CT",      best_given(t5, ["now"])),
-        ("Task 5: + prior scan as well",      1.0),
-        ("Task 6: text only (bracket)",       best_given(t6, ["past"])),
-        ("Task 6: bracket + perfect current", 1.0),
-    ]
-    print("=" * 74)
-    print("  WHAT EACH INPUT COMBINATION CAN POSSIBLY SCORE  (n = %s items)" % f"{n:,}")
-    print("=" * 74)
-    for label, v in rows:
-        print(f"  {label:<36} {v:>8.4f}")
+    populations = {
+        "pooled_all_rows": d,
+        "evaluable_rows_with_ct_(test_dir)": d[d["source_dir"] == "test"],
+        "rows_without_ct_(train_dir)": d[d["source_dir"] == "train"],
+    }
+    out = {"bracket_equals_past_bit": True, "populations": {}}
+    cols = [("task5_text_floor", "Task 5: text only"),
+            ("task5_ceiling_single_volume", "Task 5: + perfect current CT"),
+            ("task5_ceiling_with_nearest_prior_scan", "Task 5: + nearest prior scan (what the baseline is fed)"),
+            ("task5_ceiling_with_all_prior_scans", "Task 5: + every prior scan"),
+            ("task6_text_floor_bracket", "Task 6: text only (bracket)")]
+    for name, g in populations.items():
+        s = summarise(g)
+        out["populations"][name] = s
+        print("=" * 78)
+        print(f"  {name}   (n = {s['n_items']:,} items, {s['n_volumes']:,} volumes)")
+        print("=" * 78)
+        for key, label in cols:
+            print(f"  {label:<58} {s[key]:>8.4f}")
+        print(f"  {'share of items with exactly one prior study':<58} {s['share_with_exactly_one_prior']:>8.4f}")
+        print()
 
-    t5_floor, t5_ceil = best_given(t5, []), best_given(t5, ["now"])
-    t6_floor = best_given(t6, ["past"])
-    print("\n" + "=" * 74)
-    print("  CONSEQUENCES")
-    print("=" * 74)
-    print(f"  Task 6 is {t6_floor:.1%} solved before any pixel is read.")
-    print(f"  Task 5 given one volume caps out at {t5_ceil:.1%} even with a perfect")
-    print(f"    reader, because the past bit is simply absent from the input;")
-    print(f"    the headroom a single-volume model can win is only")
-    print(f"    {t5_ceil:.3f} - {t5_floor:.3f} = {t5_ceil - t5_floor:.3f}.")
-    print(f"  Feeding the PRIOR SCAN lifts the Task 5 ceiling to 1.000. That")
-    print(f"    turns Task 5 into the genuine longitudinal task: both bits must")
-    print(f"    come from images, and neither is available in the text.")
+    ev = out["populations"]["evaluable_rows_with_ct_(test_dir)"]
+    print("=" * 78)
+    print("  CONSEQUENCES (evaluable rows only)")
+    print("=" * 78)
+    print(f"  Task 6 is {ev['task6_text_floor_bracket']:.1%} solved before any pixel is read.")
+    print(f"  Task 5 with one volume caps at {ev['task5_ceiling_single_volume']:.1%} for a perfect reader of that")
+    print(f"    volume; with the nearest prior scan added it caps at "
+          f"{ev['task5_ceiling_with_nearest_prior_scan']:.1%}.")
+    print(f"  Only the full history reaches 1.000 (needs every earlier study).")
 
-    out = {"n_items": int(n),
-           "task5_text_floor": float(t5_floor),
-           "task5_ceiling_single_volume": float(t5_ceil),
-           "task5_ceiling_with_prior_scan": 1.0,
-           "task6_text_floor_bracket": float(t6_floor),
-           "bracket_equals_past_bit": True}
+    # kept for backward compatibility with scripts that read the old keys
+    out.update({
+        "n_items": ev["n_items"],
+        "task5_text_floor": ev["task5_text_floor"],
+        "task5_ceiling_single_volume": ev["task5_ceiling_single_volume"],
+        "task5_ceiling_with_prior_scan": ev["task5_ceiling_with_all_prior_scans"],
+        "task6_text_floor_bracket": ev["task6_text_floor_bracket"],
+        "headline_population": "evaluable_rows_with_ct_(test_dir)",
+    })
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                            "information_ceilings.json"), "w") as fh:
         json.dump(out, fh, indent=2)

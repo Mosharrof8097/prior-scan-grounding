@@ -10,7 +10,7 @@ Run order (each is independent):
 | `text_only_leak_audit.py` | per-task accuracy reachable from question text alone |
 | `compare_to_baseline.py` | that floor vs the trained checkpoint's reported accuracy |
 | `task5_task6_twins.py` | Task 5 and Task 6 are the same items, differently phrased |
-| `information_ceilings.py` | hard floors/ceilings from the label structure |
+| `information_ceilings.py` | floors/ceilings from the label structure, for all rows and for the rows that have CT |
 | `build_3drad_t.py` | 3D-RAD-T: synthetic de-leaked Task 6 (`T-mask`, `T-strip`) |
 | `verify_deleak.py` | that de-leaking removes the shortcut |
 | `task6_task4_linkage.py` | Task 4 covers first timepoints only, disjoint from Task 5/6 |
