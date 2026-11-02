@@ -104,3 +104,21 @@ exactly one of the two is correct, it is the Task 6 one. The only thing Task 6 a
 this gap is the text shortcut being used, which is the opposite of image use. Limits: validation
 only (per-item test output was not saved, so the test partition needs a rerun), epoch 1, one
 seed, and the T0 reconstruction in that run was chosen by hash order (see README).
+
+### Balanced accuracy and macro-F1 (validation, patient-bootstrap CI)
+
+Plain accuracy rewards always saying the majority class (Task 4 is 83% "No"). Balanced accuracy is
+the mean recall over gold classes, so chance is 1/classes.
+
+| task | condition | accuracy | balanced acc (95% CI) | chance | macro-F1 | classes predicted |
+| :-- | :-- | --: | :-- | --: | --: | :-- |
+| 4 Existence | real | 0.812 | 0.564 (0.546–0.585) | 0.50 | 0.573 | 2 / 2 |
+| 4 Existence | blank | 0.810 | 0.556 (0.541–0.574) | 0.50 | 0.563 | 2 / 2 |
+| 5 Static temporal | real | 0.622 | 0.279 (0.255–0.312) | 0.25 | 0.247 | 2 / 4 |
+| 5 Static temporal | blank | 0.618 | 0.273 (0.251–0.304) | 0.25 | 0.239 | 2 / 4 |
+| 6 Longitudinal | real | 0.803 | 0.511 (0.475–0.542) | 0.25 | 0.478 | 3 / 4 |
+| 6 Longitudinal | blank | 0.803 | 0.511 (0.471–0.541) | 0.25 | 0.478 | 3 / 4 |
+
+Task 5 is at chance once class imbalance is removed, with and without the CT. Task 6 rises to 0.51,
+and only because the bracket rules out two options; the model never predicts "New Lesion" and
+real and blank are identical. Task 4 is only a few points above chance in both conditions.

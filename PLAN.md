@@ -26,7 +26,7 @@ or a lab machine. `[x]` done, `[ ]` open.
 - [ ] Audit epochs 2 and 3, not just epoch 1
 - [x] Patient-cluster bootstrap CIs and McNemar, validation only (`inference_audit/audit_statistics.py`);
       the test partition needs a rerun that saves per-item output
-- [ ] Balanced accuracy / macro-F1
+- [x] Balanced accuracy / macro-F1 (validation; `inference_audit/RESULTS.md`)
 - [ ] More controls: mean image, noise, another patient's volume; for Task 5 a zeroed or swapped
       prior scan
 - [ ] Fine-tuned text-only model as the fair floor; at least 3 seeds

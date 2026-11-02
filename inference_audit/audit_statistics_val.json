@@ -89,5 +89,79 @@
       "only_second_right": 0,
       "p": 2.2737367544323206e-13
     }
+  },
+  "class_metrics": {
+    "Task4_Existence_Detection|real": {
+      "accuracy": 0.8115384615384615,
+      "balanced_accuracy": 0.5639614541468762,
+      "balanced_accuracy_ci95": [
+        0.5456515823433501,
+        0.5854219773334195
+      ],
+      "macro_f1": 0.5729783882224564,
+      "chance_balanced_accuracy": 0.5,
+      "gold_classes": 2,
+      "classes_ever_predicted": 2
+    },
+    "Task4_Existence_Detection|blank": {
+      "accuracy": 0.8102564102564103,
+      "balanced_accuracy": 0.5564182194616978,
+      "balanced_accuracy_ci95": [
+        0.5410058601095237,
+        0.5744226230585371
+      ],
+      "macro_f1": 0.5630950378469302,
+      "chance_balanced_accuracy": 0.5,
+      "gold_classes": 2,
+      "classes_ever_predicted": 2
+    },
+    "Task5_Static_Temporal_Diagnosis|real": {
+      "accuracy": 0.6218487394957983,
+      "balanced_accuracy": 0.2786848072562358,
+      "balanced_accuracy_ci95": [
+        0.2551382492054134,
+        0.31199600015366974
+      ],
+      "macro_f1": 0.24671162171162173,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 2
+    },
+    "Task5_Static_Temporal_Diagnosis|blank": {
+      "accuracy": 0.6176470588235294,
+      "balanced_accuracy": 0.27312925170068025,
+      "balanced_accuracy_ci95": [
+        0.2512473355570298,
+        0.30388787787083693
+      ],
+      "macro_f1": 0.23949795081967212,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 2
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|real": {
+      "accuracy": 0.8025210084033614,
+      "balanced_accuracy": 0.5106837606837606,
+      "balanced_accuracy_ci95": [
+        0.4751112817920199,
+        0.5417895894428152
+      ],
+      "macro_f1": 0.4781351781143436,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 3
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|blank": {
+      "accuracy": 0.8025210084033614,
+      "balanced_accuracy": 0.5106837606837606,
+      "balanced_accuracy_ci95": [
+        0.4710089160694,
+        0.5405525379506642
+      ],
+      "macro_f1": 0.4781351781143436,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 3
+    }
   }
 }
