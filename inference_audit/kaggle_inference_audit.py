@@ -397,6 +397,61 @@ class VolumeCache:
         return arr
 
 
+# Controls that replace or damage the CT. "blank" (zeros) is handled separately; these are the
+# stronger ones. All are deterministic given the item, so a rerun reproduces them exactly.
+CONTROLS = ("mean", "noise", "swap", "zero_prior", "swap_prior")
+PRIOR_CONTROLS = ("zero_prior", "swap_prior")   # only meaningful when the input carries a prior scan
+
+
+def patient_of(npy_name: str) -> str:
+    return "_".join(str(npy_name).split("_")[:2])
+
+
+def pick_donor(npy_name: str, pool: List[str]) -> Optional[str]:
+    """Deterministic donor volume from a DIFFERENT patient, or None if the pool has only one.
+
+    Starts half-way round the sorted pool, so donors are spread over the split instead of every
+    item borrowing from its neighbour, then walks forward to the first different patient."""
+    pool = sorted(pool)
+    if not pool:
+        return None
+    me = patient_of(npy_name)
+    start = (pool.index(npy_name) if npy_name in pool else 0) + len(pool) // 2
+    for k in range(len(pool)):
+        cand = pool[(start + k) % len(pool)]
+        if patient_of(cand) != me:
+            return cand
+    return None
+
+
+def apply_control(vol: np.ndarray, condition: str, item_id: int, donor: Optional[np.ndarray] = None):
+    """vol is (D, H, W) in [0, 1]. For temporal items D = 32 and slices 0-15 are the earlier scan (T0).
+
+    mean        constant image at the volume's own mean intensity (brightness kept, structure gone)
+    noise       Gaussian noise with the volume's own mean and std, seeded by item_id
+    swap        another patient's volume (or volume pair, for temporal items)
+    zero_prior  T0 half zeroed, current scan untouched
+    swap_prior  T0 half replaced by another patient's T0, current scan untouched
+    """
+    if condition == "mean":
+        return np.full_like(vol, float(vol.mean()))
+    if condition == "noise":
+        rng = np.random.RandomState(1000003 + int(item_id))
+        return np.clip(rng.normal(float(vol.mean()), float(vol.std()), vol.shape), 0.0, 1.0).astype(vol.dtype)
+    if condition == "swap":
+        assert donor is not None and donor.shape == vol.shape, "swap needs a donor of the same shape"
+        return donor
+    if condition in PRIOR_CONTROLS:
+        out = vol.copy()
+        if condition == "zero_prior":
+            out[:16] = 0.0
+        else:
+            assert donor is not None and donor.shape == vol.shape, "swap_prior needs a donor pair"
+            out[:16] = donor[:16]
+        return out
+    raise ValueError(f"unknown control: {condition}")
+
+
 class EvalDataset(Dataset):
     """
     Mirrors Medical3DVQADataset from the training script in eval mode:
@@ -404,17 +459,24 @@ class EvalDataset(Dataset):
     """
 
     def __init__(self, df: pd.DataFrame, tokenizer, timeline, image_map,
-                 max_seq_len: int = 128, cache_capacity: int = 96):
+                 max_seq_len: int = 128, cache_capacity: int = 96, donor_names=None):
         # volume-sorted iteration purely for disk-cache locality; metrics are order-independent
         d = df.copy()
         d["item_id"] = np.arange(len(d))          # explicit id; never relies on a column named "index"
         self.df = d.sort_values("NpyName", kind="stable").reset_index(drop=True)
-        self.blank_images = False                 # set per pass; skips disk I/O entirely when True
+        self.condition = "real"                   # set per pass: real | blank | one of CONTROLS
         self.tok = tokenizer
         self.timeline = timeline
         self.image_map = image_map
         self.max_seq_len = max_seq_len
         self.cache = VolumeCache(cache_capacity)
+        # Donors come from the whole split, not from the (possibly --limit-ed) evaluated subset,
+        # so a smoke test cannot end up with a pool holding a single patient.
+        names = sorted(set(map(str, donor_names)) if donor_names is not None
+                       else self.df["NpyName"].astype(str).unique())
+        self.donor_pool = names
+        # donors for temporal items must themselves have an earlier scan, or their "prior" is a copy
+        self.prior_pool = [n for n in names if self._pairing_status(n) == "paired_ok"]
 
     def __len__(self):
         return len(self.df)
@@ -444,12 +506,24 @@ class EvalDataset(Dataset):
         t0 = self.cache.get(dict(tl)[earlier[-1]])
         return np.concatenate([resample_depth(t0, 16), resample_depth(t1, 16)], axis=0), "paired_ok"
 
+    def _controlled(self, vol: np.ndarray, npy_name: str, is_long: bool, item_id: int) -> np.ndarray:
+        cond = self.condition
+        donor = None
+        if cond in ("swap", "swap_prior"):
+            use_pair = is_long or cond == "swap_prior"
+            donor_name = pick_donor(npy_name, self.prior_pool if use_pair else self.donor_pool)
+            assert donor_name is not None, f"no donor from another patient for {npy_name}"
+            donor = (self._pair(donor_name, None)[0] if use_pair else self._single(donor_name, None))
+        return apply_control(vol, cond, item_id, donor)
+
     def __getitem__(self, i):
         r = self.df.iloc[i]
         task = str(r["TaskCategory"])
         is_long = any(k in task.lower() for k in ["longitudinal", "temporal", "task 5", "task 6"])
+        if self.condition in PRIOR_CONTROLS and not is_long:
+            raise ValueError("prior controls apply to temporal items only; use a temporal-only dataset")
 
-        if self.blank_images:
+        if self.condition == "blank":
             # Pairing status depends only on filenames, so it is still computed exactly.
             # The pixels are never read, which halves disk I/O for the ablation pass.
             pairing = (self._pairing_status(str(r["NpyName"])) if is_long
@@ -461,6 +535,8 @@ class EvalDataset(Dataset):
             else:
                 vol = self._single(str(r["NpyName"]), r.get("ImagePath"))
                 pairing = "not_applicable_single_scan"
+            if self.condition in CONTROLS:
+                vol = self._controlled(vol, str(r["NpyName"]), is_long, int(r["item_id"]))
             image = torch.from_numpy(np.expand_dims(vol, 0)).float()  # (1, 32, 256, 256)
 
         question = str(r["Question"])
@@ -764,8 +840,9 @@ def score_item(model, tok, item, device, blank: bool, max_new_tokens: int, max_s
     return out
 
 
-def run_pass(model, tok, ds, device, blank, args, tag):
-    ds.blank_images = blank          # when True, __getitem__ never reads a .npy from disk
+def run_pass(model, tok, ds, device, condition, args, tag):
+    ds.condition = condition         # "blank": __getitem__ never reads a .npy from disk
+    blank = condition == "blank"
     rows = []
     t0 = time.time()
     n = len(ds)
@@ -780,7 +857,7 @@ def run_pass(model, tok, ds, device, blank, args, tag):
         r.update({"item_id": item["item_id"], "task": item["task"],
                   "pairing": item["pairing"], "is_mcq": item["is_mcq"],
                   "npy": item["npy"], "gold_text": item["answer"],
-                  "question": item["question"], "condition": "blank" if blank else "real"})
+                  "question": item["question"], "condition": condition})
         rows.append(r)
         if (i + 1) % 200 == 0 or i + 1 == n:
             el = time.time() - t0
@@ -864,6 +941,9 @@ def main():
     ap.add_argument("--cache_capacity", type=int, default=96)
     ap.add_argument("--limit", type=int, default=0, help="Evaluate only N items per split (smoke test).")
     ap.add_argument("--no_blank", action="store_true", help="Skip the blank-image ablation pass.")
+    ap.add_argument("--controls", nargs="*", default=[], choices=list(CONTROLS),
+                    help="Extra input controls run after real/blank: mean, noise, swap (another "
+                         "patient's CT), zero_prior and swap_prior (temporal tasks only).")
     ap.add_argument("--preflight", action="store_true",
                     help="Validate split, pairing, MCQ coverage and file availability on CPU, "
                          "then exit WITHOUT loading the model. Takes seconds. Run this first.")
@@ -982,11 +1062,24 @@ def main():
             sub = sub.groupby("TaskCategory", group_keys=False).head(
                 max(1, args.limit // sub["TaskCategory"].nunique()))
         LOG(f"\n{'='*100}\n  SPLIT = {split}   ({len(sub):,} items)\n{'='*100}")
-        ds = EvalDataset(sub, tok, timeline, image_map, args.max_seq_len, args.cache_capacity)
+        split_names = df[df.Split == split]["NpyName"]
+        ds = EvalDataset(sub, tok, timeline, image_map, args.max_seq_len, args.cache_capacity,
+                         donor_names=split_names)
 
-        parts = [run_pass(model, tok, ds, device, False, args, f"{split}/real")]
+        parts = [run_pass(model, tok, ds, device, "real", args, f"{split}/real")]
         if not args.no_blank:
-            parts.append(run_pass(model, tok, ds, device, True, args, f"{split}/blank"))
+            parts.append(run_pass(model, tok, ds, device, "blank", args, f"{split}/blank"))
+        if args.controls:
+            is_temporal = sub["TaskCategory"].astype(str).str.lower().str.contains("longitudinal|temporal")
+            ds_temporal = (EvalDataset(sub[is_temporal], tok, timeline, image_map, args.max_seq_len,
+                                       args.cache_capacity, donor_names=split_names)
+                           if is_temporal.any() else None)
+            for c in args.controls:
+                use = ds_temporal if c in PRIOR_CONTROLS else ds
+                if use is None:
+                    LOG(f"[{split}/{c}] skipped: no temporal items in this split")
+                    continue
+                parts.append(run_pass(model, tok, use, device, c, args, f"{split}/{c}"))
         per_item = pd.concat(parts, ignore_index=True)
 
         floors = text_only_floor(train_df, sub)
@@ -999,14 +1092,14 @@ def main():
         LOG("  " + per_task.to_string(index=False).replace("\n", "\n  "))
 
         real = per_task[per_task.condition == "real"].set_index("task")
-        blank = per_task[per_task.condition == "blank"].set_index("task")
-        if len(blank):
-            LOG(f"\n  VISION CONTRIBUTION ({split}): real - blank, per task")
+        for cond in [c for c in per_task.condition.unique() if c != "real"]:
+            other = per_task[per_task.condition == cond].set_index("task")
+            LOG(f"\n  VISION CONTRIBUTION ({split}): real - {cond}, per task")
             for t in real.index:
-                if t in blank.index:
+                if t in other.index:
                     LOG(f"    {t:<40} real {real.loc[t,'headline_acc']:.4f}  "
-                        f"blank {blank.loc[t,'headline_acc']:.4f}  "
-                        f"delta {real.loc[t,'headline_acc']-blank.loc[t,'headline_acc']:+.4f}  "
+                        f"{cond} {other.loc[t,'headline_acc']:.4f}  "
+                        f"delta {real.loc[t,'headline_acc']-other.loc[t,'headline_acc']:+.4f}  "
                         f"(text-only floor {real.loc[t,'text_only_floor']:.4f})")
 
         summary["splits"][split] = json.loads(per_task.to_json(orient="records"))

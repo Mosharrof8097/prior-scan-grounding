@@ -114,3 +114,26 @@ the real ratio against it is what tells you whether 0.956 ever meant anything.
 
 Roughly 25–40 minutes per split on a T4 with both passes (val 3,254 items, test 3,459). Use
 `--no_blank` to halve it, or `--splits test` for the one split that matters most.
+
+## Input controls (`--controls`)
+
+Beyond real and blank (zeros), the audit can run stronger controls, each scored on the same items:
+
+| control | what the model sees | applies to |
+| :-- | :-- | :-- |
+| `mean` | constant image at the volume's own mean intensity | all tasks |
+| `noise` | Gaussian noise with the volume's own mean and std (seeded per item) | all tasks |
+| `swap` | another patient's CT (a prior/current pair for temporal items) | all tasks |
+| `zero_prior` | earlier scan zeroed, current scan intact | Tasks 5, 6 |
+| `swap_prior` | earlier scan replaced by another patient's earlier scan | Tasks 5, 6 |
+
+Donors come from the whole split, from a different patient, chosen deterministically. Example
+(Kaggle, T4):
+
+```
+python kaggle_inference_audit.py --splits val test --controls mean noise swap zero_prior swap_prior
+```
+
+Tested on CPU with synthetic and real volumes (`tests/test_controls.py`); not yet run through the
+model. Run `--limit 60` first. `per_item_<split>.csv` has one row per item per condition and feeds
+`audit_statistics.py`.

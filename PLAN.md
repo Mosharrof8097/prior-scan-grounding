@@ -27,8 +27,9 @@ or a lab machine. `[x]` done, `[ ]` open.
 - [x] Patient-cluster bootstrap CIs and McNemar, validation only (`inference_audit/audit_statistics.py`);
       the test partition needs a rerun that saves per-item output
 - [x] Balanced accuracy / macro-F1 (validation; `inference_audit/RESULTS.md`)
-- [ ] More controls: mean image, noise, another patient's volume; for Task 5 a zeroed or swapped
-      prior scan
+- [x] Control code: mean image, noise, another patient's volume, zeroed or swapped prior scan
+      (`--controls`, `tests/test_controls.py` passes on CPU; not yet run through the model)
+- [ ] Run the controls on Kaggle (GPU)
 - [ ] Fine-tuned text-only model as the fair floor; at least 3 seeds
 - [x] Settle whether 3D-RAD-T really removes the bracket (yes on test-dir rows, verify_deleak_digits.py)
 
