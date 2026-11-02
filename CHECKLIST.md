@@ -42,7 +42,8 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] `git commit` the uncommitted files
 - [ ] Back up `retrain/results/` (v7 adapters, only copy)
 - [x] Add `requirements.txt` (CPU analysis)
-- [ ] Ask the senior: authorship order, venue, deadline, GPU access
+- [x] Authorship: sole author for now; no co-authors listed
+- [ ] Ask the senior: venue, deadline, GPU access, and how they are credited
 
 ### Part A: stronger evidence (GPU, inference only)
 - [ ] Audit epochs 2 and 3
@@ -83,6 +84,6 @@ for model inference (Part A controls, all Part B runs).
 
 ## Next three things
 
-1. Back up the v7 adapters and agree authorship, venue, deadline and GPU access with the senior (Phase 0).
+1. Back up the v7 adapters (Phase 0); venue, deadline, GPU access and credit for the senior can wait.
 2. Check M3D contamination and the TotalSegmentator metadata (two quick lookups).
 3. Write the question generator while waiting for GPU access.

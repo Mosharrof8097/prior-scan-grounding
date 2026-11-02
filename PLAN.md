@@ -17,7 +17,9 @@ or a lab machine. `[x]` done, `[ ]` open.
 - [x] Commit the uncommitted work (README, PLAN, ceilings script, v2 proposal)
 - [ ] Back up `retrain/results/` (v7 adapters, ~357 MB) off this disk
 - [x] Add `requirements.txt` (CPU analysis; Kaggle deps not pinned)
-- [ ] Agree with the senior: authorship order (first author), target venue, deadline, GPU access
+- [x] Authorship: sole author for now (Md Mosharrof Hossain); no co-authors listed
+- [ ] Agree with the senior: target venue, deadline, GPU access, and whether they are credited
+      (acknowledgement or co-author) if their idea and review shape the paper
 
 ## Phase 1: part A statistics and controls (GPU, inference only)
 
