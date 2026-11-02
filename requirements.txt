@@ -1,0 +1,9 @@
+# CPU analysis (leak_analysis/, tests/): versions of the environment these results were produced in.
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.18.1
+tqdm==4.70.1
+pillow==12.3.0
+# Training and inference scripts (retrain/, inference_audit/) run on Kaggle (T4) and additionally
+# need torch, transformers and peft; they are not installed locally, so no versions are pinned here.

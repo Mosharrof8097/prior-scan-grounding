@@ -15,7 +15,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 ### Leak analysis (CPU, `leak_analysis/`)
 - [x] Task 6 bracket equals the past bit on all 16,031 rows (`text_only_leak_audit.py`)
 - [x] Tasks 5 and 6 are the same items, 100% identical answers (`task5_task6_twins.py`)
-- [x] Floors and ceilings computed (`information_ceilings.py`), needs correction, see Phase 0
+- [x] Floors and ceilings computed on pooled and evaluable rows (`information_ceilings.py`); rerun reproduces the README table
 - [x] First de-leaked variant built (`build_3drad_t.py`), not yet verified
 
 ### Model and audit
@@ -34,13 +34,14 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 ## Not done yet
 
 ### Phase 0: clean-up (CPU, do first)
-- [ ] Recompute ceilings on the 2,873 evaluable rows only; say "all prior scans", not "prior scan"
-- [ ] Reconcile the different "Task 6 text-only" numbers (0.789 to 0.807)
-- [ ] Fix the TF-IDF check that cannot see the digits 0/1 (`verify_deleak.py`)
-- [ ] Make the choice of the earlier scan (T0) deterministic in `build_timeline`
+- [x] Ceilings on the 2,873 evaluable rows, "all prior scans" wording (script already did this; rerun matches README)
+- [x] Reconcile the different "Task 6 text-only" numbers (`leak_analysis/TASK6_TEXT_ONLY_FIGURES.md`)
+- [x] Digit-aware de-leak check (`verify_deleak_digits.py`): leak recovered 0.989 on the original, 0.715 / 0.711 on T-mask / T-strip, finding-only baseline 0.717
+- [x] Deterministic earlier scan (T0) in all three pairing scripts (`tests/test_t0_determinism.py`)
+- [ ] Rerun the epoch-1 audit with the fixed T0 (GPU); reported run used hash-order T0
 - [ ] `git commit` the uncommitted files
 - [ ] Back up `retrain/results/` (v7 adapters, only copy)
-- [ ] Add `requirements.txt`
+- [x] Add `requirements.txt` (CPU analysis)
 - [ ] Ask the senior: authorship order, venue, deadline, GPU access
 
 ### Part A: stronger evidence (GPU, inference only)
@@ -48,7 +49,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] Bootstrap confidence intervals per patient; McNemar test, Task 6 vs Task 5
 - [ ] Extra controls: mean image, noise, another patient's volume, zeroed or swapped prior scan
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
-- [ ] Confirm that 3D-RAD-T really removes the bracket
+- [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)
 
 ### Part B: new benchmark (CPU)
 - [ ] Check if M3D-LaMed's training data already contains TotalSegmentator
@@ -82,6 +83,6 @@ for model inference (Part A controls, all Part B runs).
 
 ## Next three things
 
-1. Fix the ceilings and commit (Phase 0).
+1. Back up the v7 adapters and agree authorship, venue, deadline and GPU access with the senior (Phase 0).
 2. Check M3D contamination and the TotalSegmentator metadata (two quick lookups).
 3. Write the question generator while waiting for GPU access.

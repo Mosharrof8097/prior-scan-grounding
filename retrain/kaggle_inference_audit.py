@@ -286,7 +286,7 @@ def build_patient_timeline(data_dir: str) -> Dict[str, List[Tuple[str, str]]]:
             continue
         timeline[f"{info['split']}_{info['patient']}"].append((info["letter"], p))
     for k in timeline:
-        timeline[k] = sorted(set(timeline[k]), key=lambda x: x[0])
+        timeline[k] = sorted(set(timeline[k]))  # by (letter, path): ties between reconstructions must not depend on set order
     return timeline
 
 

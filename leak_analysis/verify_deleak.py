@@ -2,6 +2,9 @@
 """
 Verify that 3D-RAD-T actually removes the leak.
 
+WARNING: the TF-IDF model below cannot see the digits 0/1 (default token pattern), so it does
+not detect the original leak either. Use verify_deleak_digits.py for the actual verification.
+
 For Task 6, on the same patient-level split, measure the text-only floor on:
   original 3D-RAD, 3D-RAD-T/T-mask, 3D-RAD-T/T-strip
 and compare against Task 5, which never had a bracket and so acts as the

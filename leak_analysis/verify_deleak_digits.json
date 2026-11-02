@@ -1,0 +1,49 @@
+{
+  "original": {
+    "n": 2873,
+    "past_bit_rate": 0.2850678733031674,
+    "residual": {
+      "digit_bracket_rows": 2873,
+      "lone_bit_rows": 2873
+    },
+    "max_distinct_questions_per_finding": 161,
+    "past_bit_recovery_acc": 0.989209885137487,
+    "finding_only_baseline": 0.7170205360250609
+  },
+  "T-mask": {
+    "n": 2873,
+    "past_bit_rate": 0.2850678733031674,
+    "residual": {
+      "digit_bracket_rows": 0,
+      "lone_bit_rows": 0
+    },
+    "max_distinct_questions_per_finding": 138,
+    "past_bit_recovery_acc": 0.7149321266968326,
+    "finding_only_baseline": 0.7170205360250609
+  },
+  "T-strip": {
+    "n": 2873,
+    "past_bit_rate": 0.2850678733031674,
+    "residual": {
+      "digit_bracket_rows": 0,
+      "lone_bit_rows": 0
+    },
+    "max_distinct_questions_per_finding": 17,
+    "past_bit_recovery_acc": 0.7114514444831187,
+    "finding_only_baseline": 0.7170205360250609
+  },
+  "verdict": {
+    "T-mask": {
+      "no_digit_bracket": true,
+      "no_lone_bit": true,
+      "recovery_at_finding_baseline": true,
+      "leak_removed": true
+    },
+    "T-strip": {
+      "no_digit_bracket": true,
+      "no_lone_bit": true,
+      "recovery_at_finding_baseline": true,
+      "leak_removed": true
+    }
+  }
+}

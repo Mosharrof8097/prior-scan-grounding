@@ -41,8 +41,8 @@ answers on every matched pair. Task 5 is therefore a built-in un-leaked control 
 | Task 5 + perfect read of every prior scan | 1.0000 | 1.0000 |
 
 The bracket holds the whole history, so one prior scan reveals only its last entry; only the full
-history reaches 1.0. Several other "Task 6 text-only" figures appear in the scripts (0.789 to
-0.807) because scripts use different splits; they are not yet reconciled (see PLAN, phase 0).
+history reaches 1.0. Other "Task 6 text-only" figures in the scripts (0.785 to 0.807) are the same rule on different
+splits; see `leak_analysis/TASK6_TEXT_ONLY_FIGURES.md` for which to quote.
 
 **4. The audited baseline's answers do not depend on the CT.** Epoch-1 checkpoint (val_loss
 0.3115) scored on full val (3,254) and test (3,459), once with real volumes and once with every
@@ -70,8 +70,10 @@ overlap; 3,039 volumes hashed, 3,039 unique MD5s. Train has 9 exact duplicate QA
 
 **Does the baseline receive the prior scan?** Yes. Task 5/6 inputs stack the nearest earlier
 same-patient study (T0) with the referenced study (T1); all 2,873 temporal rows have an earlier
-study. Caveat: when the earlier study has several reconstructions, which one is T0 depends on
-set iteration order (`retrain/kaggle_retrain_v7.py`, `build_timeline`).
+study. Caveat: 92% of (patient, letter) scans have several reconstructions, and in the run that produced
+finding 4 the one used as T0 depended on set iteration order (hash seed). The three pairing
+scripts now break ties by sorted path (`tests/test_t0_determinism.py` passes); the epoch-1 audit
+above predates that fix and must be rerun (PLAN, phase 1) before its numbers are final.
 
 ## Part B: the plan in one paragraph
 
@@ -113,7 +115,8 @@ Needs `pandas`, `numpy`, `scikit-learn` and the 3D-RAD data in `3D-RAD_Dataset/`
 python leak_analysis/text_only_leak_audit.py
 python leak_analysis/task5_task6_twins.py
 python leak_analysis/information_ceilings.py
-python leak_analysis/verify_deleak.py
+python leak_analysis/verify_deleak.py          # TF-IDF; digit-blind, kept for the record
+python leak_analysis/verify_deleak_digits.py   # digit-aware check of 3D-RAD-T
 python leak_analysis/md5_volume_audit.py
 python leak_analysis/save_split_manifests.py
 ```

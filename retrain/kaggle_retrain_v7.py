@@ -257,7 +257,7 @@ def build_timeline(data_dir):
         if i:
             tl[f"{i['split']}_{i['patient']}"].append((i["letter"], p))
     for k in tl:
-        tl[k] = sorted(set(tl[k]), key=lambda x: x[0])
+        tl[k] = sorted(set(tl[k]))  # by (letter, path): ties between reconstructions must not depend on set order
     return tl
 
 

@@ -5,15 +5,18 @@ or a lab machine. `[x]` done, `[ ]` open.
 
 ## Phase 0: clean up part A (CPU, 1–2 days)
 
-- [ ] Recompute floors/ceilings on the evaluable rows only; relabel "prior scan" as "all prior
-      scans" in `leak_analysis/information_ceilings.py`
-- [ ] Reconcile the several "Task 6 text-only" figures to the manifest split; remove the "hard,
-      assumption-free bounds" wording
-- [ ] Fix the digit-blind TF-IDF check in `verify_deleak.py` (character-level or digit-aware)
-- [ ] Settle which reconstruction is used as T0 (deterministic ordering in `build_timeline`)
-- [ ] Commit the uncommitted work (README, PLAN, ceilings script, v2 proposal)
+- [x] Recompute floors/ceilings on the evaluable rows only; relabel "prior scan" as "all prior
+      scans" in `leak_analysis/information_ceilings.py` (verified by rerun)
+- [x] Reconcile the several "Task 6 text-only" figures (`leak_analysis/TASK6_TEXT_ONLY_FIGURES.md`);
+      the "hard, assumption-free bounds" wording is already gone from the script docstring
+- [x] Fix the digit-blind TF-IDF check: new `verify_deleak_digits.py` (char n-grams, positive control
+      0.989 on the original, T-mask 0.715 / T-strip 0.711 vs finding-only 0.717)
+- [x] Settle which reconstruction is used as T0: ties now broken by sorted path in all three
+      pairing scripts; `tests/test_t0_determinism.py` red before, green after
+- [ ] Rerun the epoch-1 audit with the fixed T0 (the reported run used hash-order T0)
+- [x] Commit the uncommitted work (README, PLAN, ceilings script, v2 proposal)
 - [ ] Back up `retrain/results/` (v7 adapters, ~357 MB) off this disk
-- [ ] Add `requirements.txt` so the environment can be rebuilt
+- [x] Add `requirements.txt` (CPU analysis; Kaggle deps not pinned)
 - [ ] Agree with the senior: authorship order (first author), target venue, deadline, GPU access
 
 ## Phase 1: part A statistics and controls (GPU, inference only)
@@ -24,7 +27,7 @@ or a lab machine. `[x]` done, `[ ]` open.
 - [ ] More controls: mean image, noise, another patient's volume; for Task 5 a zeroed or swapped
       prior scan
 - [ ] Fine-tuned text-only model as the fair floor; at least 3 seeds
-- [ ] Settle whether 3D-RAD-T really removes the bracket
+- [x] Settle whether 3D-RAD-T really removes the bracket (yes on test-dir rows, verify_deleak_digits.py)
 
 ## Phase 2: part B data (CPU)
 
