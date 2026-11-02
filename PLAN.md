@@ -24,8 +24,9 @@ or a lab machine. `[x]` done, `[ ]` open.
 ## Phase 1: part A statistics and controls (GPU, inference only)
 
 - [ ] Audit epochs 2 and 3, not just epoch 1
-- [ ] Patient-cluster bootstrap CIs; McNemar for Task 6 vs Task 5 on the same items;
-      balanced accuracy / macro-F1
+- [x] Patient-cluster bootstrap CIs and McNemar, validation only (`inference_audit/audit_statistics.py`);
+      the test partition needs a rerun that saves per-item output
+- [ ] Balanced accuracy / macro-F1
 - [ ] More controls: mean image, noise, another patient's volume; for Task 5 a zeroed or swapped
       prior scan
 - [ ] Fine-tuned text-only model as the fair floor; at least 3 seeds

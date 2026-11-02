@@ -84,3 +84,23 @@ hallucination taxonomy) · `run_log.txt`.
 Two files were not retrieved from the run: `per_task_val.csv` and `per_item_test.csv`. Every
 aggregate they held is in the JSON; `per_item_test.csv` is still worth pulling down, because the
 taxonomy work needs row-level test predictions.
+
+## Patient-cluster statistics (validation only)
+
+`audit_statistics.py` reads `per_item_val.csv` and resamples patients (5,000 draws, seed 42), because
+questions share volumes and volumes share patients. The accuracies reproduce the table above.
+Task 5 and Task 6 each have 14 patients, so their intervals are wide.
+
+| comparison | n items (patients) | estimate | 95% CI | exact McNemar p |
+| :-- | --: | --: | :-- | --: |
+| Task 4 real − blank | 2,340 (130) | +0.0013 | −0.003 to +0.006 | 0.73 |
+| Task 5 real − blank | 238 (14) | +0.0042 | 0.000 to +0.013 | 1.0 |
+| Task 6 real − blank | 238 (14) | 0.0000 | 0.000 to 0.000 | 1.0 (0 discordant) |
+| Task 6 − Task 5, real CT, same (volume, finding) items | 238 (14) | **+0.181** | +0.109 to +0.265 | 2e−13 (43 vs 0) |
+
+Reading: zeroing the CT has no detectable effect on any closed task. The same model scores 18
+points higher on Task 6 than on the identical Task 5 items, and it is right on all 43 items
+where only one of the two is right being Task 6. The only thing Task 6 adds is the bracket, so
+this gap is the text shortcut being used, which is the opposite of image use. Limits: validation
+only (per-item test output was not saved, so the test partition needs a rerun), epoch 1, one
+seed, and the T0 reconstruction in that run was chosen by hash order (see README).

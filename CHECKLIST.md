@@ -47,7 +47,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 
 ### Part A: stronger evidence (GPU, inference only)
 - [ ] Audit epochs 2 and 3
-- [ ] Bootstrap confidence intervals per patient; McNemar test, Task 6 vs Task 5
+- [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun)
 - [ ] Extra controls: mean image, noise, another patient's volume, zeroed or swapped prior scan
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)

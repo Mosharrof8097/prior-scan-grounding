@@ -1,0 +1,93 @@
+{
+  "Task4_Existence_Detection": {
+    "n_items": 2340,
+    "n_volumes": 130,
+    "n_patients": 130,
+    "real_acc": 0.8115384615384615,
+    "real_ci95": [
+      0.7888888888888889,
+      0.8333333333333334
+    ],
+    "blank_acc": 0.8102564102564103,
+    "blank_ci95": [
+      0.788034188034188,
+      0.8324786324786325
+    ],
+    "real_minus_blank": 0.001282051282051282,
+    "real_minus_blank_ci95": [
+      -0.003418803418803419,
+      0.005982905982905983
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 18,
+      "only_second_right": 15,
+      "p": 0.7283324808813632
+    }
+  },
+  "Task5_Static_Temporal_Diagnosis": {
+    "n_items": 238,
+    "n_volumes": 14,
+    "n_patients": 14,
+    "real_acc": 0.6218487394957983,
+    "real_ci95": [
+      0.5084033613445378,
+      0.726890756302521
+    ],
+    "blank_acc": 0.6176470588235294,
+    "blank_ci95": [
+      0.5042016806722689,
+      0.7184873949579832
+    ],
+    "real_minus_blank": 0.004201680672268907,
+    "real_minus_blank_ci95": [
+      0.0,
+      0.012605042016806723
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 1,
+      "only_second_right": 0,
+      "p": 1.0
+    }
+  },
+  "Task6_Longitudinal_Temporal_Diagnosis": {
+    "n_items": 238,
+    "n_volumes": 14,
+    "n_patients": 14,
+    "real_acc": 0.8025210084033614,
+    "real_ci95": [
+      0.7521008403361344,
+      0.8529411764705882
+    ],
+    "blank_acc": 0.8025210084033614,
+    "blank_ci95": [
+      0.7521008403361344,
+      0.8529411764705882
+    ],
+    "real_minus_blank": 0.0,
+    "real_minus_blank_ci95": [
+      0.0,
+      0.0
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 0,
+      "only_second_right": 0,
+      "p": 1.0
+    }
+  },
+  "task6_minus_task5_real": {
+    "paired_items": 238,
+    "unmatched_t5": 0,
+    "t5_acc": 0.6218487394957983,
+    "t6_acc": 0.8025210084033614,
+    "diff": 0.18067226890756302,
+    "diff_ci95": [
+      0.1092436974789916,
+      0.2647058823529412
+    ],
+    "mcnemar_t6_vs_t5": {
+      "only_first_right": 43,
+      "only_second_right": 0,
+      "p": 2.2737367544323206e-13
+    }
+  }
+}
