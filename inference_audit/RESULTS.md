@@ -99,8 +99,8 @@ Task 5 and Task 6 each have 14 patients, so their intervals are wide.
 | Task 6 − Task 5, real CT, same (volume, finding) items | 238 (14) | **+0.181** | +0.109 to +0.265 | 2e−13 (43 vs 0) |
 
 Reading: zeroing the CT has no detectable effect on any closed task. The same model scores 18
-points higher on Task 6 than on the identical Task 5 items, and it is right on all 43 items
-where only one of the two is right being Task 6. The only thing Task 6 adds is the bracket, so
+points higher on Task 6 than on the identical Task 5 items; on every one of the 43 items where
+exactly one of the two is correct, it is the Task 6 one. The only thing Task 6 adds is the bracket, so
 this gap is the text shortcut being used, which is the opposite of image use. Limits: validation
 only (per-item test output was not saved, so the test partition needs a rerun), epoch 1, one
 seed, and the T0 reconstruction in that run was chosen by hash order (see README).
