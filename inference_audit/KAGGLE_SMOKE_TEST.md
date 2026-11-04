@@ -30,6 +30,8 @@ all 238 val and 340 test Task 5 and Task 6 items are paired with a genuine earli
 
 ## 3. Cells
 
+**Easiest:** paste the whole of `inference_audit/kaggle_smoke_test.py` into one notebook cell and run it. It does Cells 1-3 below, checks the result, and zips the outputs to `/kaggle/working/smoke_out.zip`. The manual cells below do the same thing step by step.
+
 ```python
 # Cell 1
 !pip install -q -U peft
