@@ -38,7 +38,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Reconcile the different "Task 6 text-only" numbers (`leak_analysis/TASK6_TEXT_ONLY_FIGURES.md`)
 - [x] Digit-aware de-leak check (`verify_deleak_digits.py`): leak recovered 0.989 on the original, 0.715 / 0.711 on T-mask / T-strip, finding-only baseline 0.717
 - [x] Deterministic earlier scan (T0) in all three pairing scripts (`tests/test_t0_determinism.py`)
-- [ ] Rerun the epoch-1 audit with the fixed T0 (GPU); reported run used hash-order T0
+- [ ] Rerun the epoch-1 audit with the fixed T0 (GPU); reported run used hash-order T0. Smoke test prepared and preflight-verified on CPU: `inference_audit/KAGGLE_SMOKE_TEST.md`, checker `inference_audit/check_smoke_output.py`
 - [x] `git commit` the uncommitted files (only the CV and NC-6 PDFs stay untracked on purpose)
 - [x] Copy of `retrain/results/` (v7 adapters) in `backups/retrain_v7_2026-11-04/`, 32 files, SHA-256 verified (`SHA256SUMS`); same disk, git-ignored. An off-disk copy is still wanted
 - [x] Add `requirements.txt` (CPU analysis)
