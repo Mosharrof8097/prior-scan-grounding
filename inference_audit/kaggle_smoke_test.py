@@ -88,12 +88,17 @@ def report(df, split):
 
 
 def find_script():
-    hits = [p for p in glob.glob("/kaggle/input/**/kaggle_inference_audit.py", recursive=True)]
+    hits = []
+    for root in ("/kaggle/input", "/kaggle/working", os.getcwd(), "/kaggle"):
+        hits += glob.glob(os.path.join(root, "**", "kaggle_inference_audit.py"), recursive=True)
+    hits = sorted(set(hits))
     good = [p for p in hits if "--controls" in open(p, errors="ignore").read()]
     print("audit scripts found:", hits)
     if not good:
-        sys.exit("FAIL: no kaggle_inference_audit.py with --controls under /kaggle/input. "
-                 "Upload inference_audit/kaggle_inference_audit.py (not the old retrain/ copy).")
+        sys.exit("FAIL: no kaggle_inference_audit.py with --controls found under /kaggle/input, "
+                 "/kaggle/working or the current folder. Add inference_audit/kaggle_inference_audit.py "
+                 "(not the old retrain/ copy) to the dataset or upload it to the notebook, then rerun. "
+                 "Found without --controls: " + str(hits))
     pick = sorted(good, key=lambda p: ("audit_upload" not in p, p))[0]
     print("using:", pick)
     return pick
