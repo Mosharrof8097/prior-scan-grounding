@@ -884,6 +884,16 @@ def run_pass(model, tok, ds, device, condition, args, tag):
 # ==================================================================================================
 # aggregation
 # ==================================================================================================
+def majority_answer(answers: pd.Series) -> str:
+    """Most frequent answer; ties go to the alphabetically first one.
+
+    value_counts().idxmax() breaks ties by an order that differs between pandas versions. Task 2 has
+    a three-way tie at the top of the training answers (29 each), so the floor for that task changed
+    between the laptop (0.0124) and Kaggle (0.0083) for no reason connected to the model."""
+    vc = answers.astype(str).value_counts()
+    return sorted(vc[vc == vc.max()].index)[0]
+
+
 def text_only_floor(train_df: pd.DataFrame, eval_df: pd.DataFrame) -> Dict[str, float]:
     """Best accuracy from question text alone: per (task, bracket-group) majority answer."""
     def key(d):
@@ -891,9 +901,8 @@ def text_only_floor(train_df: pd.DataFrame, eval_df: pd.DataFrame) -> Dict[str, 
             lambda q: (lambda m: str(any(int(x) for x in m.group(1).replace(" ", "").split(",")))
                        if m else "nobracket")(BRACKET_RE.search(str(q))))
         return d["TaskCategory"].astype(str) + "|" + br
-    lut = train_df.assign(k=key(train_df)).groupby("k")["Answer"].agg(
-        lambda s: s.value_counts().idxmax())
-    maj = train_df["Answer"].value_counts().idxmax()
+    lut = train_df.assign(k=key(train_df)).groupby("k")["Answer"].agg(majority_answer)
+    maj = majority_answer(train_df["Answer"])
     pred = key(eval_df).map(lut).fillna(maj)
     hit = (pred.values == eval_df["Answer"].values)
     return {t: float(hit[(eval_df["TaskCategory"] == t).values].mean())

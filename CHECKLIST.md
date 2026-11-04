@@ -52,6 +52,9 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun)
 - [x] Control code (`--controls`), tested on CPU
 - [x] Smoke test of the controls on a T4 (2026-11-04, 60 items, val): all 7 conditions ran, exit 0; real and blank reproduce the earlier full audit exactly on the same items (gold log-prob diff 0.0000); found and fixed an item_id bug in the temporal-only controls (regression test added)
+- [x] Smoke test rerun with the item_id fix (2026-11-04, script sha 70f3d9444f4e): PASS, prior-control ids now align with `real`, real/blank still identical to the earlier full audit
+- [x] Text-only floor tie-break made deterministic (`majority_answer`): Task 2 has a 3-way tie at 29 answers, floor was 0.0124 on the laptop and 0.0083 on Kaggle; Tasks 4 to 6 unaffected
+- [ ] Same tie-break in `leak_analysis/` (`verify_deleak.py`, `compare_to_baseline.py`, `text_only_leak_audit.py` use `value_counts().idxmax()`); only matters for Tasks 1 to 3 majorities, committed JSONs reproduce on this machine
 - [ ] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)

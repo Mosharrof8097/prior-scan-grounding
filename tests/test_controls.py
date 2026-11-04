@@ -108,6 +108,11 @@ def main():
         check("temporal subset keeps the full set's item ids", all(ka[k] == v for k, v in kt.items()) and len(kt) < len(ka))
         check("item ids are unique over the full set", len(set(ka.values())) == len(ka))
 
+        # --- regression: the text-only floor must not depend on pandas' tie-breaking
+        tie = pd.Series(["b", "a", "b", "a", "c"])
+        check("majority_answer breaks ties alphabetically", audit.majority_answer(tie) == "a"
+              and audit.majority_answer(tie[::-1].reset_index(drop=True)) == "a")
+
         # --- prior controls refuse non-temporal items
         ds.condition = "zero_prior"
         try:
