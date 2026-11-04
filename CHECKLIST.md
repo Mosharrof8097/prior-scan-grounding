@@ -39,9 +39,11 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Digit-aware de-leak check (`verify_deleak_digits.py`): leak recovered 0.989 on the original, 0.715 / 0.711 on T-mask / T-strip, finding-only baseline 0.717
 - [x] Deterministic earlier scan (T0) in all three pairing scripts (`tests/test_t0_determinism.py`)
 - [ ] Rerun the epoch-1 audit with the fixed T0 (GPU); reported run used hash-order T0
-- [ ] `git commit` the uncommitted files
+- [x] `git commit` the uncommitted files (only the CV and NC-6 PDFs stay untracked on purpose)
 - [ ] Back up `retrain/results/` (v7 adapters, only copy)
 - [x] Add `requirements.txt` (CPU analysis)
+- [x] Settle whether the baseline receives the prior scan: yes, T0 + T1 for Task 5 and Task 6, 100% of rows paired (`leak_analysis/PRIOR_SCAN_INPUT.md`, `tests/check_pairing_rate.py`)
+- [x] Re-verified 2026-11-04: both test scripts pass, leak scripts and `audit_statistics.py` reproduce the committed JSON byte for byte
 - [x] Authorship: sole author for now; no co-authors listed
 - [ ] Ask the senior: venue, deadline, GPU access, and how they are credited
 
@@ -54,8 +56,8 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)
 
 ### Part B: new benchmark (CPU)
-- [ ] Check if M3D-LaMed's training data already contains TotalSegmentator
-- [ ] Check if TotalSegmentator metadata has pathology labels
+- [x] M3D-LaMed training data contains TotalSegmentator (M3D-Seg ID 0011, 1,203 scans, plus 210-image M3D-RefSeg). Case-level overlap with v2 still unchecked (`reports/Blind baselines longitudinal VQA.md`)
+- [ ] TotalSegmentator pathology labels: release is anatomy masks only (verified from Zenodo/GitHub pages); exact `meta.csv` columns not yet seen, download it to confirm
 - [ ] Download TotalSegmentator v2 (check disk space first)
 - [ ] Question templates, then the ~18.7k question set from the masks
 - [ ] Quality checks: duplicates, answer balance, text-only floor
@@ -73,7 +75,8 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] Per-method ablation
 
 ### Writing
-- [ ] Related-work sections on blind baselines and longitudinal benchmarks
+- [x] Verified literature report with citation table and open gaps: `reports/Blind baselines longitudinal VQA.md` (notes in `research_notes/Blind baselines longitudinal VQA/`); quotes still to be checked against PDFs before citing
+- [ ] Write the related-work section from that report
 - [ ] Novelty stated precisely: fixes plus voxel-mask benchmark; probes are prior art
 - [ ] Release plan for masks, questions and scripts
 - [ ] Thesis chapter and paper draft
