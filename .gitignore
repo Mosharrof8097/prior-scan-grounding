@@ -42,3 +42,4 @@ __MACOSX/
 
 # local backup copies of Kaggle outputs (large, regenerable only by retraining)
 backups/
+retrain/audit_upload_epochs_2_3/
