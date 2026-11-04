@@ -76,7 +76,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 
 ### Writing
 - [x] Verified literature report with citation table and open gaps: `reports/Blind baselines longitudinal VQA.md` (notes in `research_notes/Blind baselines longitudinal VQA/`); quotes still to be checked against PDFs before citing
-- [ ] Write the related-work section from that report
+- [x] Related-work section drafted: `writing/related_work.md` (cites only verified sources; to-do list at the end of that file)
 - [ ] Novelty stated precisely: fixes plus voxel-mask benchmark; probes are prior art
 - [ ] Release plan for masks, questions and scripts
 - [ ] Thesis chapter and paper draft
