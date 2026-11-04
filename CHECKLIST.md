@@ -51,7 +51,8 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] Audit epochs 2 and 3
 - [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun)
 - [x] Control code (`--controls`), tested on CPU
-- [ ] Run the extra controls on a GPU: mean, noise, swap, zero_prior, swap_prior
+- [x] Smoke test of the controls on a T4 (2026-11-04, 60 items, val): all 7 conditions ran, exit 0; real and blank reproduce the earlier full audit exactly on the same items (gold log-prob diff 0.0000); found and fixed an item_id bug in the temporal-only controls (regression test added)
+- [ ] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)
 

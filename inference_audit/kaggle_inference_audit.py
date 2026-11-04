@@ -452,6 +452,18 @@ def apply_control(vol: np.ndarray, condition: str, item_id: int, donor: Optional
     raise ValueError(f"unknown control: {condition}")
 
 
+def with_item_ids(sub: pd.DataFrame) -> pd.DataFrame:
+    """Number the evaluated items ONCE, over the whole evaluated subset.
+
+    Every dataset built from a part of this subset (the temporal-only prior controls) must keep
+    these ids. If a subset renumbered itself 0..n-1, its ids would collide with other items' ids
+    in the real/blank passes and any join on item_id (audit_statistics.py) would pair the wrong items.
+    """
+    out = sub.copy()
+    out["item_id"] = np.arange(len(out))
+    return out
+
+
 class EvalDataset(Dataset):
     """
     Mirrors Medical3DVQADataset from the training script in eval mode:
@@ -462,7 +474,8 @@ class EvalDataset(Dataset):
                  max_seq_len: int = 128, cache_capacity: int = 96, donor_names=None):
         # volume-sorted iteration purely for disk-cache locality; metrics are order-independent
         d = df.copy()
-        d["item_id"] = np.arange(len(d))          # explicit id; never relies on a column named "index"
+        if "item_id" not in d.columns:            # a caller that built a subset has already numbered the full set
+            d["item_id"] = np.arange(len(d))      # explicit id; never relies on a column named "index"
         self.df = d.sort_values("NpyName", kind="stable").reset_index(drop=True)
         self.condition = "real"                   # set per pass: real | blank | one of CONTROLS
         self.tok = tokenizer
@@ -1061,6 +1074,7 @@ def main():
         if args.limit:
             sub = sub.groupby("TaskCategory", group_keys=False).head(
                 max(1, args.limit // sub["TaskCategory"].nunique()))
+        sub = with_item_ids(sub)
         LOG(f"\n{'='*100}\n  SPLIT = {split}   ({len(sub):,} items)\n{'='*100}")
         split_names = df[df.Split == split]["NpyName"]
         ds = EvalDataset(sub, tok, timeline, image_map, args.max_seq_len, args.cache_capacity,

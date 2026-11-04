@@ -97,6 +97,17 @@ def main():
         check("swap on temporal: whole stack replaced", not np.allclose(sw6[:16], t6[:16]) and not np.allclose(sw6[16:], t6[16:]))
         check("swap on temporal keeps shape 32", sw6.shape[0] == 32)
 
+        # --- regression: the temporal-only dataset must keep the ids of the full set
+        # (a Kaggle smoke test found zero_prior/swap_prior renumbering their items 0..n-1)
+        full = audit.with_item_ids(df)
+        d_all = audit.EvalDataset(full, Tok(), timeline, image_map, 128, 8)
+        is_t = full["TaskCategory"].str.lower().str.contains("longitudinal|temporal")
+        d_tmp = audit.EvalDataset(full[is_t], Tok(), timeline, image_map, 128, 8)
+        key = lambda d: {(r.NpyName, r.TaskCategory): r.item_id for r in d.df.itertuples()}
+        ka, kt = key(d_all), key(d_tmp)
+        check("temporal subset keeps the full set's item ids", all(ka[k] == v for k, v in kt.items()) and len(kt) < len(ka))
+        check("item ids are unique over the full set", len(set(ka.values())) == len(ka))
+
         # --- prior controls refuse non-temporal items
         ds.condition = "zero_prior"
         try:
