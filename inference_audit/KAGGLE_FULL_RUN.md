@@ -1,46 +1,31 @@
-# Full audit on Kaggle: one epoch per run, val and test, 7 conditions
+# Full audit on Kaggle: ONE file, all epochs, no flags
 
-File to paste into ONE notebook cell: `inference_audit/FULL_RUN_ALL_IN_ONE.py`
-(built by `build_full_run.py`; it embeds the current audit script with both fixes: `with_item_ids`
-and `majority_answer`, audit sha256 `294fc43d6d8c`).
+Paste `inference_audit/ALL_EPOCHS_FULL_AUDIT.py` into one notebook cell and run it. Nothing to edit.
+(Built by `build_all_epochs.py`; it embeds the audit script with both fixes, `with_item_ids` and
+`majority_answer`, sha256 `294fc43d6d8c`.)
 
-Conditions per split: `real`, `blank`, `mean`, `noise`, `swap`, `zero_prior`, `swap_prior`
-(the two prior controls run on the Task 5 and Task 6 items only: 476 in val, 680 in test).
+## Attach to the notebook
+`medi-data-3d`, `inference-audit-data` (epoch 1 + manifests), `audit-upload-epochs-2-3` (epochs 2 and 3).
+GPU T4 x1, Internet ON. For an unattended run: Save Version -> Save & Run All (Commit), GPU on.
 
-## What to upload (once)
+## What it does
+1. Finds epoch_1/2/3 among the attached datasets; verifies SHA-256 of projector, adapter, adapter config and the
+   split manifests, and the epoch number stored inside each projector. A missing or corrupted epoch is reported
+   and skipped; the others run.
+2. Preflight on CPU. 3. For each epoch, val then test, 7 conditions: real, blank, mean, noise, swap, zero_prior,
+   swap_prior (prior controls only on the Task 5 / Task 6 items: 476 val, 680 test).
+4. After every split: checks (7 conditions, full row counts 3,254 / 3,459, temporal items all paired, intended
+   epoch loaded) and rewrites `full_audit_results.zip`. A failed split stops the run so no GPU time is wasted.
+5. Stops cleanly before a split that would not finish inside the 11-hour budget.
 
-| Dataset | Folder on the laptop | Holds |
-| :-- | :-- | :-- |
-| already on Kaggle: `medi-data-3d` | | the 3D-RAD volumes and Task CSVs |
-| already on Kaggle: `inference-audit-data` | `retrain/audit_upload/` | epoch_1 + split manifests |
-| NEW, 163 MB | `retrain/audit_upload_epochs_2_3/` | epoch_2, epoch_3 + split manifests (`SHA256SUMS` inside) |
+## Time (estimate, not measured on the full set)
+35,877 forward passes per epoch at 0.28 to 0.5 s each = about 3 to 5 hours per epoch. Three epochs are
+107,631 passes, about 8 to 15 hours, so they may not fit one 12-hour session. If the budget stops the run:
+upload `full_audit_results.zip` as a Kaggle dataset, attach it in a NEW session with the other datasets, run the same
+file again; finished (epoch, split) pairs that pass every check are reused.
 
-## Per run
-
-1. Notebook: GPU T4 x1, Internet ON. Attach `medi-data-3d` plus the dataset that holds the epoch:
-   epoch 1 -> `inference-audit-data`; epochs 2 and 3 -> the new epochs-2-3 dataset.
-2. Paste `FULL_RUN_ALL_IN_ONE.py` into one cell. The only line to edit is `EPOCH = "epoch_1"`.
-3. Run it. Unattended: Save Version -> Save & Run All (Commit) with GPU on.
-4. Download `full_run_<EPOCH>.zip` from the Output panel. It is rewritten after each split, so a dropped
-   session still leaves the val results.
-
-Time (estimate, not measured on the full set): 35,877 forward passes per epoch, 0.28 to 0.5 s each, so
-about 3 to 5 hours per epoch; three epochs about 9 to 15 hours of the weekly Kaggle GPU quota.
-
-## What it checks before spending GPU time
-
-SHA-256 of the projector, adapter weights, adapter config and the three split manifests against embedded
-hashes; the epoch number stored inside the projector file; then the audit's own preflight (split matches the
-trained one, no volume missing, all Task 5 and Task 6 items paired with an earlier scan).
-
-## What it checks after each split, and stops on failure
-
-All 7 conditions present; each covers the same items as `real` (prior controls: the temporal items only);
-`real` has exactly 3,254 (val) or 3,459 (test) rows and 476 / 680 temporal rows; no missing predictions or
-non-finite log-probabilities; every temporal item `paired_ok`; the audit's log shows the intended epoch loaded.
-
-## Bringing results back
-
-Unzip into a NEW folder, for example `inference_audit/full_run_epoch_1/`. Do not put them in
-`inference_audit/interface audit result/`, which holds the earlier published audit. Nothing in this
-procedure modifies README.md, RESULTS.md or any existing result file.
+## The one download
+`full_audit_results.zip`: per_item / per_task / json / run_log for every epoch and split, `summary.csv`,
+`status.json`, `run_info.json` (versions, GPU, hashes, timings), `console_log.txt`, and the audit script that ran.
+Unzip into a NEW folder such as `inference_audit/full_run/`, not into `interface audit result/`.
+Nothing in this procedure modifies README.md, RESULTS.md or any existing result file.
