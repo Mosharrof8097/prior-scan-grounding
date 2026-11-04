@@ -39,3 +39,6 @@ perper ref/
 .DS_Store
 __MACOSX/
 .~lock.*#
+
+# local backup copies of Kaggle outputs (large, regenerable only by retraining)
+backups/

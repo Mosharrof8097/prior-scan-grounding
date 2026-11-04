@@ -40,7 +40,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Deterministic earlier scan (T0) in all three pairing scripts (`tests/test_t0_determinism.py`)
 - [ ] Rerun the epoch-1 audit with the fixed T0 (GPU); reported run used hash-order T0
 - [x] `git commit` the uncommitted files (only the CV and NC-6 PDFs stay untracked on purpose)
-- [ ] Back up `retrain/results/` (v7 adapters, only copy)
+- [x] Copy of `retrain/results/` (v7 adapters) in `backups/retrain_v7_2026-11-04/`, 32 files, SHA-256 verified (`SHA256SUMS`); same disk, git-ignored. An off-disk copy is still wanted
 - [x] Add `requirements.txt` (CPU analysis)
 - [x] Settle whether the baseline receives the prior scan: yes, T0 + T1 for Task 5 and Task 6, 100% of rows paired (`leak_analysis/PRIOR_SCAN_INPUT.md`, `tests/check_pairing_rate.py`)
 - [x] Re-verified 2026-11-04: both test scripts pass, leak scripts and `audit_statistics.py` reproduce the committed JSON byte for byte
