@@ -3,13 +3,18 @@
 7 conditions each) on Kaggle. Embeds the current kaggle_inference_audit.py (with_item_ids + majority_answer fixes),
 the output checker, and the SHA-256 of every expected checkpoint/manifest file.
 
-    python inference_audit/build_all_epochs.py
+    python inference_audit/build_all_epochs.py                      # epochs 1, 2, 3  -> ALL_EPOCHS_FULL_AUDIT.py
+    python inference_audit/build_all_epochs.py epoch_2 epoch_3      # epochs 2, 3 only -> EPOCHS_2_3_FULL_AUDIT.py
 """
-import base64, hashlib, json, os, zlib
+import base64, hashlib, json, os, sys, zlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, "..")
 BK = os.path.join(ROOT, "backups", "retrain_v7_2026-11-04", "retrain_v7")
+EPS = sys.argv[1:] or ["epoch_1", "epoch_2", "epoch_3"]
+assert all(e in ("epoch_1", "epoch_2", "epoch_3") for e in EPS), EPS
+SUBSET = EPS != ["epoch_1", "epoch_2", "epoch_3"]
+TAG = "_".join(e.split("_")[1] for e in EPS)                       # "2_3" or "1_2_3"
 
 
 def sha(path):
@@ -29,7 +34,7 @@ chk = open(os.path.join(HERE, "check_smoke_output.py")).read()
 chk = chk[chk.index("PRIOR = "):chk.index("def main():")]
 
 hashes = {"manifests": {s: sha(os.path.join(BK, f"split_{s}_qa.csv")) for s in ("train", "val", "test")}}
-for e in ("epoch_1", "epoch_2", "epoch_3"):
+for e in EPS:
     hashes[e] = {
         "projector": sha(os.path.join(BK, e, "multimodal_projector_best.pt")),
         "adapter": sha(os.path.join(BK, e, "lora_adapters", "adapter_model.safetensors")),
@@ -51,10 +56,10 @@ What it does, by itself:
   3. for each epoch, for val and then test: the full audit with 7 conditions
         real, blank, mean, noise, swap, zero_prior, swap_prior      (prior controls on Task 5 and Task 6 items only)
   4. after EVERY split: checks the outputs (7 conditions, full row counts, all temporal items paired, the intended
-     epoch was loaded) and rewrites ONE zip:   /kaggle/working/full_audit_results.zip
+     epoch was loaded) and rewrites ONE zip:   /kaggle/working/@@ZIPNAME@@
   5. stops cleanly BEFORE a split that would not finish inside the session time budget, and says how to continue
 
-Download ONE file at the end:  full_audit_results.zip   (Output panel).
+Download ONE file at the end:  @@ZIPNAME@@   (Output panel).
 It holds: per_item_*.csv and per_task_*.csv and inference_audit_*.json and run_log.txt for every epoch and split,
 summary.csv (headline accuracy by epoch, split, task, condition), status.json, run_info.json (software versions, GPU,
 hashes, timings), console_log.txt (all screen output) and the exact audit script that ran.
@@ -70,7 +75,7 @@ import argparse, base64, glob, hashlib, json, os, shutil, subprocess, sys, time,
 import numpy as np
 import pandas as pd
 
-EPOCHS = ["epoch_1", "epoch_2", "epoch_3"]
+EPOCHS = @@EPOCHS@@
 SPLITS = ["val", "test"]
 CONTROLS = ["mean", "noise", "swap", "zero_prior", "swap_prior"]       # + real + blank = 7 conditions
 CONDITIONS = ["real", "blank"] + CONTROLS
@@ -88,7 +93,7 @@ WORK = "/kaggle/working" if os.path.isdir("/kaggle/working") else os.getcwd()
 RUN = os.path.join(WORK, "full_audit")
 SCRIPT = os.path.join(WORK, "kaggle_inference_audit.py")
 CONSOLE = os.path.join(WORK, "console_log.txt")
-ZIP = os.path.join(WORK, "full_audit_results.zip")
+ZIP = os.path.join(WORK, "@@ZIPNAME@@")
 T_START = time.time()
 
 
@@ -296,7 +301,7 @@ def main():
     if a.only_preflight:
         say("preflight OK (--only-preflight)"); return 0
 
-    rate = 0.5                                     # seconds per item; replaced by what is measured
+    rate = 0.4                                     # seconds per item; replaced by what is measured
     stopped_for_time = None
     for e in EPOCHS:
         if e not in found:
@@ -353,7 +358,7 @@ def main():
         say(f"  {e}: " + ", ".join(f"{s}={status[e][s]['state']}" for s in SPLITS))
     for p in problems:
         say("  problem: " + p)
-    say(f"\nDOWNLOAD THIS ONE FILE: {z}   (Output panel -> full_audit_results.zip)")
+    say(f"\nDOWNLOAD THIS ONE FILE: {z}   (Output panel -> " + os.path.basename(z) + ")")
     return 0 if (len(done) == len(EPOCHS) * len(SPLITS)) else 1
 
 
@@ -363,7 +368,9 @@ if __name__ == "__main__":
 
 out = (TEMPLATE.replace("@@HASHES@@", json.dumps(hashes, indent=4))
        .replace("@@SHA@@", hashlib.sha256(audit).hexdigest())
+       .replace("@@EPOCHS@@", json.dumps(EPS))
+       .replace("@@ZIPNAME@@", "full_audit_results_epochs_%s.zip" % TAG if SUBSET else "full_audit_results.zip")
        .replace("@@EMBED@@", embedded).replace("@@CHECK@@", chk))
-path = os.path.join(HERE, "ALL_EPOCHS_FULL_AUDIT.py")
+path = os.path.join(HERE, "EPOCHS_%s_FULL_AUDIT.py" % TAG if SUBSET else "ALL_EPOCHS_FULL_AUDIT.py")
 open(path, "w").write(out)
 print(f"written {path} ({len(out) // 1024} KB); audit sha256 {hashlib.sha256(audit).hexdigest()[:12]}")

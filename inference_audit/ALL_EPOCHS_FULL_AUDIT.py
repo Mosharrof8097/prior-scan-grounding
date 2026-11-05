@@ -579,7 +579,7 @@ def main():
     if a.only_preflight:
         say("preflight OK (--only-preflight)"); return 0
 
-    rate = 0.5                                     # seconds per item; replaced by what is measured
+    rate = 0.4                                     # seconds per item; replaced by what is measured
     stopped_for_time = None
     for e in EPOCHS:
         if e not in found:
@@ -636,7 +636,7 @@ def main():
         say(f"  {e}: " + ", ".join(f"{s}={status[e][s]['state']}" for s in SPLITS))
     for p in problems:
         say("  problem: " + p)
-    say(f"\nDOWNLOAD THIS ONE FILE: {z}   (Output panel -> full_audit_results.zip)")
+    say(f"\nDOWNLOAD THIS ONE FILE: {z}   (Output panel -> " + os.path.basename(z) + ")")
     return 0 if (len(done) == len(EPOCHS) * len(SPLITS)) else 1
 
 
