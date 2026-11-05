@@ -1,0 +1,377 @@
+{
+  "Task4_Existence_Detection": {
+    "n_items": 2358,
+    "n_volumes": 131,
+    "n_patients": 131,
+    "real_acc": 0.8197625106022053,
+    "real_ci95": [
+      0.7968617472434266,
+      0.8409669211195929
+    ],
+    "blank_acc": 0.8155216284987278,
+    "blank_ci95": [
+      0.7930449533502969,
+      0.8367260390161153
+    ],
+    "real_minus_blank": 0.004240882103477523,
+    "real_minus_blank_ci95": [
+      0.0,
+      0.008481764206955046
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 17,
+      "only_second_right": 7,
+      "p": 0.06391465663909912
+    }
+  },
+  "Task5_Static_Temporal_Diagnosis": {
+    "n_items": 340,
+    "n_volumes": 20,
+    "n_patients": 20,
+    "real_acc": 0.6323529411764706,
+    "real_ci95": [
+      0.5617647058823529,
+      0.711764705882353
+    ],
+    "blank_acc": 0.6352941176470588,
+    "blank_ci95": [
+      0.5617647058823529,
+      0.7147058823529412
+    ],
+    "real_minus_blank": -0.0029411764705882353,
+    "real_minus_blank_ci95": [
+      -0.008823529411764706,
+      0.0
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 0,
+      "only_second_right": 1,
+      "p": 1.0
+    }
+  },
+  "Task6_Longitudinal_Temporal_Diagnosis": {
+    "n_items": 340,
+    "n_volumes": 20,
+    "n_patients": 20,
+    "real_acc": 0.7941176470588235,
+    "real_ci95": [
+      0.7323529411764705,
+      0.85
+    ],
+    "blank_acc": 0.7941176470588235,
+    "blank_ci95": [
+      0.7323529411764705,
+      0.85
+    ],
+    "real_minus_blank": 0.0,
+    "real_minus_blank_ci95": [
+      0.0,
+      0.0
+    ],
+    "mcnemar_real_vs_blank": {
+      "only_first_right": 0,
+      "only_second_right": 0,
+      "p": 1.0
+    }
+  },
+  "task6_minus_task5_real": {
+    "paired_items": 340,
+    "unmatched_t5": 0,
+    "t5_acc": 0.6323529411764706,
+    "t6_acc": 0.7941176470588235,
+    "diff": 0.16176470588235295,
+    "diff_ci95": [
+      0.10588235294117647,
+      0.22058823529411764
+    ],
+    "mcnemar_t6_vs_t5": {
+      "only_first_right": 55,
+      "only_second_right": 0,
+      "p": 5.551115123125783e-17
+    }
+  },
+  "controls": {
+    "Task4_Existence_Detection|mean": {
+      "n_items": 2358,
+      "n_patients": 131,
+      "real_acc": 0.8197625106022053,
+      "control_acc": 0.8206106870229007,
+      "real_minus_control": -0.0008481764206955047,
+      "ci95": [
+        -0.00551314673452078,
+        0.003816793893129771
+      ],
+      "mcnemar": {
+        "only_first_right": 15,
+        "only_second_right": 17,
+        "p": 0.860050065908581
+      }
+    },
+    "Task4_Existence_Detection|noise": {
+      "n_items": 2358,
+      "n_patients": 131,
+      "real_acc": 0.8197625106022053,
+      "control_acc": 0.8172179813401187,
+      "real_minus_control": 0.002544529262086514,
+      "ci95": [
+        -0.0016963528413910093,
+        0.006785411365564037
+      ],
+      "mcnemar": {
+        "only_first_right": 17,
+        "only_second_right": 11,
+        "p": 0.34492845088243484
+      }
+    },
+    "Task4_Existence_Detection|swap": {
+      "n_items": 2358,
+      "n_patients": 131,
+      "real_acc": 0.8197625106022053,
+      "control_acc": 0.8146734520780322,
+      "real_minus_control": 0.005089058524173028,
+      "ci95": [
+        0.0008481764206955047,
+        0.009329940627650551
+      ],
+      "mcnemar": {
+        "only_first_right": 21,
+        "only_second_right": 9,
+        "p": 0.042773945257067694
+      }
+    },
+    "Task5_Static_Temporal_Diagnosis|mean": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.6323529411764706,
+      "control_acc": 0.6323529411764706,
+      "real_minus_control": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar": {
+        "only_first_right": 0,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task5_Static_Temporal_Diagnosis|noise": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.6323529411764706,
+      "control_acc": 0.6294117647058823,
+      "real_minus_control": 0.0029411764705882353,
+      "ci95": [
+        0.0,
+        0.008823529411764706
+      ],
+      "mcnemar": {
+        "only_first_right": 1,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task5_Static_Temporal_Diagnosis|swap": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.6323529411764706,
+      "control_acc": 0.6323529411764706,
+      "real_minus_control": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar": {
+        "only_first_right": 0,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task5_Static_Temporal_Diagnosis|swap_prior": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.6323529411764706,
+      "control_acc": 0.6323529411764706,
+      "real_minus_control": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar": {
+        "only_first_right": 0,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task5_Static_Temporal_Diagnosis|zero_prior": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.6323529411764706,
+      "control_acc": 0.6323529411764706,
+      "real_minus_control": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "mcnemar": {
+        "only_first_right": 0,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|mean": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.7941176470588235,
+      "control_acc": 0.7970588235294118,
+      "real_minus_control": -0.0029411764705882353,
+      "ci95": [
+        -0.014705882352941176,
+        0.0058823529411764705
+      ],
+      "mcnemar": {
+        "only_first_right": 1,
+        "only_second_right": 2,
+        "p": 1.0
+      }
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|noise": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.7941176470588235,
+      "control_acc": 0.7911764705882353,
+      "real_minus_control": 0.0029411764705882353,
+      "ci95": [
+        0.0,
+        0.008823529411764706
+      ],
+      "mcnemar": {
+        "only_first_right": 1,
+        "only_second_right": 0,
+        "p": 1.0
+      }
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|swap": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.7941176470588235,
+      "control_acc": 0.7941176470588235,
+      "real_minus_control": 0.0,
+      "ci95": [
+        -0.008823529411764706,
+        0.008823529411764706
+      ],
+      "mcnemar": {
+        "only_first_right": 1,
+        "only_second_right": 1,
+        "p": 1.0
+      }
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|swap_prior": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.7941176470588235,
+      "control_acc": 0.7911764705882353,
+      "real_minus_control": 0.0029411764705882353,
+      "ci95": [
+        -0.0058823529411764705,
+        0.011764705882352941
+      ],
+      "mcnemar": {
+        "only_first_right": 2,
+        "only_second_right": 1,
+        "p": 1.0
+      }
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|zero_prior": {
+      "n_items": 340,
+      "n_patients": 20,
+      "real_acc": 0.7941176470588235,
+      "control_acc": 0.8,
+      "real_minus_control": -0.0058823529411764705,
+      "ci95": [
+        -0.014705882352941176,
+        0.0
+      ],
+      "mcnemar": {
+        "only_first_right": 0,
+        "only_second_right": 2,
+        "p": 0.5
+      }
+    }
+  },
+  "class_metrics": {
+    "Task4_Existence_Detection|real": {
+      "accuracy": 0.8197625106022053,
+      "balanced_accuracy": 0.5578745617248417,
+      "balanced_accuracy_ci95": [
+        0.5407347197317073,
+        0.5792909561661608
+      ],
+      "macro_f1": 0.5660476626590542,
+      "chance_balanced_accuracy": 0.5,
+      "gold_classes": 2,
+      "classes_ever_predicted": 2
+    },
+    "Task4_Existence_Detection|blank": {
+      "accuracy": 0.8155216284987278,
+      "balanced_accuracy": 0.5470576691611283,
+      "balanced_accuracy_ci95": [
+        0.5287389959039552,
+        0.5663674689275615
+      ],
+      "macro_f1": 0.5516293122779685,
+      "chance_balanced_accuracy": 0.5,
+      "gold_classes": 2,
+      "classes_ever_predicted": 2
+    },
+    "Task5_Static_Temporal_Diagnosis|real": {
+      "accuracy": 0.6323529411764706,
+      "balanced_accuracy": 0.2617845117845118,
+      "balanced_accuracy_ci95": [
+        0.24357319739141922,
+        0.2852852560757661
+      ],
+      "macro_f1": 0.22799825872451568,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 2
+    },
+    "Task5_Static_Temporal_Diagnosis|blank": {
+      "accuracy": 0.6352941176470588,
+      "balanced_accuracy": 0.26641414141414144,
+      "balanced_accuracy_ci95": [
+        0.2462131836915943,
+        0.2924283041434199
+      ],
+      "macro_f1": 0.23435706084959818,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 2
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|real": {
+      "accuracy": 0.7941176470588235,
+      "balanced_accuracy": 0.48677248677248675,
+      "balanced_accuracy_ci95": [
+        0.4549797728110844,
+        0.5201775181488203
+      ],
+      "macro_f1": 0.4407726692209451,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 3
+    },
+    "Task6_Longitudinal_Temporal_Diagnosis|blank": {
+      "accuracy": 0.7941176470588235,
+      "balanced_accuracy": 0.48677248677248675,
+      "balanced_accuracy_ci95": [
+        0.45587841161335885,
+        0.519098787568306
+      ],
+      "macro_f1": 0.4407726692209451,
+      "chance_balanced_accuracy": 0.25,
+      "gold_classes": 4,
+      "classes_ever_predicted": 3
+    }
+  }
+}

@@ -5,7 +5,8 @@
       "minutes": 88.8
     },
     "test": {
-      "state": "not reached"
+      "state": "PASS",
+      "minutes": 99.8
     }
   },
   "epoch_2": {

@@ -8,7 +8,7 @@ resamples PATIENTS. For each closed task it reports
   real accuracy, blank accuracy, and real - blank  (paired, same items),
   an exact McNemar test on real vs blank,
   and, for Task 6 vs Task 5, the paired difference on the same (volume, finding) items.
-Only validation per-item data was saved; the test audit needs a rerun to produce the same.
+Works on per-item files from the 7-condition run (val and test).
 """
 import json, os, sys
 import numpy as np

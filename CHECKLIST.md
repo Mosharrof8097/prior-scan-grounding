@@ -38,7 +38,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Reconcile the different "Task 6 text-only" numbers (`leak_analysis/TASK6_TEXT_ONLY_FIGURES.md`)
 - [x] Digit-aware de-leak check (`verify_deleak_digits.py`): leak recovered 0.989 on the original, 0.715 / 0.711 on T-mask / T-strip, finding-only baseline 0.717
 - [x] Deterministic earlier scan (T0) in all three pairing scripts (`tests/test_t0_determinism.py`)
-- [~] Rerun the epoch-1 audit with the fixed T0 (GPU): done for **val** (2026-11-05, 7 conditions, PASS, 89 min); **test still open**. Real vs blank on Task 5 differs by 2 items from the October run (untraced; see RESULTS.md reproducibility note)
+- [x] Rerun the epoch-1 audit with the fixed T0 (GPU): val and test both done (2026-11-05, 7 conditions, PASS, 89 and 100 min). Real vs blank on Task 5 differs by 2 items from the October run (untraced; see RESULTS.md reproducibility note)
 - [x] `git commit` the uncommitted files (only the CV and NC-6 PDFs stay untracked on purpose)
 - [x] Copy of `retrain/results/` (v7 adapters) in `backups/retrain_v7_2026-11-04/`, 32 files, SHA-256 verified (`SHA256SUMS`); same disk, git-ignored. An off-disk copy is still wanted
 - [x] Add `requirements.txt` (CPU analysis)
@@ -48,16 +48,16 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] Ask the senior: venue, deadline, GPU access, and how they are credited
 
 ### Part A: stronger evidence (GPU, inference only)
-- [ ] Audit epochs 2 and 3 (first full run did not attach `epoch_2` / `epoch_3`, so they were skipped; attach `retrain/audit_upload_epochs_2_3/` and rerun, about 3.1 h each)
-- [ ] Epoch 1 test split with all 7 conditions (about 1.6 h; run stopped after val)
-- [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun). Multi-control val result: T6 - T5 = +0.185 (CI +0.113 to +0.269), p = 1e-13
+- [ ] Audit epochs 2 and 3 (first full run did not attach `epoch_2` / `epoch_3`, so they were skipped; attach `retrain/audit_upload_epochs_2_3/` and rerun, about 4 h each for val+test)
+- [x] Epoch 1 test split with all 7 conditions (PASS, 3,459 items, 680 temporal paired)
+- [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun). Multi-control result: T6 - T5 = +0.185 val (CI +0.113 to +0.269, p 1e-13), +0.162 test (CI +0.106 to +0.221, p 6e-17)
 - [x] Control code (`--controls`), tested on CPU
 - [x] Smoke test of the controls on a T4 (2026-11-04, 60 items, val): all 7 conditions ran, exit 0; real and blank reproduce the earlier full audit exactly on the same items (gold log-prob diff 0.0000); found and fixed an item_id bug in the temporal-only controls (regression test added)
 - [x] Smoke test rerun with the item_id fix (2026-11-04, script sha 70f3d9444f4e): PASS, prior-control ids now align with `real`, real/blank still identical to the earlier full audit
 - [x] Text-only floor tie-break made deterministic (`majority_answer`): Task 2 has a 3-way tie at 29 answers, floor was 0.0124 on the laptop and 0.0083 on Kaggle; Tasks 4 to 6 unaffected
 - [ ] Same tie-break in `leak_analysis/` (`verify_deleak.py`, `compare_to_baseline.py`, `text_only_leak_audit.py` use `value_counts().idxmax()`); only matters for Tasks 1 to 3 majorities, committed JSONs reproduce on this machine
 - [x] Full-run file prepared and tested offline (`inference_audit/ALL_EPOCHS_FULL_AUDIT.py`: all epochs, val+test, 7 conditions, no flags; instructions `inference_audit/KAGGLE_FULL_RUN.md`); epochs 2 and 3 packaged from `backups/` in `retrain/audit_upload_epochs_2_3/` (hash-verified against the backup; epoch and val_loss inside each file checked)
-- [~] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior. Epoch 1 val done (2026-11-05): no control moves closed-task accuracy by more than 1 item, no difference significant (`inference_audit/RESULTS.md`, `audit_statistics_multi.py`). Test and epochs 2-3 open
+- [x] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior. Epoch 1 val and test done (2026-11-05): no control moves accuracy materially; one nominal hit (Task 4 test, real vs swap, +0.5 pt, p 0.043, not robust). Epochs 2-3 still open (`inference_audit/RESULTS.md`, `audit_statistics_multi.py`)
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)
 

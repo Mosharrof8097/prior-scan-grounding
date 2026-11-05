@@ -123,13 +123,14 @@ Task 5 is at chance once class imbalance is removed, with and without the CT. Ta
 and only because the bracket rules out two options; the model never predicts "New Lesion" and
 real and blank are identical. Task 4 is only a few points above chance in both conditions.
 
-## Multi-control audit (epoch 1, validation only)
+## Multi-control audit (epoch 1, validation and test)
 
-Run 2026-11-05 on Kaggle (T4), `ALL_EPOCHS_FULL_AUDIT.py`, audit sha256 `294fc43d6d8c`. Only epoch 1 val
-finished (89 min, 17,222 passes, 7 conditions, all rows paired). Epochs 2-3 were not attached and the test
-split was not reached, so the test evidence is still the two-condition run above. Statistics:
-`audit_statistics_multi.py` (same patient-cluster bootstrap, 5,000 draws, seed 42), output in
-`interface audit result/full_audit_results/full_audit/epoch_1/val/audit_statistics_epoch1_val_7cond.json`.
+Run 2026-11-05 on Kaggle (T4), `ALL_EPOCHS_FULL_AUDIT.py`, audit sha256 `294fc43d6d8c`. Epoch 1 val
+(89 min, 17,222 passes) and epoch 1 test (100 min, 3,459 items, 680 temporal items paired) both finished with
+7 conditions. Epochs 2-3 were not attached, so they were skipped. Statistics: `audit_statistics_multi.py`
+(patient-cluster bootstrap, 5,000 draws, seed 42), outputs in
+`interface audit result/full_audit_results/full_audit/epoch_1/{val,test}/audit_statistics_epoch1_{val,test}_7cond.json`.
+The tables below are val; the test results follow in their own subsection.
 
 ### Major finding
 
@@ -185,8 +186,44 @@ Against the October run, `blank` is bit-identical (0 predictions differ), but `r
 (GPU nondeterminism or a different T0 reconstruction pick; see README). This run-to-run variation is the same
 size as the real-vs-blank effect, so the effect is not distinguishable from noise.
 
+### Test split (n = 3,459), same 7 conditions
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .140 | .140 | .140 | .140 | .129 | - | - |
+| 2 Anomaly (open) | .025 | .213 | .209 | .201 | .205 | .209 | - | - |
+| 3 Computation (open) | 0 | 0 | 0 | 0 | 0 | 0 | - | - |
+| 4 Existence | .835 | .820 | .816 | .821 | .817 | .815 | - | - |
+| 5 Static temporal | .647 | .632 | .635 | .632 | .629 | .632 | .632 | .632 |
+| 6 Longitudinal | .806 | .794 | .794 | .797 | .791 | .794 | .800 | .791 |
+
+Real minus control (closed tasks, patient-cluster 95% CI, exact McNemar):
+
+| Task | control | real - control | 95% CI | discordant | p |
+| :-- | :-- | --: | :-- | :-- | --: |
+| 4 | blank | +0.0042 | 0.000 to +0.008 | 17 / 7 | 0.064 |
+| 4 | mean | -0.0008 | -0.006 to +0.004 | 15 / 17 | 0.86 |
+| 4 | noise | +0.0025 | -0.002 to +0.007 | 17 / 11 | 0.35 |
+| 4 | swap | +0.0051 | +0.001 to +0.009 | 21 / 9 | 0.043 |
+| 5 | blank | -0.0029 | -0.009 to 0 | 0 / 1 | 1.0 |
+| 5 | mean, swap, zero_prior, swap_prior | 0.000 | 0 to 0 | 0 / 0 | 1.0 |
+| 5 | noise | +0.0029 | 0 to +0.009 | 1 / 0 | 1.0 |
+| 6 | blank | 0.000 | 0 to 0 | 0 / 0 | 1.0 |
+| 6 | mean, noise, swap, swap_prior, zero_prior | -0.006 to +0.003 | all CIs include 0 | at most 2 | 0.5-1.0 |
+
+- **One nominal hit:** Task 4 real vs swap, +0.5 points, p = 0.043. It is one of 13 closed-task comparisons on this
+  split (about 26 across val and test), so it does not survive a multiple-comparison correction. It is also tiny
+  (30 discordant items of 2,358), the model is still below the text-only floor (0.820 vs 0.835), and the same
+  comparison on val is +0.0004 (p = 1.0). Report it, do not build on it.
+- **Task 6 minus Task 5 on the same 340 items:** +0.162 (CI +0.106 to +0.221), 55 vs 0 discordant, p = 6e-17.
+  Val was +0.185, so the text-shortcut gap replicates on test.
+- **Balanced accuracy (real):** Task 4 0.558, Task 5 0.262 (chance 0.25), Task 6 0.487. Same picture as val.
+- **Against the October test run:** Task 5 real moved from 0.6353 to 0.6324 (1 item) and the Task 2 floor from 0.0123
+  to 0.0246. The floor change is the deterministic tie-break (see checklist); the Task 5 change is the same
+  untraced run-to-run variation as on val.
+
 ### Limits
 
-One checkpoint (epoch 1), one seed, validation only; Tasks 5 and 6 rest on 14 patients each. The supportable
+One checkpoint (epoch 1), one seed; Tasks 5 and 6 rest on 14 patients (val) and 20 patients (test). The supportable
 claim is "these scores are not evidence of grounding", not that vision-language models cannot do longitudinal CT
-reasoning. Still to run: epoch 1 test (about 1.6 h), epochs 2-3 (about 3.1 h each), per `KAGGLE_FULL_RUN.md`.
+reasoning. Still to run: epochs 2-3 (val and test, about 4 h each), per `KAGGLE_FULL_RUN.md`.

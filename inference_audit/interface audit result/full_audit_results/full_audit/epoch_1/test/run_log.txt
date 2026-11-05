@@ -1,0 +1,207 @@
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+data_dir      : /kaggle/input/datasets/mosharrof8097/medi-data-3d
+ckpt_dir      : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1
+manifests     : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+output_dir    : /kaggle/working/full_audit/epoch_1/test
+[split] loaded from manifests: train 27,197 | val 3,254 | test 3,459
+[split] manifest counts match the trained split exactly train=27,197 val=3,254 test=3,459
+[split] manifests written to /kaggle/working/full_audit/epoch_1/test/split_*_qa.csv
+[setup] timeline for 1,304 patients
+[model] loading Qwen/Qwen2.5-1.5B-Instruct in torch.bfloat16
+[peft-patch] applied=True
+[model] LoRA adapters loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/lora_adapters
+[model] vision weights loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/multimodal_projector_best.pt (epoch 1, val_loss 0.3115)
+
+====================================================================================================
+  SPLIT = test   (3,459 items)
+====================================================================================================
+[test/real] 200/3,459  (0.35s/item, eta 19.3 min)  cache hit 94.78%
+[test/real] 400/3,459  (0.33s/item, eta 16.7 min)  cache hit 94.02%
+[test/real] 600/3,459  (0.31s/item, eta 14.9 min)  cache hit 94.02%
+[test/real] 800/3,459  (0.31s/item, eta 13.8 min)  cache hit 93.92%
+[test/real] 1,000/3,459  (0.32s/item, eta 13.1 min)  cache hit 94.16%
+[test/real] 1,200/3,459  (0.32s/item, eta 11.9 min)  cache hit 93.95%
+[test/real] 1,400/3,459  (0.31s/item, eta 10.7 min)  cache hit 93.85%
+[test/real] 1,600/3,459  (0.32s/item, eta 9.8 min)  cache hit 93.97%
+[test/real] 1,800/3,459  (0.32s/item, eta 8.7 min)  cache hit 93.80%
+[test/real] 2,000/3,459  (0.31s/item, eta 7.5 min)  cache hit 93.56%
+[test/real] 2,200/3,459  (0.31s/item, eta 6.5 min)  cache hit 93.60%
+[test/real] 2,400/3,459  (0.31s/item, eta 5.4 min)  cache hit 93.53%
+[test/real] 2,600/3,459  (0.31s/item, eta 4.4 min)  cache hit 93.57%
+[test/real] 2,800/3,459  (0.31s/item, eta 3.4 min)  cache hit 93.69%
+[test/real] 3,000/3,459  (0.31s/item, eta 2.4 min)  cache hit 93.63%
+[test/real] 3,200/3,459  (0.31s/item, eta 1.3 min)  cache hit 93.63%
+[test/real] 3,400/3,459  (0.31s/item, eta 0.3 min)  cache hit 93.60%
+[test/real] 3,459/3,459  (0.31s/item, eta 0.0 min)  cache hit 93.60%
+[test/blank] 200/3,459  (0.33s/item, eta 18.0 min)  cache hit 93.60%
+[test/blank] 400/3,459  (0.31s/item, eta 15.6 min)  cache hit 93.60%
+[test/blank] 600/3,459  (0.29s/item, eta 14.0 min)  cache hit 93.60%
+[test/blank] 800/3,459  (0.29s/item, eta 12.9 min)  cache hit 93.60%
+[test/blank] 1,000/3,459  (0.30s/item, eta 12.2 min)  cache hit 93.60%
+[test/blank] 1,200/3,459  (0.30s/item, eta 11.1 min)  cache hit 93.60%
+[test/blank] 1,400/3,459  (0.29s/item, eta 10.0 min)  cache hit 93.60%
+[test/blank] 1,600/3,459  (0.30s/item, eta 9.2 min)  cache hit 93.60%
+[test/blank] 1,800/3,459  (0.29s/item, eta 8.2 min)  cache hit 93.60%
+[test/blank] 2,000/3,459  (0.29s/item, eta 7.0 min)  cache hit 93.60%
+[test/blank] 2,200/3,459  (0.29s/item, eta 6.0 min)  cache hit 93.60%
+[test/blank] 2,400/3,459  (0.29s/item, eta 5.1 min)  cache hit 93.60%
+[test/blank] 2,600/3,459  (0.29s/item, eta 4.1 min)  cache hit 93.60%
+[test/blank] 2,800/3,459  (0.29s/item, eta 3.2 min)  cache hit 93.60%
+[test/blank] 3,000/3,459  (0.29s/item, eta 2.2 min)  cache hit 93.60%
+[test/blank] 3,200/3,459  (0.29s/item, eta 1.3 min)  cache hit 93.60%
+[test/blank] 3,400/3,459  (0.29s/item, eta 0.3 min)  cache hit 93.60%
+[test/blank] 3,459/3,459  (0.29s/item, eta 0.0 min)  cache hit 93.60%
+[test/mean] 200/3,459  (0.33s/item, eta 18.0 min)  cache hit 93.67%
+[test/mean] 400/3,459  (0.31s/item, eta 15.6 min)  cache hit 93.64%
+[test/mean] 600/3,459  (0.30s/item, eta 14.1 min)  cache hit 93.66%
+[test/mean] 800/3,459  (0.29s/item, eta 13.0 min)  cache hit 93.66%
+[test/mean] 1,000/3,459  (0.30s/item, eta 12.3 min)  cache hit 93.73%
+[test/mean] 1,200/3,459  (0.30s/item, eta 11.2 min)  cache hit 93.69%
+[test/mean] 1,400/3,459  (0.29s/item, eta 10.1 min)  cache hit 93.67%
+[test/mean] 1,600/3,459  (0.30s/item, eta 9.2 min)  cache hit 93.72%
+[test/mean] 1,800/3,459  (0.30s/item, eta 8.2 min)  cache hit 93.67%
+[test/mean] 2,000/3,459  (0.29s/item, eta 7.1 min)  cache hit 93.58%
+[test/mean] 2,200/3,459  (0.29s/item, eta 6.1 min)  cache hit 93.60%
+[test/mean] 2,400/3,459  (0.29s/item, eta 5.1 min)  cache hit 93.57%
+[test/mean] 2,600/3,459  (0.29s/item, eta 4.2 min)  cache hit 93.59%
+[test/mean] 2,800/3,459  (0.29s/item, eta 3.2 min)  cache hit 93.64%
+[test/mean] 3,000/3,459  (0.29s/item, eta 2.2 min)  cache hit 93.61%
+[test/mean] 3,200/3,459  (0.29s/item, eta 1.3 min)  cache hit 93.61%
+[test/mean] 3,400/3,459  (0.29s/item, eta 0.3 min)  cache hit 93.60%
+[test/mean] 3,459/3,459  (0.29s/item, eta 0.0 min)  cache hit 93.60%
+[test/noise] 200/3,459  (0.40s/item, eta 21.9 min)  cache hit 93.63%
+[test/noise] 400/3,459  (0.38s/item, eta 19.2 min)  cache hit 93.62%
+[test/noise] 600/3,459  (0.37s/item, eta 17.4 min)  cache hit 93.63%
+[test/noise] 800/3,459  (0.36s/item, eta 16.1 min)  cache hit 93.63%
+[test/noise] 1,000/3,459  (0.37s/item, eta 15.2 min)  cache hit 93.67%
+[test/noise] 1,200/3,459  (0.37s/item, eta 13.9 min)  cache hit 93.65%
+[test/noise] 1,400/3,459  (0.36s/item, eta 12.5 min)  cache hit 93.64%
+[test/noise] 1,600/3,459  (0.37s/item, eta 11.4 min)  cache hit 93.67%
+[test/noise] 1,800/3,459  (0.37s/item, eta 10.2 min)  cache hit 93.64%
+[test/noise] 2,000/3,459  (0.36s/item, eta 8.8 min)  cache hit 93.59%
+[test/noise] 2,200/3,459  (0.36s/item, eta 7.6 min)  cache hit 93.60%
+[test/noise] 2,400/3,459  (0.36s/item, eta 6.4 min)  cache hit 93.58%
+[test/noise] 2,600/3,459  (0.36s/item, eta 5.2 min)  cache hit 93.59%
+[test/noise] 2,800/3,459  (0.36s/item, eta 4.0 min)  cache hit 93.63%
+[test/noise] 3,000/3,459  (0.36s/item, eta 2.8 min)  cache hit 93.61%
+[test/noise] 3,200/3,459  (0.36s/item, eta 1.6 min)  cache hit 93.61%
+[test/noise] 3,400/3,459  (0.36s/item, eta 0.4 min)  cache hit 93.60%
+[test/noise] 3,459/3,459  (0.36s/item, eta 0.0 min)  cache hit 93.60%
+[test/swap] 200/3,459  (0.33s/item, eta 18.2 min)  cache hit 93.65%
+[test/swap] 400/3,459  (0.31s/item, eta 15.7 min)  cache hit 93.61%
+[test/swap] 600/3,459  (0.30s/item, eta 14.2 min)  cache hit 93.62%
+[test/swap] 800/3,459  (0.29s/item, eta 13.0 min)  cache hit 93.65%
+[test/swap] 1,000/3,459  (0.30s/item, eta 12.4 min)  cache hit 93.68%
+[test/swap] 1,200/3,459  (0.30s/item, eta 11.3 min)  cache hit 93.67%
+[test/swap] 1,400/3,459  (0.30s/item, eta 10.1 min)  cache hit 93.66%
+[test/swap] 1,600/3,459  (0.30s/item, eta 9.3 min)  cache hit 93.69%
+[test/swap] 1,800/3,459  (0.30s/item, eta 8.2 min)  cache hit 93.66%
+[test/swap] 2,000/3,459  (0.29s/item, eta 7.1 min)  cache hit 93.61%
+[test/swap] 2,200/3,459  (0.29s/item, eta 6.1 min)  cache hit 93.62%
+[test/swap] 2,400/3,459  (0.29s/item, eta 5.1 min)  cache hit 93.59%
+[test/swap] 2,600/3,459  (0.29s/item, eta 4.2 min)  cache hit 93.60%
+[test/swap] 2,800/3,459  (0.29s/item, eta 3.2 min)  cache hit 93.65%
+[test/swap] 3,000/3,459  (0.29s/item, eta 2.2 min)  cache hit 93.63%
+[test/swap] 3,200/3,459  (0.29s/item, eta 1.3 min)  cache hit 93.63%
+[test/swap] 3,400/3,459  (0.29s/item, eta 0.3 min)  cache hit 93.62%
+[test/swap] 3,459/3,459  (0.29s/item, eta 0.0 min)  cache hit 93.62%
+[test/zero_prior] 200/680  (0.46s/item, eta 3.7 min)  cache hit 97.00%
+[test/zero_prior] 400/680  (0.46s/item, eta 2.1 min)  cache hit 97.00%
+[test/zero_prior] 600/680  (0.46s/item, eta 0.6 min)  cache hit 97.00%
+[test/zero_prior] 680/680  (0.46s/item, eta 0.0 min)  cache hit 97.06%
+[test/swap_prior] 200/680  (0.46s/item, eta 3.7 min)  cache hit 97.96%
+[test/swap_prior] 400/680  (0.46s/item, eta 2.1 min)  cache hit 98.31%
+[test/swap_prior] 600/680  (0.46s/item, eta 0.6 min)  cache hit 98.54%
+[test/swap_prior] 680/680  (0.46s/item, eta 0.0 min)  cache hit 98.60%
+
+  PER-TASK RESULTS (test)
+                                   task  condition    n  headline_acc  text_only_floor  gain_over_text_floor  mcq_acc_lennorm  mcq_acc_sumlogp  gen_exact_match  gen_token_f1  tf_token_acc     loss  recency_T1_over_T0  recency_n_paired
+                Task1_Image_Observation      blank   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.442251      0.697835 1.013246                 NaN               NaN
+                Task1_Image_Observation       mean   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.445835      0.696043 1.011500                 NaN               NaN
+                Task1_Image_Observation      noise   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.438667      0.695684 1.012396                 NaN               NaN
+                Task1_Image_Observation       real   93      0.139785         0.010753              0.129032              NaN              NaN         0.139785      0.445119      0.699985 1.012162                 NaN               NaN
+                Task1_Image_Observation       swap   93      0.129032         0.010753              0.118280              NaN              NaN         0.129032      0.436875      0.699537 1.012923                 NaN               NaN
+                Task2_Anomaly_Detection      blank  244      0.209016         0.024590              0.184426              NaN              NaN         0.209016      0.449307      0.655812 1.065073                 NaN               NaN
+                Task2_Anomaly_Detection       mean  244      0.200820         0.024590              0.176230              NaN              NaN         0.200820      0.443160      0.652654 1.064304                 NaN               NaN
+                Task2_Anomaly_Detection      noise  244      0.204918         0.024590              0.180328              NaN              NaN         0.204918      0.445209      0.652602 1.065271                 NaN               NaN
+                Task2_Anomaly_Detection       real  244      0.213115         0.024590              0.188525              NaN              NaN         0.213115      0.451356      0.653102 1.064265                 NaN               NaN
+                Task2_Anomaly_Detection       swap  244      0.209016         0.024590              0.184426              NaN              NaN         0.209016      0.450312      0.653314 1.062197                 NaN               NaN
+              Task3_Medical_Computation      blank   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.567149 1.190134                 NaN               NaN
+              Task3_Medical_Computation       mean   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.571018 1.186898                 NaN               NaN
+              Task3_Medical_Computation      noise   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.573994 1.188183                 NaN               NaN
+              Task3_Medical_Computation       real   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.569728 1.187281                 NaN               NaN
+              Task3_Medical_Computation       swap   84      0.000000         0.000000              0.000000              NaN              NaN         0.000000      0.412698      0.572406 1.189177                 NaN               NaN
+              Task4_Existence_Detection      blank 2358      0.815522         0.835454             -0.019932         0.815522         0.815522              NaN           NaN      0.912214 0.214309                 NaN               NaN
+              Task4_Existence_Detection       mean 2358      0.820611         0.835454             -0.014843         0.820611         0.820611              NaN           NaN      0.911154 0.214070                 NaN               NaN
+              Task4_Existence_Detection      noise 2358      0.817218         0.835454             -0.018236         0.817218         0.817218              NaN           NaN      0.910941 0.214106                 NaN               NaN
+              Task4_Existence_Detection       real 2358      0.819763         0.835454             -0.015691         0.819763         0.819763              NaN           NaN      0.911366 0.214059                 NaN               NaN
+              Task4_Existence_Detection       swap 2358      0.814673         0.835454             -0.020780         0.814673         0.814673              NaN           NaN      0.911578 0.213776                 NaN               NaN
+        Task5_Static_Temporal_Diagnosis      blank  340      0.635294         0.647059             -0.011765         0.635294         0.638235              NaN           NaN      0.971172 0.089185            0.999968             340.0
+        Task5_Static_Temporal_Diagnosis       mean  340      0.632353         0.647059             -0.014706         0.632353         0.635294              NaN           NaN      0.971172 0.089077            0.999968             340.0
+        Task5_Static_Temporal_Diagnosis      noise  340      0.629412         0.647059             -0.017647         0.629412         0.638235              NaN           NaN      0.971172 0.089151            0.999970             340.0
+        Task5_Static_Temporal_Diagnosis       real  340      0.632353         0.647059             -0.014706         0.632353         0.635294              NaN           NaN      0.971172 0.089121            1.000887             340.0
+        Task5_Static_Temporal_Diagnosis       swap  340      0.632353         0.647059             -0.014706         0.632353         0.635294              NaN           NaN      0.971172 0.089162            1.000568             340.0
+        Task5_Static_Temporal_Diagnosis swap_prior  340      0.632353         0.647059             -0.014706         0.632353         0.638235              NaN           NaN      0.971172 0.089206            1.000335             340.0
+        Task5_Static_Temporal_Diagnosis zero_prior  340      0.632353         0.647059             -0.014706         0.632353         0.638235              NaN           NaN      0.971172 0.089372            0.992631             340.0
+  Task6_Longitudinal_Temporal_Diagnosis      blank  340      0.794118         0.805882             -0.011765         0.794118         0.794118              NaN           NaN      0.983305 0.038957            0.999968             340.0
+  Task6_Longitudinal_Temporal_Diagnosis       mean  340      0.797059         0.805882             -0.008824         0.797059         0.791176              NaN           NaN      0.983531 0.039064            0.999968             340.0
+  Task6_Longitudinal_Temporal_Diagnosis      noise  340      0.791176         0.805882             -0.014706         0.791176         0.791176              NaN           NaN      0.983095 0.038941            0.999969             340.0
+  Task6_Longitudinal_Temporal_Diagnosis       real  340      0.794118         0.805882             -0.011765         0.794118         0.794118              NaN           NaN      0.983305 0.038953            1.000887             340.0
+  Task6_Longitudinal_Temporal_Diagnosis       swap  340      0.794118         0.805882             -0.011765         0.794118         0.791176              NaN           NaN      0.983321 0.038895            1.000568             340.0
+  Task6_Longitudinal_Temporal_Diagnosis swap_prior  340      0.791176         0.805882             -0.014706         0.791176         0.791176              NaN           NaN      0.983095 0.039132            1.000335             340.0
+  Task6_Longitudinal_Temporal_Diagnosis zero_prior  340      0.800000         0.805882             -0.005882         0.800000         0.791176              NaN           NaN      0.983741 0.038910            0.992631             340.0
+
+  VISION CONTRIBUTION (test): real - blank, per task
+    Task1_Image_Observation                  real 0.1398  blank 0.1398  delta +0.0000  (text-only floor 0.0108)
+    Task2_Anomaly_Detection                  real 0.2131  blank 0.2090  delta +0.0041  (text-only floor 0.0246)
+    Task3_Medical_Computation                real 0.0000  blank 0.0000  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8198  blank 0.8155  delta +0.0042  (text-only floor 0.8355)
+    Task5_Static_Temporal_Diagnosis          real 0.6324  blank 0.6353  delta -0.0029  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  blank 0.7941  delta +0.0000  (text-only floor 0.8059)
+
+  VISION CONTRIBUTION (test): real - mean, per task
+    Task1_Image_Observation                  real 0.1398  mean 0.1398  delta +0.0000  (text-only floor 0.0108)
+    Task2_Anomaly_Detection                  real 0.2131  mean 0.2008  delta +0.0123  (text-only floor 0.0246)
+    Task3_Medical_Computation                real 0.0000  mean 0.0000  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8198  mean 0.8206  delta -0.0008  (text-only floor 0.8355)
+    Task5_Static_Temporal_Diagnosis          real 0.6324  mean 0.6324  delta +0.0000  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  mean 0.7971  delta -0.0029  (text-only floor 0.8059)
+
+  VISION CONTRIBUTION (test): real - noise, per task
+    Task1_Image_Observation                  real 0.1398  noise 0.1398  delta +0.0000  (text-only floor 0.0108)
+    Task2_Anomaly_Detection                  real 0.2131  noise 0.2049  delta +0.0082  (text-only floor 0.0246)
+    Task3_Medical_Computation                real 0.0000  noise 0.0000  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8198  noise 0.8172  delta +0.0025  (text-only floor 0.8355)
+    Task5_Static_Temporal_Diagnosis          real 0.6324  noise 0.6294  delta +0.0029  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  noise 0.7912  delta +0.0029  (text-only floor 0.8059)
+
+  VISION CONTRIBUTION (test): real - swap, per task
+    Task1_Image_Observation                  real 0.1398  swap 0.1290  delta +0.0108  (text-only floor 0.0108)
+    Task2_Anomaly_Detection                  real 0.2131  swap 0.2090  delta +0.0041  (text-only floor 0.0246)
+    Task3_Medical_Computation                real 0.0000  swap 0.0000  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8198  swap 0.8147  delta +0.0051  (text-only floor 0.8355)
+    Task5_Static_Temporal_Diagnosis          real 0.6324  swap 0.6324  delta +0.0000  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  swap 0.7941  delta +0.0000  (text-only floor 0.8059)
+
+  VISION CONTRIBUTION (test): real - swap_prior, per task
+    Task5_Static_Temporal_Diagnosis          real 0.6324  swap_prior 0.6324  delta +0.0000  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  swap_prior 0.7912  delta +0.0029  (text-only floor 0.8059)
+
+  VISION CONTRIBUTION (test): real - zero_prior, per task
+    Task5_Static_Temporal_Diagnosis          real 0.6324  zero_prior 0.6324  delta +0.0000  (text-only floor 0.6471)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.7941  zero_prior 0.8000  delta -0.0059  (text-only floor 0.8059)
+
+====================================================================================================
+  DONE. Files in /kaggle/working/full_audit/epoch_1/test (not zipped -- download individually):
+    inference_audit_summary.json  (17 KB)
+    inference_audit_test.json  (15 KB)
+    per_item_test.csv  (4663 KB)
+    per_task_test.csv  (6 KB)
+    run_log.txt  (20 KB)
+    split_test_qa.csv  (1074 KB)
+    split_train_qa.csv  (8243 KB)
+    split_val_qa.csv  (955 KB)
+====================================================================================================
