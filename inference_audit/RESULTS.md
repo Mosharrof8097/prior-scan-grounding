@@ -122,3 +122,71 @@ the mean recall over gold classes, so chance is 1/classes.
 Task 5 is at chance once class imbalance is removed, with and without the CT. Task 6 rises to 0.51,
 and only because the bracket rules out two options; the model never predicts "New Lesion" and
 real and blank are identical. Task 4 is only a few points above chance in both conditions.
+
+## Multi-control audit (epoch 1, validation only)
+
+Run 2026-11-05 on Kaggle (T4), `ALL_EPOCHS_FULL_AUDIT.py`, audit sha256 `294fc43d6d8c`. Only epoch 1 val
+finished (89 min, 17,222 passes, 7 conditions, all rows paired). Epochs 2-3 were not attached and the test
+split was not reached, so the test evidence is still the two-condition run above. Statistics:
+`audit_statistics_multi.py` (same patient-cluster bootstrap, 5,000 draws, seed 42), output in
+`interface audit result/full_audit_results/full_audit/epoch_1/val/audit_statistics_epoch1_val_7cond.json`.
+
+### Major finding
+
+**This model does not use the CT.** Zeros, a constant image, noise, or another patient's scan all leave
+closed-task accuracy within one item of the real scan, and no difference is significant.
+
+### Accuracy by condition (val)
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .216 | .216 | .216 | .216 | .193 | - | - |
+| 2 Anomaly (open) | .012 | .161 | .161 | .161 | .161 | .161 | - | - |
+| 3 Computation (open) | 0 | .009 | .009 | .009 | .009 | .009 | - | - |
+| 4 Existence | .826 | .812 | .810 | .809 | .808 | .811 | - | - |
+| 5 Static temporal | .618 | .618 | .618 | .622 | .622 | .622 | .618 | .622 |
+| 6 Longitudinal | .807 | .803 | .803 | .803 | .803 | .798 | .803 | .803 |
+
+### Real minus control (closed tasks, patient-cluster 95% CI, exact McNemar)
+
+| Task | control | real - control | 95% CI | discordant (real-only / control-only) | p |
+| :-- | :-- | --: | :-- | :-- | --: |
+| 4 | blank | +0.0013 | -0.003 to +0.006 | 18 / 15 | 0.73 |
+| 4 | mean | +0.0030 | -0.002 to +0.008 | 20 / 13 | 0.30 |
+| 4 | noise | +0.0034 | -0.001 to +0.008 | 19 / 11 | 0.20 |
+| 4 | swap | +0.0004 | -0.004 to +0.005 | 16 / 15 | 1.0 |
+| 5 | blank, zero_prior | 0.000 | 0 to 0 | 0 / 0 | 1.0 |
+| 5 | mean, noise, swap, swap_prior | -0.0042 | -0.013 to 0 | 0 / 1 | 1.0 |
+| 6 | blank, mean, noise, zero_prior, swap_prior | 0.000 | 0 to 0 | 0 / 0 | 1.0 |
+| 6 | swap | +0.0042 | 0 to +0.013 | 1 / 0 | 1.0 |
+
+### How far the image moves the model
+
+| Task | predictions that flip vs real | mean shift in gold log-prob |
+| :-- | --: | --: |
+| 4 | 1.3-1.4% (every control) | 0.006 nats (max 0.11) |
+| 5 | 0-0.4% (at most 1 of 238) | 0.002 nats |
+| 6 | 0% (swap: 1 of 238) | 0.001 nats |
+
+Zeroing or swapping the earlier scan (Tasks 5, 6) changes nothing: the model does not use the temporal pair.
+
+### Text shortcut and class prior
+
+- Task 6 - Task 5 on the same 238 (volume, finding) items: **+0.185** (CI +0.113 to +0.269), 44 vs 0
+  discordant, p = 1e-13. The only difference is the finding stated in the question text.
+- Predicted vs gold distribution (real CT): Task 4 predicts No 92% (gold 83%); Task 5 predicts D 92% (gold 62%);
+  Task 6 predicts D 70%, A 26%, B 4%, never C.
+- Balanced accuracy is unchanged from the table above: Task 4 0.564, Task 5 0.273 (chance 0.25), Task 6 0.511.
+
+### Reproducibility note
+
+Against the October run, `blank` is bit-identical (0 predictions differ), but `real` differs on 2 Task 5 items
+(A -> D, gold log-prob shift at most 0.010 nats), moving Task 5 real from 0.6218 to 0.6176. The cause is not traced
+(GPU nondeterminism or a different T0 reconstruction pick; see README). This run-to-run variation is the same
+size as the real-vs-blank effect, so the effect is not distinguishable from noise.
+
+### Limits
+
+One checkpoint (epoch 1), one seed, validation only; Tasks 5 and 6 rest on 14 patients each. The supportable
+claim is "these scores are not evidence of grounding", not that vision-language models cannot do longitudinal CT
+reasoning. Still to run: epoch 1 test (about 1.6 h), epochs 2-3 (about 3.1 h each), per `KAGGLE_FULL_RUN.md`.

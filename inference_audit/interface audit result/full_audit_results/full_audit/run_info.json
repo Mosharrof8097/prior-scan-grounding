@@ -1,0 +1,41 @@
+{
+  "audit_sha256": "294fc43d6d8c932f61d947e0f756854f7a0cfa87db48c74a58aff46a8cc8e229",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "numpy": "2.1.3",
+    "pandas": "2.3.3",
+    "gpu": "Tesla T4",
+    "python": "3.13.16"
+  },
+  "manifests": "/kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7",
+  "checkpoints": {
+    "epoch_1": {
+      "epoch": "epoch_1",
+      "no": 1,
+      "ckpt": "/kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1",
+      "val_loss": 0.31154956082903884,
+      "sha256": {
+        "projector": "d797c9600af2213057adc777aa9b73a6743471258d5a1cfaf69df56c8262678f",
+        "adapter": "8c27f97a8fb83ae9bf9ce8ae2b6ef2a0ca23aebfb8a30d896c3499588cfa7240",
+        "adapter_config": "f81e0755603b71a79cf84a670fd510b6604b523f6623d8dc65bb3c0e7bbd72c4"
+      }
+    }
+  },
+  "problems": [
+    "epoch_2: not attached (no folder 'epoch_2' with projector + lora_adapters/)",
+    "epoch_3: not attached (no folder 'epoch_3' with projector + lora_adapters/)"
+  ],
+  "expect": {
+    "val": {
+      "n": 3254,
+      "temporal": 476
+    },
+    "test": {
+      "n": 3459,
+      "temporal": 680
+    }
+  },
+  "started_unix": 1793902582.978732
+}

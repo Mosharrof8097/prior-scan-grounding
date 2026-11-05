@@ -1,0 +1,276 @@
+ALL-EPOCHS FULL AUDIT   epochs=['epoch_1', 'epoch_2', 'epoch_3']   splits=['val', 'test']   conditions=['real', 'blank', 'mean', 'noise', 'swap', 'zero_prior', 'swap_prior']
+split manifests OK: /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7  (hashes match the trained split)
+epoch_1: OK  /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1  (val_loss 0.3115; hashes match)
+WARNING epoch_2: not attached (no folder 'epoch_2' with projector + lora_adapters/)
+WARNING epoch_3: not attached (no folder 'epoch_3' with projector + lora_adapters/)
+audit script unpacked: /kaggle/working/kaggle_inference_audit.py (sha256 294fc43d6d8c...)
+
+plan: 1 epoch(s) x 2 splits x 7 conditions = 35,877 forward passes, estimated 4.0 h (0.4 s/item); budget 11 h
+
+$ /usr/bin/python3 -m pip install -q -U peft
+
+$ /usr/bin/python3 /kaggle/working/kaggle_inference_audit.py --preflight --output_dir /kaggle/working/full_audit/preflight --ckpt_dir /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1 --controls mean noise swap zero_prior swap_prior --split_manifests /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+data_dir      : /kaggle/input/datasets/mosharrof8097/medi-data-3d
+ckpt_dir      : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1
+manifests     : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+output_dir    : /kaggle/working/full_audit/preflight
+[split] loaded from manifests: train 27,197 | val 3,254 | test 3,459
+[split] manifest counts match the trained split exactly train=27,197 val=3,254 test=3,459
+[split] manifests written to /kaggle/working/full_audit/preflight/split_*_qa.csv
+[setup] timeline for 1,304 patients
+
+====================================================================================================
+  PREFLIGHT  (no model loaded, no GPU used)
+====================================================================================================
+  multimodal_projector_best.pt : FOUND
+  lora_adapters/               : FOUND
+     adapter files: ['README.md', 'adapter_config.json', 'adapter_model.safetensors']
+
+  --- val: 3,254 items ---
+  task                                         n   MCQ  open  paired_ok   floor
+  Task1_Image_Observation                     88     0    88          -  0.0114
+  Task2_Anomaly_Detection                    242     0   242          -  0.0124
+  Task3_Medical_Computation                  108     0   108          -  0.0000
+  Task4_Existence_Detection                 2340  2340     0          -  0.8256
+  Task5_Static_Temporal_Diagnosis            238   238     0    238/238  0.6176
+  Task6_Longitudinal_Temporal_Diagnosis      238   238     0    238/238  0.8067
+  volumes referenced but missing on disk: 0
+
+  --- test: 3,459 items ---
+  task                                         n   MCQ  open  paired_ok   floor
+  Task1_Image_Observation                     93     0    93          -  0.0108
+  Task2_Anomaly_Detection                    244     0   244          -  0.0246
+  Task3_Medical_Computation                   84     0    84          -  0.0000
+  Task4_Existence_Detection                 2358  2358     0          -  0.8355
+  Task5_Static_Temporal_Diagnosis            340   340     0    340/340  0.6471
+  Task6_Longitudinal_Temporal_Diagnosis      340   340     0    340/340  0.8059
+  volumes referenced but missing on disk: 0
+
+  Preflight done. If the table looks right, re-run without --preflight.
+
+===== epoch_1 / val   (17,222 passes, ~2.4 h, 0.2 h used) =====
+
+$ /usr/bin/python3 /kaggle/working/kaggle_inference_audit.py --splits val --output_dir /kaggle/working/full_audit/epoch_1/val --ckpt_dir /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1 --controls mean noise swap zero_prior swap_prior --split_manifests /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+====================================================================================================
+  3D-RAD CHECKPOINT INFERENCE AUDIT   (inference only -- nothing is trained)
+====================================================================================================
+device        : cuda (Tesla T4)
+data_dir      : /kaggle/input/datasets/mosharrof8097/medi-data-3d
+ckpt_dir      : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1
+manifests     : /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7
+output_dir    : /kaggle/working/full_audit/epoch_1/val
+[split] loaded from manifests: train 27,197 | val 3,254 | test 3,459
+[split] manifest counts match the trained split exactly train=27,197 val=3,254 test=3,459
+[split] manifests written to /kaggle/working/full_audit/epoch_1/val/split_*_qa.csv
+[setup] timeline for 1,304 patients
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[model] loading Qwen/Qwen2.5-1.5B-Instruct in torch.bfloat16
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]
+Loading weights:   1%|▏         | 5/338 [00:00<00:07, 47.05it/s]
+Loading weights:  16%|█▌        | 53/338 [00:00<00:00, 287.95it/s]
+Loading weights:  30%|██▉       | 100/338 [00:00<00:00, 367.72it/s]
+Loading weights:  44%|████▍     | 149/338 [00:00<00:00, 415.01it/s]
+Loading weights:  58%|█████▊    | 196/338 [00:00<00:00, 432.63it/s]
+Loading weights:  73%|███████▎  | 246/338 [00:00<00:00, 454.77it/s]
+Loading weights:  87%|████████▋ | 293/338 [00:00<00:00, 456.85it/s]
+Loading weights: 100%|██████████| 338/338 [00:00<00:00, 424.39it/s]
+[peft-patch] applied=True
+[model] LoRA adapters loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/lora_adapters
+[model] vision weights loaded from /kaggle/input/datasets/mosharrof8097/inference-audit-data/audit_upload/retrain_v7/epoch_1/multimodal_projector_best.pt (epoch 1, val_loss 0.3115)
+
+====================================================================================================
+  SPLIT = val   (3,254 items)
+====================================================================================================
+/usr/local/lib/python3.13/dist-packages/transformers/generation/utils.py:1464: UserWarning: Passing `repetition_penalty` with `inputs_embeds` and without `input_ids` to `generate` will apply the penalty only to newly generated tokens, not to the prompt.
+  warnings.warn(
+[val/real] 200/3,254  (0.26s/item, eta 13.3 min)  cache hit 91.50%
+[val/real] 400/3,254  (0.25s/item, eta 11.9 min)  cache hit 92.00%
+[val/real] 600/3,254  (0.26s/item, eta 11.5 min)  cache hit 91.83%
+[val/real] 800/3,254  (0.26s/item, eta 10.6 min)  cache hit 91.62%
+[val/real] 1,000/3,254  (0.26s/item, eta 9.6 min)  cache hit 92.00%
+[val/real] 1,200/3,254  (0.26s/item, eta 9.0 min)  cache hit 92.22%
+[val/real] 1,400/3,254  (0.27s/item, eta 8.3 min)  cache hit 92.49%
+[val/real] 1,600/3,254  (0.28s/item, eta 7.7 min)  cache hit 92.60%
+[val/real] 1,800/3,254  (0.29s/item, eta 6.9 min)  cache hit 92.81%
+[val/real] 2,000/3,254  (0.29s/item, eta 6.0 min)  cache hit 92.85%
+[val/real] 2,200/3,254  (0.29s/item, eta 5.0 min)  cache hit 92.90%
+[val/real] 2,400/3,254  (0.29s/item, eta 4.1 min)  cache hit 92.96%
+[val/real] 2,600/3,254  (0.29s/item, eta 3.1 min)  cache hit 92.86%
+[val/real] 2,800/3,254  (0.29s/item, eta 2.2 min)  cache hit 92.89%
+[val/real] 3,000/3,254  (0.29s/item, eta 1.2 min)  cache hit 93.13%
+[val/real] 3,200/3,254  (0.30s/item, eta 0.3 min)  cache hit 93.17%
+[val/real] 3,254/3,254  (0.30s/item, eta 0.0 min)  cache hit 93.14%
+[val/blank] 200/3,254  (0.24s/item, eta 12.4 min)  cache hit 93.14%
+[val/blank] 400/3,254  (0.24s/item, eta 11.3 min)  cache hit 93.14%
+[val/blank] 600/3,254  (0.25s/item, eta 10.9 min)  cache hit 93.14%
+[val/blank] 800/3,254  (0.24s/item, eta 10.0 min)  cache hit 93.14%
+[val/blank] 1,000/3,254  (0.24s/item, eta 9.0 min)  cache hit 93.14%
+[val/blank] 1,200/3,254  (0.25s/item, eta 8.4 min)  cache hit 93.14%
+[val/blank] 1,400/3,254  (0.25s/item, eta 7.9 min)  cache hit 93.14%
+[val/blank] 1,600/3,254  (0.26s/item, eta 7.2 min)  cache hit 93.14%
+[val/blank] 1,800/3,254  (0.27s/item, eta 6.5 min)  cache hit 93.14%
+[val/blank] 2,000/3,254  (0.27s/item, eta 5.7 min)  cache hit 93.14%
+[val/blank] 2,200/3,254  (0.27s/item, eta 4.7 min)  cache hit 93.14%
+[val/blank] 2,400/3,254  (0.27s/item, eta 3.9 min)  cache hit 93.14%
+[val/blank] 2,600/3,254  (0.27s/item, eta 2.9 min)  cache hit 93.14%
+[val/blank] 2,800/3,254  (0.27s/item, eta 2.1 min)  cache hit 93.14%
+[val/blank] 3,000/3,254  (0.28s/item, eta 1.2 min)  cache hit 93.14%
+[val/blank] 3,200/3,254  (0.28s/item, eta 0.3 min)  cache hit 93.14%
+[val/blank] 3,254/3,254  (0.28s/item, eta 0.0 min)  cache hit 93.14%
+/usr/local/lib/python3.13/dist-packages/transformers/generation/utils.py:1464: UserWarning: Passing `repetition_penalty` with `inputs_embeds` and without `input_ids` to `generate` will apply the penalty only to newly generated tokens, not to the prompt.
+  warnings.warn(
+[val/mean] 200/3,254  (0.25s/item, eta 12.5 min)  cache hit 93.05%
+[val/mean] 400/3,254  (0.24s/item, eta 11.4 min)  cache hit 93.03%
+[val/mean] 600/3,254  (0.25s/item, eta 10.9 min)  cache hit 92.96%
+[val/mean] 800/3,254  (0.25s/item, eta 10.1 min)  cache hit 92.87%
+[val/mean] 1,000/3,254  (0.24s/item, eta 9.1 min)  cache hit 92.90%
+[val/mean] 1,200/3,254  (0.25s/item, eta 8.5 min)  cache hit 92.91%
+[val/mean] 1,400/3,254  (0.26s/item, eta 7.9 min)  cache hit 92.95%
+[val/mean] 1,600/3,254  (0.26s/item, eta 7.3 min)  cache hit 92.97%
+[val/mean] 1,800/3,254  (0.27s/item, eta 6.6 min)  cache hit 93.02%
+[val/mean] 2,000/3,254  (0.27s/item, eta 5.7 min)  cache hit 93.03%
+[val/mean] 2,200/3,254  (0.27s/item, eta 4.8 min)  cache hit 93.04%
+[val/mean] 2,400/3,254  (0.27s/item, eta 3.9 min)  cache hit 93.06%
+[val/mean] 2,600/3,254  (0.27s/item, eta 3.0 min)  cache hit 93.02%
+[val/mean] 2,800/3,254  (0.27s/item, eta 2.1 min)  cache hit 93.02%
+[val/mean] 3,000/3,254  (0.28s/item, eta 1.2 min)  cache hit 93.14%
+[val/mean] 3,200/3,254  (0.28s/item, eta 0.3 min)  cache hit 93.15%
+[val/mean] 3,254/3,254  (0.28s/item, eta 0.0 min)  cache hit 93.14%
+[val/noise] 200/3,254  (0.31s/item, eta 15.7 min)  cache hit 93.09%
+[val/noise] 400/3,254  (0.30s/item, eta 14.4 min)  cache hit 93.08%
+[val/noise] 600/3,254  (0.31s/item, eta 13.7 min)  cache hit 93.04%
+[val/noise] 800/3,254  (0.31s/item, eta 12.6 min)  cache hit 92.99%
+[val/noise] 1,000/3,254  (0.30s/item, eta 11.4 min)  cache hit 93.00%
+[val/noise] 1,200/3,254  (0.31s/item, eta 10.6 min)  cache hit 93.01%
+[val/noise] 1,400/3,254  (0.32s/item, eta 9.8 min)  cache hit 93.03%
+[val/noise] 1,600/3,254  (0.33s/item, eta 9.0 min)  cache hit 93.04%
+[val/noise] 1,800/3,254  (0.33s/item, eta 8.1 min)  cache hit 93.07%
+[val/noise] 2,000/3,254  (0.33s/item, eta 7.0 min)  cache hit 93.07%
+[val/noise] 2,200/3,254  (0.33s/item, eta 5.9 min)  cache hit 93.08%
+[val/noise] 2,400/3,254  (0.33s/item, eta 4.8 min)  cache hit 93.09%
+[val/noise] 2,600/3,254  (0.33s/item, eta 3.6 min)  cache hit 93.06%
+[val/noise] 2,800/3,254  (0.34s/item, eta 2.5 min)  cache hit 93.06%
+[val/noise] 3,000/3,254  (0.34s/item, eta 1.4 min)  cache hit 93.14%
+[val/noise] 3,200/3,254  (0.34s/item, eta 0.3 min)  cache hit 93.15%
+[val/noise] 3,254/3,254  (0.34s/item, eta 0.0 min)  cache hit 93.14%
+[val/swap] 200/3,254  (0.25s/item, eta 12.6 min)  cache hit 93.08%
+[val/swap] 400/3,254  (0.24s/item, eta 11.5 min)  cache hit 93.06%
+[val/swap] 600/3,254  (0.25s/item, eta 11.0 min)  cache hit 93.01%
+[val/swap] 800/3,254  (0.25s/item, eta 10.1 min)  cache hit 92.95%
+[val/swap] 1,000/3,254  (0.24s/item, eta 9.1 min)  cache hit 92.96%
+[val/swap] 1,200/3,254  (0.25s/item, eta 8.5 min)  cache hit 92.98%
+[val/swap] 1,400/3,254  (0.26s/item, eta 7.9 min)  cache hit 93.01%
+[val/swap] 1,600/3,254  (0.27s/item, eta 7.3 min)  cache hit 93.02%
+[val/swap] 1,800/3,254  (0.27s/item, eta 6.6 min)  cache hit 93.06%
+[val/swap] 2,000/3,254  (0.27s/item, eta 5.7 min)  cache hit 93.07%
+[val/swap] 2,200/3,254  (0.27s/item, eta 4.8 min)  cache hit 93.08%
+[val/swap] 2,400/3,254  (0.27s/item, eta 3.9 min)  cache hit 93.08%
+[val/swap] 2,600/3,254  (0.27s/item, eta 3.0 min)  cache hit 93.04%
+[val/swap] 2,800/3,254  (0.28s/item, eta 2.1 min)  cache hit 93.03%
+[val/swap] 3,000/3,254  (0.28s/item, eta 1.2 min)  cache hit 93.11%
+[val/swap] 3,200/3,254  (0.28s/item, eta 0.3 min)  cache hit 93.13%
+[val/swap] 3,254/3,254  (0.28s/item, eta 0.0 min)  cache hit 93.12%
+[val/zero_prior] 200/476  (0.46s/item, eta 2.1 min)  cache hit 97.00%
+[val/zero_prior] 400/476  (0.46s/item, eta 0.6 min)  cache hit 97.00%
+[val/zero_prior] 476/476  (0.46s/item, eta 0.0 min)  cache hit 97.06%
+[val/swap_prior] 200/476  (0.46s/item, eta 2.1 min)  cache hit 98.00%
+[val/swap_prior] 400/476  (0.46s/item, eta 0.6 min)  cache hit 98.39%
+[val/swap_prior] 476/476  (0.46s/item, eta 0.0 min)  cache hit 98.49%
+
+  PER-TASK RESULTS (val)
+                                   task  condition    n  headline_acc  text_only_floor  gain_over_text_floor  mcq_acc_lennorm  mcq_acc_sumlogp  gen_exact_match  gen_token_f1  tf_token_acc     loss  recency_T1_over_T0  recency_n_paired
+                Task1_Image_Observation      blank   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.503562      0.667874 1.027368                 NaN               NaN
+                Task1_Image_Observation       mean   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.506403      0.676775 1.028494                 NaN               NaN
+                Task1_Image_Observation      noise   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.510191      0.683485 1.030122                 NaN               NaN
+                Task1_Image_Observation       real   88      0.215909         0.011364              0.204545              NaN              NaN         0.215909      0.508297      0.674503 1.029802                 NaN               NaN
+                Task1_Image_Observation       swap   88      0.193182         0.011364              0.181818              NaN              NaN         0.193182      0.500722      0.679224 1.029542                 NaN               NaN
+                Task2_Anomaly_Detection      blank  242      0.161157         0.012397              0.148760              NaN              NaN         0.161157      0.429678      0.650965 1.088236                 NaN               NaN
+                Task2_Anomaly_Detection       mean  242      0.161157         0.012397              0.148760              NaN              NaN         0.161157      0.432878      0.653798 1.089542                 NaN               NaN
+                Task2_Anomaly_Detection      noise  242      0.161157         0.012397              0.148760              NaN              NaN         0.161157      0.433075      0.651412 1.089538                 NaN               NaN
+                Task2_Anomaly_Detection       real  242      0.161157         0.012397              0.148760              NaN              NaN         0.161157      0.430596      0.648835 1.091112                 NaN               NaN
+                Task2_Anomaly_Detection       swap  242      0.161157         0.012397              0.148760              NaN              NaN         0.161157      0.429068      0.649966 1.090745                 NaN               NaN
+              Task3_Medical_Computation      blank  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.401235      0.602888 1.195052                 NaN               NaN
+              Task3_Medical_Computation       mean  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.410494      0.599802 1.196372                 NaN               NaN
+              Task3_Medical_Computation      noise  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.410494      0.599802 1.195531                 NaN               NaN
+              Task3_Medical_Computation       real  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.415123      0.599802 1.195069                 NaN               NaN
+              Task3_Medical_Computation       swap  108      0.009259         0.000000              0.009259              NaN              NaN         0.009259      0.410494      0.596715 1.194773                 NaN               NaN
+              Task4_Existence_Detection      blank 2340      0.810256         0.825641             -0.015385         0.810256         0.810256              NaN           NaN      0.909829 0.214020                 NaN               NaN
+              Task4_Existence_Detection       mean 2340      0.808547         0.825641             -0.017094         0.808547         0.808547              NaN           NaN      0.908547 0.214109                 NaN               NaN
+              Task4_Existence_Detection      noise 2340      0.808120         0.825641             -0.017521         0.808120         0.808120              NaN           NaN      0.908761 0.214342                 NaN               NaN
+              Task4_Existence_Detection       real 2340      0.811538         0.825641             -0.014103         0.811538         0.811538              NaN           NaN      0.909402 0.214370                 NaN               NaN
+              Task4_Existence_Detection       swap 2340      0.811111         0.825641             -0.014530         0.811111         0.811111              NaN           NaN      0.910684 0.213913                 NaN               NaN
+        Task5_Static_Temporal_Diagnosis      blank  238      0.617647         0.617647              0.000000         0.617647         0.621849              NaN           NaN      0.970085 0.089149            0.999968             238.0
+        Task5_Static_Temporal_Diagnosis       mean  238      0.621849         0.617647              0.004202         0.621849         0.621849              NaN           NaN      0.970085 0.089223            0.999968             238.0
+        Task5_Static_Temporal_Diagnosis      noise  238      0.621849         0.617647              0.004202         0.621849         0.621849              NaN           NaN      0.970085 0.089294            0.999968             238.0
+        Task5_Static_Temporal_Diagnosis       real  238      0.617647         0.617647              0.000000         0.617647         0.617647              NaN           NaN      0.970085 0.089178            1.001844             238.0
+        Task5_Static_Temporal_Diagnosis       swap  238      0.621849         0.617647              0.004202         0.621849         0.621849              NaN           NaN      0.970085 0.088899            1.001100             238.0
+        Task5_Static_Temporal_Diagnosis swap_prior  238      0.621849         0.617647              0.004202         0.621849         0.621849              NaN           NaN      0.970085 0.088865            1.001304             238.0
+        Task5_Static_Temporal_Diagnosis zero_prior  238      0.617647         0.617647              0.000000         0.617647         0.617647              NaN           NaN      0.970085 0.089233            0.991765             238.0
+  Task6_Longitudinal_Temporal_Diagnosis      blank  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038550            0.999968             238.0
+  Task6_Longitudinal_Temporal_Diagnosis       mean  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038682            0.999968             238.0
+  Task6_Longitudinal_Temporal_Diagnosis      noise  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038639            0.999971             238.0
+  Task6_Longitudinal_Temporal_Diagnosis       real  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038673            1.001844             238.0
+  Task6_Longitudinal_Temporal_Diagnosis       swap  238      0.798319         0.806723             -0.008403         0.798319         0.802521              NaN           NaN      0.983426 0.038419            1.001100             238.0
+  Task6_Longitudinal_Temporal_Diagnosis swap_prior  238      0.802521         0.806723             -0.004202         0.802521         0.806723              NaN           NaN      0.983749 0.038473            1.001304             238.0
+  Task6_Longitudinal_Temporal_Diagnosis zero_prior  238      0.802521         0.806723             -0.004202         0.802521         0.802521              NaN           NaN      0.983749 0.038590            0.991765             238.0
+
+  VISION CONTRIBUTION (val): real - blank, per task
+    Task1_Image_Observation                  real 0.2159  blank 0.2159  delta +0.0000  (text-only floor 0.0114)
+    Task2_Anomaly_Detection                  real 0.1612  blank 0.1612  delta +0.0000  (text-only floor 0.0124)
+    Task3_Medical_Computation                real 0.0093  blank 0.0093  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8115  blank 0.8103  delta +0.0013  (text-only floor 0.8256)
+    Task5_Static_Temporal_Diagnosis          real 0.6176  blank 0.6176  delta +0.0000  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  blank 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+  VISION CONTRIBUTION (val): real - mean, per task
+    Task1_Image_Observation                  real 0.2159  mean 0.2159  delta +0.0000  (text-only floor 0.0114)
+    Task2_Anomaly_Detection                  real 0.1612  mean 0.1612  delta +0.0000  (text-only floor 0.0124)
+    Task3_Medical_Computation                real 0.0093  mean 0.0093  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8115  mean 0.8085  delta +0.0030  (text-only floor 0.8256)
+    Task5_Static_Temporal_Diagnosis          real 0.6176  mean 0.6218  delta -0.0042  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  mean 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+  VISION CONTRIBUTION (val): real - noise, per task
+    Task1_Image_Observation                  real 0.2159  noise 0.2159  delta +0.0000  (text-only floor 0.0114)
+    Task2_Anomaly_Detection                  real 0.1612  noise 0.1612  delta +0.0000  (text-only floor 0.0124)
+    Task3_Medical_Computation                real 0.0093  noise 0.0093  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8115  noise 0.8081  delta +0.0034  (text-only floor 0.8256)
+    Task5_Static_Temporal_Diagnosis          real 0.6176  noise 0.6218  delta -0.0042  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  noise 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+  VISION CONTRIBUTION (val): real - swap, per task
+    Task1_Image_Observation                  real 0.2159  swap 0.1932  delta +0.0227  (text-only floor 0.0114)
+    Task2_Anomaly_Detection                  real 0.1612  swap 0.1612  delta +0.0000  (text-only floor 0.0124)
+    Task3_Medical_Computation                real 0.0093  swap 0.0093  delta +0.0000  (text-only floor 0.0000)
+    Task4_Existence_Detection                real 0.8115  swap 0.8111  delta +0.0004  (text-only floor 0.8256)
+    Task5_Static_Temporal_Diagnosis          real 0.6176  swap 0.6218  delta -0.0042  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  swap 0.7983  delta +0.0042  (text-only floor 0.8067)
+
+  VISION CONTRIBUTION (val): real - swap_prior, per task
+    Task5_Static_Temporal_Diagnosis          real 0.6176  swap_prior 0.6218  delta -0.0042  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  swap_prior 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+  VISION CONTRIBUTION (val): real - zero_prior, per task
+    Task5_Static_Temporal_Diagnosis          real 0.6176  zero_prior 0.6176  delta +0.0000  (text-only floor 0.6176)
+    Task6_Longitudinal_Temporal_Diagnosis    real 0.8025  zero_prior 0.8025  delta +0.0000  (text-only floor 0.8067)
+
+====================================================================================================
+  DONE. Files in /kaggle/working/full_audit/epoch_1/val (not zipped -- download individually):
+    inference_audit_summary.json  (18 KB)
+    inference_audit_val.json  (15 KB)
+    per_item_val.csv  (4122 KB)
+    per_task_val.csv  (6 KB)
+    run_log.txt  (19 KB)
+    split_test_qa.csv  (1074 KB)
+    split_train_qa.csv  (8243 KB)
+    split_val_qa.csv  (955 KB)
+====================================================================================================
+
+[epoch_1/val] exit code 0, 89 min
+[epoch_1/val] PASS: 7 conditions, 3254 items, 476 temporal items paired

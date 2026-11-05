@@ -1,0 +1,27 @@
+{
+  "epoch_1": {
+    "val": {
+      "state": "PASS",
+      "minutes": 88.8
+    },
+    "test": {
+      "state": "not reached"
+    }
+  },
+  "epoch_2": {
+    "val": {
+      "state": "skipped: epoch not available"
+    },
+    "test": {
+      "state": "skipped: epoch not available"
+    }
+  },
+  "epoch_3": {
+    "val": {
+      "state": "skipped: epoch not available"
+    },
+    "test": {
+      "state": "skipped: epoch not available"
+    }
+  }
+}
