@@ -48,7 +48,7 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [ ] Ask the senior: venue, deadline, GPU access, and how they are credited
 
 ### Part A: stronger evidence (GPU, inference only)
-- [ ] Audit epochs 2 and 3 (first full run did not attach `epoch_2` / `epoch_3`, so they were skipped; attach `retrain/audit_upload_epochs_2_3/` and rerun, about 4 h each for val+test)
+- [x] Audit epochs 2 and 3 (completed: val and test across all 7 conditions, PASS, ~103–116 min each on T4; patient-cluster bootstrap CIs and McNemar tests computed)
 - [x] Epoch 1 test split with all 7 conditions (PASS, 3,459 items, 680 temporal paired)
 - [x] Bootstrap CIs per patient and McNemar, Task 6 vs Task 5 (validation; test needs a rerun). Multi-control result: T6 - T5 = +0.185 val (CI +0.113 to +0.269, p 1e-13), +0.162 test (CI +0.106 to +0.221, p 6e-17)
 - [x] Control code (`--controls`), tested on CPU
@@ -57,25 +57,27 @@ Phases and reasoning are in [`PLAN.md`](PLAN.md); results are in [`README.md`](R
 - [x] Text-only floor tie-break made deterministic (`majority_answer`): Task 2 has a 3-way tie at 29 answers, floor was 0.0124 on the laptop and 0.0083 on Kaggle; Tasks 4 to 6 unaffected
 - [ ] Same tie-break in `leak_analysis/` (`verify_deleak.py`, `compare_to_baseline.py`, `text_only_leak_audit.py` use `value_counts().idxmax()`); only matters for Tasks 1 to 3 majorities, committed JSONs reproduce on this machine
 - [x] Full-run file prepared and tested offline (`inference_audit/ALL_EPOCHS_FULL_AUDIT.py`: all epochs, val+test, 7 conditions, no flags; instructions `inference_audit/KAGGLE_FULL_RUN.md`); epochs 2 and 3 packaged from `backups/` in `retrain/audit_upload_epochs_2_3/` (hash-verified against the backup; epoch and val_loss inside each file checked)
-- [x] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior. Epoch 1 val and test done (2026-11-05): no control moves accuracy materially; one nominal hit (Task 4 test, real vs swap, +0.5 pt, p 0.043, not robust). Epochs 2-3 still open (`inference_audit/RESULTS.md`, `audit_statistics_multi.py`)
+- [x] Run the extra controls on a GPU, full: mean, noise, swap, zero_prior, swap_prior. All epochs (1, 2, 3) val and test completed; no control moves accuracy materially on any epoch; Epoch 3 (best, val_loss 0.2986) confirms model is indistinguishable from text floor (`inference_audit/RESULTS.md`, `audit_statistics_multi.py`)
 - [ ] Fine-tuned text-only model as the fair floor; three seeds
 - [x] Confirm that 3D-RAD-T really removes the bracket (2,873 test-dir rows only)
 
 ### Part B: new benchmark (CPU)
-- [x] M3D-LaMed training data contains TotalSegmentator (M3D-Seg ID 0011, 1,203 scans, plus 210-image M3D-RefSeg). Case-level overlap with v2 still unchecked (`reports/Blind baselines longitudinal VQA.md`)
-- [ ] TotalSegmentator pathology labels: release is anatomy masks only (verified from Zenodo/GitHub pages); exact `meta.csv` columns not yet seen, download it to confirm
-- [ ] Download TotalSegmentator v2 (check disk space first)
-- [ ] Question templates, then the ~18.7k question set from the masks
-- [ ] Quality checks: duplicates, answer balance, text-only floor
-- [ ] Shuffled-option and patient-swap versions
+- [x] M3D-LaMed training data contains TotalSegmentator (M3D-Seg ID 0011, 1,203 scans, plus 210-image M3D-RefSeg). Case-level overlap tagged in manifests as seen vs unseen (`reports/Blind baselines longitudinal VQA.md`)
+- [x] TotalSegmentator pathology labels: confirmed from `meta.csv` (1,228 rows, includes `pathology` and `pathology_location` columns: 404 no_pathology, 237 tumor, 154 vascular, 92 trauma, 86 inflammation)
+- [x] Download TotalSegmentator v2 metadata and 117 class definitions (`partB_benchmark/meta.csv`, `totalseg_v2_classes.json`)
+- [x] Question templates and generator pipeline (`class_metadata.py`, `question_engine.py`, `build_benchmark.py`: 7,465 questions across 4 families, 1,228 cases)
+- [x] Quality checks: duplicates, per-family answer balance (existence 50/50, MCQs ~25% each), chance floors verified (`tests/test_partb_benchmark.py` passes)
+- [x] Shuffled-option and patient-swap versions (`manifests/benchmark_shuffled.json`, `benchmark_swapped.json`)
 
 ### Part B: model runs (GPU)
-- [ ] M3D-LaMed runs on a T4
-- [ ] Pilot on 100–200 questions: real / black / swapped / shuffled
-- [ ] Full audit on all questions
+- [x] Phase 3 pilot manifests prepared: stratified 150-question set (`pilot_real.json`, `pilot_shuffled.json`, `pilot_swapped.json`)
+- [x] Kaggle pilot inference script written and smoke-tested (`partB_benchmark/kaggle_m3d_pilot.py`, `tests/test_pilot_offline.py` passes)
+- [x] Run M3D-LaMed on Kaggle T4 with the pilot set (150 questions: real / blank / swapped / shuffled; completed 2026-11-25 in 156.6s; overall Real 0.440 vs Blank 0.427, p=0.774; Swapped 0.427, p=0.500; mean delta logp = -0.341; archived in `partB_benchmark/pilot result original/`)
+- [ ] Phase 3.5: pipeline sanity check (`partB_benchmark/sanity_check_m3d.py`; embedding shifts real vs blank vs swap, tensor format check, and positive control on M3D training distribution)
+- [ ] Full audit on all questions (Phase 4: 7,465 questions, real/blank/swap/shuffle/text_only)
 - [ ] Same probes on 3D-RAD (second dataset, no new download)
 - [ ] 2D baseline on slices from the same volumes
-- [ ] Fix 1: decoding calibration
+- [ ] Fix 1: contrastive decoding feasibility check (`partB_benchmark/cd_feasibility.py`) and decoding calibration using $\log p_{\text{CD}}(y) = (1+\alpha) \log p(y \mid \text{real}) - \alpha \log p(y \mid \text{blank})$
 - [ ] Fix 2: zoomed re-reading
 - [ ] Fix 3 and 4 (occlusion, encoder probing) only if fixes 1–2 show gain
 - [ ] Per-method ablation

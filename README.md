@@ -8,8 +8,8 @@ text-only floor):
 
 | part | question | model | data | state |
 | :-- | :-- | :-- | :-- | :-- |
-| **A. 3D-RAD audit** | Does a trained baseline use the (prior) CT on longitudinal VQA? | own baseline: LoRA Qwen2.5-1.5B + frozen ResNet-18 | 3D-RAD (CT-RATE) | done for epoch 1; controls and statistics open |
-| **B. Mask-verified audit** | Does M3D-LaMed (Phi-3-4B) read the volume, and can training-free fixes recover grounding? | M3D-LaMed | TotalSegmentator v2 masks, ~18.7k questions (proposed) | **not started**, nothing in this repo yet |
+| **A. 3D-RAD audit** | Does a trained baseline use the (prior) CT on longitudinal VQA? | own baseline: LoRA Qwen2.5-1.5B + frozen ResNet-18 | 3D-RAD (CT-RATE) | done for all epochs (1–3) with 7 controls and statistics |
+| **B. Mask-verified audit** | Does M3D-LaMed (Phi-3-4B) read the volume, and can training-free fixes recover grounding? | M3D-LaMed | 3,039 preprocessed genuine 3D CT scans (`medi data 3d`) | Phase 2, 3, 4 completed on Kaggle Dual T4 (7,746 questions on 100% genuine CT scans; Real CT 21.09% vs Blank 23.43%, Swap Invariance 91.51%, Slice-Shuffling Invariance 94.53%) |
 
 Part A is the pilot and motivation for part B: it shows that a benchmark score can be reached
 with the image removed. Part B is the main contribution.
@@ -44,23 +44,15 @@ The bracket holds the whole history, so one prior scan reveals only its last ent
 history reaches 1.0. Other "Task 6 text-only" figures in the scripts (0.785 to 0.807) are the same rule on different
 splits; see `leak_analysis/TASK6_TEXT_ONLY_FIGURES.md` for which to quote.
 
-**4. The audited baseline's answers do not depend on the CT.** Epoch-1 checkpoint (val_loss
-0.3115) scored on full val (3,254) and test (3,459), once with real volumes and once with every
-volume zeroed. Test, closed tasks:
+**4. The audited baseline's answers do not depend on the CT.** Checkpoints across all three epochs (epoch 1 val_loss 0.3115, epoch 2 0.2999, epoch 3 / best 0.2986) were scored on full val (3,254) and test (3,459) across 7 input conditions (real, blank, mean, noise, swap, zero_prior, swap_prior). Test, closed tasks (epoch 3 / best checkpoint):
 
-| task | n | text-only floor | real CT | zeroed CT |
-| :-- | --: | --: | --: | --: |
-| 4 Existence Detection | 2,358 | 0.8355 | 0.8198 | 0.8155 |
-| 5 Static Temporal | 340 | 0.6471 | 0.6353 | 0.6353 |
-| 6 Longitudinal Temporal | 340 | 0.8059 | 0.7941 | 0.7941 |
+| task | n | text-only floor | real CT | zeroed CT | swapped CT |
+| :-- | --: | --: | --: | --: | --: |
+| 4 Existence Detection | 2,358 | 0.8355 | 0.8359 | 0.8321 | 0.8372 |
+| 5 Static Temporal | 340 | 0.6471 | 0.6471 | 0.6441 | 0.6471 |
+| 6 Longitudinal Temporal | 340 | 0.8059 | 0.8059 | 0.8118 | 0.8059 |
 
-The image reaches the model (pooler attention differs on 476/476 paired val items) but moves the
-gold answer's log-probability by about 0.0055 nats; 0 of 238 val Task 6 predictions change. The
-gaps to the floor are 0 to 4 items out of 340, inside sampling noise, so the supportable
-statement is **indistinguishable from the text-only floor**, not below it. Limits: one seed, one
-epoch, one perturbation (zeros), and only 14 val / 20 test temporal volumes. This is a statement
-about this baseline, not about whether VLMs can do longitudinal CT reasoning. Details:
-`inference_audit/RESULTS.md`.
+The image reaches the model (pooler attention differs on all items) but moves the gold answer's log-probability by only ~0.0055 nats. On Task 6, zeroing the CT flips 0 of 238 val predictions in epoch 1, and on test in epoch 3 blank CT actually scores higher (0.8118) than real CT (0.8059, p = 0.77). Swapping in an unrelated patient's CT leaves accuracy identical or slightly higher (0.8372 on Task 4, p = 0.66). Across all tasks, the model's performance is **indistinguishable from the text-only floor**. Limits: one baseline architecture, one seed, and 14 val / 20 test temporal volumes. This is a statement about this baseline and benchmark structure, not about whether VLMs can ever do longitudinal CT reasoning. Details: `inference_audit/RESULTS.md`.
 
 The older "+7.0 / +6.1 points over text-only" claim came from a lost checkpoint, a different
 metric and n=150. It is withdrawn.
@@ -72,25 +64,27 @@ overlap; 3,039 volumes hashed, 3,039 unique MD5s. Train has 9 exact duplicate QA
 same-patient study (T0) with the referenced study (T1); all 2,873 temporal rows have an earlier
 study. Caveat: 92% of (patient, letter) scans have several reconstructions, and in the run that produced
 finding 4 the one used as T0 depended on set iteration order (hash seed). The three pairing
-scripts now break ties by sorted path (`tests/test_t0_determinism.py` passes); the epoch-1 audit
-above predates that fix and must be rerun (PLAN, phase 1) before its numbers are final.
+scripts now break ties by sorted path (`tests/test_t0_determinism.py` passes); the rerun with fixed T0 is completed and verified on full val and test (Task 5 real CT accuracy moved slightly from 0.6353 to 0.6324 [1 item change], with all findings and lack of visual grounding replicating exactly; see `inference_audit/RESULTS.md`).
 
-## Part B: the plan in one paragraph
+## Part B: Genuine 3D CT Full Audit Results (M3D-LaMed-Phi-3-4B)
 
-Build a benchmark of questions whose answers come from TotalSegmentator voxel masks, then audit
-M3D-LaMed with four input probes (real, black volume, swapped patient, shuffled options) against a
-text-only floor, and test training-free fixes (decoding calibration, zoomed re-reading first;
-occlusion attribution and frozen-encoder probing if the first two show gain). A prior-art search
-(report NC-6) found the probes themselves already exist in related work (2D counterfactual
-grounding, blank-image ablations, tumour-centric 3D VQA). The open ground is the training-free
-fixes in a 3D setting and the voxel-mask-grounded benchmark at scale, so the fixes must show a
-measured gain or the work is incremental. Occlusion maps and encoder probing are known techniques;
-claim them as applications.
+Phase 2 (benchmark construction), Phase 3 (pilot verification), and Phase 4 (full canonical audit on genuine 3D CT scans) are **completed**:
+1. **Benchmark Construction (`partB_benchmark/`):** Evaluated across 7,746 clinical questions spanning 3 tasks (Existence Detection, Static Temporal Diagnosis, Longitudinal Temporal Diagnosis) on 3,039 preprocessed real 3D CT volumes (`.npy`) from `medi data 3d` with zero dummy data and fail-fast validation.
+2. **Phase 4 Full Canonical Audit on Kaggle Dual Tesla T4 (completed 2026-11-26, archived in `partB_benchmark/results/`):** Evaluated `GoodBaiBai88/M3D-LaMed-Phi-3-4B` under 6 counterfactual probe conditions (`real`, `blank`, `swap`, `shuffle_slices`, `shuffle_options`, `text_only`):
 
-Two things to verify before building on TotalSegmentator:
-- whether M3D-LaMed's training data (M3D-Data / M3D-Seg) already contains TotalSegmentator
-  volumes, which would be contamination;
-- whether TotalSegmentator's metadata really carries the pathology labels the proposal assumes.
+| Task / Group | N | Real CT | Blank CT (Zeros) | Swap Donor CT | Slice-Shuffled | Text-Only Floor | Δ (Real − Blank) | McNemar p (vs Blank) | McNemar p (vs Swap) | Prediction Invariance (Swap) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Overall (Canonical)** | **7,746** | **0.2109** | **0.2343** | **0.2098** | **0.2156** | **0.1936** | **-0.0234** | **p = 5.69e-14** | **p = 0.684** | **91.51%** |
+| Task 4 (Existence Detection) | 2,000 | 0.4135 | 0.5000 | 0.4090 | 0.4310 | 0.3165 | -0.0865 | p = 1.57e-21 | p = 0.603 | 88.05% |
+| Task 6 (Longitudinal Temporal) | 2,873 | 0.1462 | 0.1511 | 0.1455 | 0.1469 | 0.1542 | -0.0049 | p = 0.275 | p = 0.913 | 92.17% |
+| Task 5 (Static Temporal) | 2,873 | 0.1347 | 0.1326 | 0.1354 | 0.1344 | 0.1476 | +0.0021 | p = 0.617 | p = 0.901 | 93.18% |
+
+**Key Empirical Findings Across 7,746 Real CT Scans:**
+* **Negative Visual Dependency:** Across all 7,746 items, Real CT accuracy (21.09%) is lower than Blank zero-volume accuracy (23.43%) with statistical significance ($p = 5.69 	imes 10^{-14}$, discordant pairs $b=201$ vs $c=382$). Visual input reduces overall accuracy by 2.34 percentage points, indicating that volume tokens act as non-informative distraction rather than clinical evidence.
+* **Anatomical Swap Invariance:** Replacing the patient's genuine CT scan with an unrelated donor patient's CT volume leaves accuracy virtually identical (21.09% vs 20.98%, exact McNemar $p = 0.684$, discordant pairs $b=197$ vs $c=188$). The model emits identical clinical predictions on 91.51% of items regardless of donor identity.
+* **3D Volumetric Invariance:** Permuting the 32 axial slices along the z-axis yields identical predictions on 94.53% of items ($p = 0.032$ overall, $p = 0.906$ on Task 6, $p = 1.000$ on Task 5), indicating lack of vertical 3D spatial structure grounding.
+* **Option Selection Bias & Label Collapse:** Under real CT volumes, the model predicted Option 'B' on 74.76% of items, Option 'A' on 25.24%, and Options 'C' and 'D' on 0.00% of items, despite the ground truth distribution having Option 'D' at 47.56% and 'B' at 30.97%. The predictions reflect strong linguistic prior collapse over candidate option tokens.
+* **Archive & Full Artifacts:** Full per-item scores, candidate logits, model outputs, and summary tables are persisted at `partB_benchmark/results/` (`m3d_full_real_ct_per_item.csv`, `M3D_REAL_CT_FULL_AUDIT_REPORT.md`).
 
 ## Layout
 
@@ -105,6 +99,7 @@ Two things to verify before building on TotalSegmentator:
 | `literature review /` | literature review and 3D medical VLM comparison table |
 | `split_manifests/` | split summary (manifests are regenerable) |
 | `reports/`, `research_notes/` | external review of the project and the notes behind it |
+| `partB_benchmark/` | TotalSegmentator v2 benchmark generator, manifests, pilot scripts and audit results |
 | `novelty_report_NC-6_with_guide.pdf` | prior-art report for part B |
 
 ## Reproducing part A

@@ -1,0 +1,2112 @@
+[
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_97_a_1",
+    "volume_filename": "test_97_a_1.npy",
+    "question": "Does this CT image show mosaic attenuation pattern?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_001"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_985_a_1",
+    "volume_filename": "test_985_a_1.npy",
+    "question": "Does the CT scan reveal interlobular septal thickening?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_002"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_898_b_1",
+    "volume_filename": "test_898_b_1.npy",
+    "question": "Earlier CTs showed cardiomegaly as: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Sequence trend plus current CT defines status. Given its sequence history, what is cardiomegaly in the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_003"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1019_d_1",
+    "volume_filename": "test_1019_d_1.npy",
+    "question": "Scans showed coronary artery wall calcification as: [0, 0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) CT reflects pattern of prior sequences. How has coronary artery wall calcification evolved from earlier scan sequences to now?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_004"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_824_b_1",
+    "volume_filename": "test_824_b_1.npy",
+    "question": "With reference to the CT scan, what is the classification for hiatal hernia?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_005"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_72_a_1",
+    "volume_filename": "test_72_a_1.npy",
+    "question": "Can lymphadenopathy be detected on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_006"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_596_a_1",
+    "volume_filename": "test_596_a_1.npy",
+    "question": "Does the CT scan exhibit consolidation?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_007"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1097_c_1",
+    "volume_filename": "test_1097_c_1.npy",
+    "question": "How would you categorize the atelectasis based on the CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_008"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_416_b_1",
+    "volume_filename": "test_416_b_1.npy",
+    "question": "bronchiectasis progression: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT confirms what sequences suggest. How has bronchiectasis progressed according to its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_009"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_188_b_1",
+    "volume_filename": "test_188_b_1.npy",
+    "question": "In past, interlobular septal thickening was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) From multi-stage sequences and present CT. Based on the temporal sequence, what is the present status of interlobular septal thickening?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_010"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_637_a_1",
+    "volume_filename": "test_637_a_1.npy",
+    "question": "Is there any presence of lung opacity on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_011"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_536_b_1",
+    "volume_filename": "test_536_b_1.npy",
+    "question": "How would you classify the cardiomegaly observed in the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_012"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_702_a_1",
+    "volume_filename": "test_702_a_1.npy",
+    "question": "Can signs of lung opacity be recognized on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_013"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_832_b_1",
+    "volume_filename": "test_832_b_1.npy",
+    "question": "Sequence history for lung opacity: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Final label from history and CT. What does the CT show for lung opacity considering its sequence history?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_014"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_396_a_1",
+    "volume_filename": "test_396_a_1.npy",
+    "question": "Can pleural effusion be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_015"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1148_b_1",
+    "volume_filename": "test_1148_b_1.npy",
+    "question": "Sequence history for lymphadenopathy: [1]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion state from timeline and CT. How has lymphadenopathy changed from past sequences to the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_016"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1080_a_1",
+    "volume_filename": "test_1080_a_1.npy",
+    "question": "Can cardiomegaly be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_017"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_531_b_1",
+    "volume_filename": "test_531_b_1.npy",
+    "question": "How would you classify the arterial wall calcification based on the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_018"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_100_a_1",
+    "volume_filename": "test_100_a_1.npy",
+    "question": "Does the CT scan suggest pleural effusion?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_019"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_333_b_1",
+    "volume_filename": "test_333_b_1.npy",
+    "question": "How should we interpret the pleural effusion from the current CT findings?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_020"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_430_a_1",
+    "volume_filename": "test_430_a_1.npy",
+    "question": "Does the CT scan exhibit lymphadenopathy?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_021"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1068_a_1",
+    "volume_filename": "test_1068_a_1.npy",
+    "question": "Does the CT scan reveal emphysema?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_022"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_536_b_1",
+    "volume_filename": "test_536_b_1.npy",
+    "question": "cardiomegaly over time: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Multi-phase sequences guide CT-based judgment. What is the current CT assessment of cardiomegaly based on prior sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_023"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_389_a_1",
+    "volume_filename": "test_389_a_1.npy",
+    "question": "Can lung opacity be detected on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_024"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_454_c_1",
+    "volume_filename": "test_454_c_1.npy",
+    "question": "How would you categorize the arterial wall calcification based on the CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_025"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_333_b_1",
+    "volume_filename": "test_333_b_1.npy",
+    "question": "Based on the CT scan, what is the condition of the lung nodule?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_026"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_282_a_1",
+    "volume_filename": "test_282_a_1.npy",
+    "question": "Can emphysema be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_027"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_100_a_1",
+    "volume_filename": "test_100_a_1.npy",
+    "question": "Does the CT scan exhibit emphysema?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_028"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_752_b_1",
+    "volume_filename": "test_752_b_1.npy",
+    "question": "According to the CT scan, what is the current status of mosaic attenuation pattern?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_029"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1148_b_1",
+    "volume_filename": "test_1148_b_1.npy",
+    "question": "Historical bronchiectasis status: [0]. (Note: 0 indicates absence, and 1 indicates presence.) History and CT decide lesion category. What does bronchiectasis currently represent, based on past sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_030"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_188_b_1",
+    "volume_filename": "test_188_b_1.npy",
+    "question": "How would you classify the coronary artery wall calcification observed in the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_031"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_62_c_1",
+    "volume_filename": "test_62_c_1.npy",
+    "question": "Historical emphysema status: [0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) Multi-phase sequences guide CT-based judgment. What is the current CT assessment of emphysema based on prior sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_032"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_825_b_1",
+    "volume_filename": "test_825_b_1.npy",
+    "question": "interlobular septal thickening sequence was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) From multi-stage sequences and present CT. Based on the temporal sequence, what is the present status of interlobular septal thickening?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_033"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_355_b_1",
+    "volume_filename": "test_355_b_1.npy",
+    "question": "Scans showed pleural effusion as: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Classification uses sequences and current image. From sequence history to now, what best describes pleural effusion?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_034"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_588_a_1",
+    "volume_filename": "test_588_a_1.npy",
+    "question": "Is mosaic attenuation pattern noted on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_035"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_537_b_1",
+    "volume_filename": "test_537_b_1.npy",
+    "question": "Based on the current CT scan, how would you classify the lymphadenopathy?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_036"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_569_c_1",
+    "volume_filename": "test_569_c_1.npy",
+    "question": "bronchiectasis trend was: [0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) Classification uses sequences and current image. From sequence history to now, what best describes bronchiectasis?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_037"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_771_b_1",
+    "volume_filename": "test_771_b_1.npy",
+    "question": "In past, lymphadenopathy was: [1]. (Note: 0 indicates absence, and 1 indicates presence.) From multi-stage sequences and present CT. Based on the temporal sequence, what is the present status of lymphadenopathy?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_038"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_96_b_1",
+    "volume_filename": "test_96_b_1.npy",
+    "question": "How would you categorize the lung opacity based on the CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_039"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1132_a_1",
+    "volume_filename": "test_1132_a_1.npy",
+    "question": "Is cardiomegaly apparent on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_040"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_482_h_1",
+    "volume_filename": "test_482_h_1.npy",
+    "question": "Based on the current CT scan, how would you classify the cardiomegaly?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_041"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_569_c_1",
+    "volume_filename": "test_569_c_1.npy",
+    "question": "pleural effusion over time: [0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) CT confirms what sequences suggest. How has pleural effusion progressed according to its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_042"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_343_a_1",
+    "volume_filename": "test_343_a_1.npy",
+    "question": "Is there any presence of consolidation on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_043"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_994_a_1",
+    "volume_filename": "test_994_a_1.npy",
+    "question": "Is cardiomegaly noted on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_044"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_606_b_1",
+    "volume_filename": "test_606_b_1.npy",
+    "question": "How would you classify the emphysema seen in the CT imaging?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_045"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_357_e_1",
+    "volume_filename": "test_357_e_1.npy",
+    "question": "Previous bronchiectasis states: [1, 0, 0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) Classification uses sequences and current image. From sequence history to now, what best describes bronchiectasis?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_046"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_810_b_1",
+    "volume_filename": "test_810_b_1.npy",
+    "question": "Previous interlobular septal thickening states: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Final label from history and CT. What does the CT show for interlobular septal thickening considering its sequence history?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_047"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1082_b_1",
+    "volume_filename": "test_1082_b_1.npy",
+    "question": "Old sequences for bronchiectasis: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Sequence evolution and CT define outcome. What does the current CT show about bronchiectasis based on earlier sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_048"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_512_b_1",
+    "volume_filename": "test_512_b_1.npy",
+    "question": "According to the CT scan, how would you categorize the pulmonary fibrotic sequela?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_049"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_790_a_1",
+    "volume_filename": "test_790_a_1.npy",
+    "question": "Does the CT scan demonstrate lymphadenopathy?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_050"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1207_a_1",
+    "volume_filename": "test_1207_a_1.npy",
+    "question": "Can consolidation be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_051"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1081_b_1",
+    "volume_filename": "test_1081_b_1.npy",
+    "question": "Historical consolidation status: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Based on sequence history and current CT. What lesion category applies to consolidation in the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_052"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_229_b_1",
+    "volume_filename": "test_229_b_1.npy",
+    "question": "In past, arterial wall calcification was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT status follows sequence progression. What type of lesion is arterial wall calcification now, given its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_053"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_503_a_1",
+    "volume_filename": "test_503_a_1.npy",
+    "question": "Is lung opacity present on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_054"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1148_b_1",
+    "volume_filename": "test_1148_b_1.npy",
+    "question": "With reference to the CT scan, what is the classification for lymphadenopathy?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_055"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1082_b_1",
+    "volume_filename": "test_1082_b_1.npy",
+    "question": "Earlier lung opacity sequences: [1]. (Note: 0 indicates absence, and 1 indicates presence.) Stage-wise sequences + current CT = status. What is the current status of lung opacity based on previous sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_056"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_71_b_1",
+    "volume_filename": "test_71_b_1.npy",
+    "question": "mosaic attenuation pattern trend was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT status follows sequence progression. What type of lesion is mosaic attenuation pattern now, given its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_057"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_624_b_1",
+    "volume_filename": "test_624_b_1.npy",
+    "question": "With reference to the CT scan, what is the classification for mosaic attenuation pattern?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_058"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_188_b_1",
+    "volume_filename": "test_188_b_1.npy",
+    "question": "Historical lymphadenopathy status: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion judged by sequences and scan. From prior sequences to now, what is the CT-based status of lymphadenopathy?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_059"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1286_b_1",
+    "volume_filename": "test_1286_b_1.npy",
+    "question": "In light of the CT findings, how should we interpret the emphysema?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_060"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_741_b_1",
+    "volume_filename": "test_741_b_1.npy",
+    "question": "After reviewing the CT scan, how would you interpret the presence of interlobular septal thickening?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_061"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_40_a_1",
+    "volume_filename": "test_40_a_1.npy",
+    "question": "Is lung nodule noted on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_062"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1266_a_1",
+    "volume_filename": "test_1266_a_1.npy",
+    "question": "Can bronchiectasis be detected on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_063"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1071_a_1",
+    "volume_filename": "test_1071_a_1.npy",
+    "question": "Is interlobular septal thickening visible on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_064"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_757_a_1",
+    "volume_filename": "test_757_a_1.npy",
+    "question": "Is interlobular septal thickening present on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_065"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_446_b_1",
+    "volume_filename": "test_446_b_1.npy",
+    "question": "Before now, atelectasis showed [0]. (Note: 0 indicates absence, and 1 indicates presence.) History and CT decide lesion category. What does atelectasis currently represent, based on past sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_066"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_331_e_1",
+    "volume_filename": "test_331_e_1.npy",
+    "question": "With reference to the CT scan, what is the classification for lung nodule?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_067"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_589_b_1",
+    "volume_filename": "test_589_b_1.npy",
+    "question": "peribronchial thickening condition history: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT status follows sequence progression. What type of lesion is peribronchial thickening now, given its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_068"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1254_a_1",
+    "volume_filename": "test_1254_a_1.npy",
+    "question": "Is there evidence of bronchiectasis on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_069"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_876_a_1",
+    "volume_filename": "test_876_a_1.npy",
+    "question": "Does the CT scan demonstrate hiatal hernia?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_070"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1226_a_1",
+    "volume_filename": "test_1226_a_1.npy",
+    "question": "Does the CT scan exhibit lymphadenopathy?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_071"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_534_b_1",
+    "volume_filename": "test_534_b_1.npy",
+    "question": "Recorded sequences for coronary artery wall calcification: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Sequence evolution and CT define outcome. What does the current CT show about coronary artery wall calcification based on earlier sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_072"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1184_c_1",
+    "volume_filename": "test_1184_c_1.npy",
+    "question": "Earlier mosaic attenuation pattern sequences: [0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) Multi-phase sequences guide CT-based judgment. What is the current CT assessment of mosaic attenuation pattern based on prior sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_073"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_332_b_1",
+    "volume_filename": "test_332_b_1.npy",
+    "question": "With reference to the CT scan, what is the classification for atelectasis?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_074"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_191_b_1",
+    "volume_filename": "test_191_b_1.npy",
+    "question": "Earlier mosaic attenuation pattern sequences: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT confirms what sequences suggest. How has mosaic attenuation pattern progressed according to its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_075"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_722_b_1",
+    "volume_filename": "test_722_b_1.npy",
+    "question": "Considering the CT scan, what is your assessment of the pulmonary fibrotic sequela?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_076"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_974_a_1",
+    "volume_filename": "test_974_a_1.npy",
+    "question": "Is there any presence of consolidation on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_077"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_7_b_1",
+    "volume_filename": "test_7_b_1.npy",
+    "question": "arterial wall calcification trend was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Diagnosis combines sequence history and CT. How is arterial wall calcification classified now using past sequence data?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_078"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_678_a_1",
+    "volume_filename": "test_678_a_1.npy",
+    "question": "Can signs of consolidation be recognized on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_079"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_107_b_1",
+    "volume_filename": "test_107_b_1.npy",
+    "question": "Based on the current CT scan, how would you classify the lung opacity?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_080"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1225_a_1",
+    "volume_filename": "test_1225_a_1.npy",
+    "question": "Is atelectasis confirmed by the CT findings?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_081"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_62_c_1",
+    "volume_filename": "test_62_c_1.npy",
+    "question": "Sequence history for hiatal hernia: [0, 0]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion behavior from past to CT. How does hiatal hernia appear now compared to its sequence history?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_082"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_28_a_1",
+    "volume_filename": "test_28_a_1.npy",
+    "question": "Is consolidation noted on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_083"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_113_a_1",
+    "volume_filename": "test_113_a_1.npy",
+    "question": "Can peribronchial thickening be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_084"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_849_a_1",
+    "volume_filename": "test_849_a_1.npy",
+    "question": "Is atelectasis confirmed by the CT findings?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_085"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1041_d_1",
+    "volume_filename": "test_1041_d_1.npy",
+    "question": "How should we interpret the cardiomegaly from the current CT findings?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_086"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1082_b_1",
+    "volume_filename": "test_1082_b_1.npy",
+    "question": "Based on the current CT scan, how would you classify the pericardial effusion?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_087"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_671_a_1",
+    "volume_filename": "test_671_a_1.npy",
+    "question": "Is mosaic attenuation pattern visible on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_088"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_915_a_1",
+    "volume_filename": "test_915_a_1.npy",
+    "question": "Can pericardial effusion be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_089"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_366_a_1",
+    "volume_filename": "test_366_a_1.npy",
+    "question": "Does the CT scan suggest hiatal hernia?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_090"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_500_d_1",
+    "volume_filename": "test_500_d_1.npy",
+    "question": "Old sequences for coronary artery wall calcification: [1, 1, 1]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion behavior from past to CT. How does coronary artery wall calcification appear now compared to its sequence history?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_091"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_60_c_1",
+    "volume_filename": "test_60_c_1.npy",
+    "question": "How would you classify the interlobular septal thickening based on the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_092"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1041_d_1",
+    "volume_filename": "test_1041_d_1.npy",
+    "question": "Based on the current CT scan, how would you classify the coronary artery wall calcification?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_093"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_437_b_1",
+    "volume_filename": "test_437_b_1.npy",
+    "question": "Before now, coronary artery wall calcification showed [0]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion judged by sequences and scan. From prior sequences to now, what is the CT-based status of coronary artery wall calcification?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_094"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_554_a_1",
+    "volume_filename": "test_554_a_1.npy",
+    "question": "Does the CT scan suggest interlobular septal thickening?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_095"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_808_a_1",
+    "volume_filename": "test_808_a_1.npy",
+    "question": "Can mosaic attenuation pattern be detected on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_096"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_274_c_1",
+    "volume_filename": "test_274_c_1.npy",
+    "question": "Based on the CT scan, what is the condition of the lung opacity?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_097"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_321_a_1",
+    "volume_filename": "test_321_a_1.npy",
+    "question": "Is lymphadenopathy visible on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_098"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1203_a_1",
+    "volume_filename": "test_1203_a_1.npy",
+    "question": "Does the CT scan exhibit coronary artery wall calcification?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_099"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_873_a_1",
+    "volume_filename": "test_873_a_1.npy",
+    "question": "Can signs of lymphadenopathy be recognized on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_100"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_627_a_1",
+    "volume_filename": "test_627_a_1.npy",
+    "question": "Can interlobular septal thickening be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_101"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_389_b_1",
+    "volume_filename": "test_389_b_1.npy",
+    "question": "Given the present CT findings, what is the nature of the hiatal hernia?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_102"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_437_b_1",
+    "volume_filename": "test_437_b_1.npy",
+    "question": "consolidation had: [0] in earlier scans. (Note: 0 indicates absence, and 1 indicates presence.) Diagnosis combines sequence history and CT. How is consolidation classified now using past sequence data?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_103"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_155_a_1",
+    "volume_filename": "test_155_a_1.npy",
+    "question": "Is there any presence of pleural effusion on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_104"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1073_a_1",
+    "volume_filename": "test_1073_a_1.npy",
+    "question": "Is lymphadenopathy present on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_105"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_904_a_1",
+    "volume_filename": "test_904_a_1.npy",
+    "question": "Does the CT scan exhibit consolidation?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_106"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_884_b_1",
+    "volume_filename": "test_884_b_1.npy",
+    "question": "How would you classify the cardiomegaly based on the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_107"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_558_a_1",
+    "volume_filename": "test_558_a_1.npy",
+    "question": "Does this CT image present atelectasis?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_108"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_876_a_1",
+    "volume_filename": "test_876_a_1.npy",
+    "question": "Does this CT image show mosaic attenuation pattern?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_109"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_170_b_1",
+    "volume_filename": "test_170_b_1.npy",
+    "question": "In light of the CT findings, how should we interpret the mosaic attenuation pattern?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_110"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_212_b_1",
+    "volume_filename": "test_212_b_1.npy",
+    "question": "Based on the CT scan, what is the current status of the atelectasis?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_111"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_263_b_1",
+    "volume_filename": "test_263_b_1.npy",
+    "question": "Prior peribronchial thickening timeline: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Lesion state from timeline and CT. How has peribronchial thickening changed from past sequences to the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_112"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_936_b_1",
+    "volume_filename": "test_936_b_1.npy",
+    "question": "How should we interpret the arterial wall calcification from the current CT findings?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_113"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_662_a_1",
+    "volume_filename": "test_662_a_1.npy",
+    "question": "Does the CT scan exhibit pulmonary fibrotic sequela?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_114"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1041_a_1",
+    "volume_filename": "test_1041_a_1.npy",
+    "question": "Can peribronchial thickening be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_115"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_673_a_1",
+    "volume_filename": "test_673_a_1.npy",
+    "question": "Is bronchiectasis apparent on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_116"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_647_a_1",
+    "volume_filename": "test_647_a_1.npy",
+    "question": "Is there evidence of cardiomegaly on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_117"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_179_a_1",
+    "volume_filename": "test_179_a_1.npy",
+    "question": "Is hiatal hernia apparent on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_118"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_829_b_1",
+    "volume_filename": "test_829_b_1.npy",
+    "question": "cardiomegaly over time: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Based on sequence history and current CT. What lesion category applies to cardiomegaly in the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_119"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1247_b_1",
+    "volume_filename": "test_1247_b_1.npy",
+    "question": "interlobular septal thickening progression: [0]. (Note: 0 indicates absence, and 1 indicates presence.) History and CT decide lesion category. What does interlobular septal thickening currently represent, based on past sequences?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "C",
+    "answer_text": "New Lesion (Absent previously, now present)",
+    "question_id": "real_pilot_120"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_490_a_1",
+    "volume_filename": "test_490_a_1.npy",
+    "question": "Does the CT scan reveal emphysema?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_121"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_41_b_1",
+    "volume_filename": "test_41_b_1.npy",
+    "question": "Based on the CT scan, what is the current status of the peribronchial thickening?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_122"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_785_a_1",
+    "volume_filename": "test_785_a_1.npy",
+    "question": "Is mosaic attenuation pattern confirmed by the CT findings?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_123"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_668_b_1",
+    "volume_filename": "test_668_b_1.npy",
+    "question": "Based on the CT scan, what is the condition of the pleural effusion?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_124"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_477_a_1",
+    "volume_filename": "test_477_a_1.npy",
+    "question": "Is emphysema apparent on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_125"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_698_a_1",
+    "volume_filename": "test_698_a_1.npy",
+    "question": "Can lung opacity be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_126"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_355_b_1",
+    "volume_filename": "test_355_b_1.npy",
+    "question": "lymphadenopathy trend was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) Final label from history and CT. What does the CT show for lymphadenopathy considering its sequence history?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_127"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1006_c_1",
+    "volume_filename": "test_1006_c_1.npy",
+    "question": "Based on the CT scan, what is your evaluation of the arterial wall calcification?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_128"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_20_b_1",
+    "volume_filename": "test_20_b_1.npy",
+    "question": "According to the CT scan, how would you categorize the peribronchial thickening?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_129"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1209_b_1",
+    "volume_filename": "test_1209_b_1.npy",
+    "question": "Earlier CTs showed coronary artery wall calcification as: [1]. (Note: 0 indicates absence, and 1 indicates presence.) Sequence trend plus current CT defines status. Given its sequence history, what is coronary artery wall calcification in the current CT?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_130"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_486_a_1",
+    "volume_filename": "test_486_a_1.npy",
+    "question": "Does the CT scan reveal pleural effusion?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_131"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_909_a_1",
+    "volume_filename": "test_909_a_1.npy",
+    "question": "Can pericardial effusion be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_132"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_567_a_1",
+    "volume_filename": "test_567_a_1.npy",
+    "question": "Can consolidation be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_133"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_1214_b_1",
+    "volume_filename": "test_1214_b_1.npy",
+    "question": "lymphadenopathy progression: [1]. (Note: 0 indicates absence, and 1 indicates presence.) Diagnosis combines sequence history and CT. How is lymphadenopathy classified now using past sequence data?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Resolved Lesion (Previously present or recurrent, now absent)",
+    "question_id": "real_pilot_134"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_373_b_1",
+    "volume_filename": "test_373_b_1.npy",
+    "question": "In light of the current CT imaging, how should we classify the mosaic attenuation pattern?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_135"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1039_a_1",
+    "volume_filename": "test_1039_a_1.npy",
+    "question": "Can atelectasis be detected on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_136"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_15_a_1",
+    "volume_filename": "test_15_a_1.npy",
+    "question": "Can mosaic attenuation pattern be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_137"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_1069_b_1",
+    "volume_filename": "test_1069_b_1.npy",
+    "question": "Based on the CT scan, what is your evaluation of the arterial wall calcification?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_138"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_151_c_1",
+    "volume_filename": "test_151_c_1.npy",
+    "question": "In light of the CT findings, how should we interpret the emphysema?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_139"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_229_b_1",
+    "volume_filename": "test_229_b_1.npy",
+    "question": "Previous hiatal hernia states: [0]. (Note: 0 indicates absence, and 1 indicates presence.) CT confirms what sequences suggest. How has hiatal hernia progressed according to its temporal sequence?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_140"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_847_a_1",
+    "volume_filename": "test_847_a_1.npy",
+    "question": "Is there any presence of arterial wall calcification on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_141"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_524_a_1",
+    "volume_filename": "test_524_a_1.npy",
+    "question": "Can lymphadenopathy be observed on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_142"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1052_a_1",
+    "volume_filename": "test_1052_a_1.npy",
+    "question": "Does the CT scan exhibit bronchiectasis?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_143"
+  },
+  {
+    "task": "Task5_Static_Temporal_Diagnosis",
+    "scan_id": "test_4_b_1",
+    "volume_filename": "test_4_b_1.npy",
+    "question": "How would you classify the pleural effusion observed in the current CT scan?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Refractory Lesion (Persistent or recurrent, now present)",
+    "question_id": "real_pilot_144"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_260_a_1",
+    "volume_filename": "test_260_a_1.npy",
+    "question": "Can pericardial effusion be clearly seen on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_145"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1102_a_1",
+    "volume_filename": "test_1102_a_1.npy",
+    "question": "Does the CT scan reveal atelectasis?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_146"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_77_a_1",
+    "volume_filename": "test_77_a_1.npy",
+    "question": "Does the CT scan suggest lung opacity?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_147"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_443_a_1",
+    "volume_filename": "test_443_a_1.npy",
+    "question": "Is there evidence of mosaic attenuation pattern on the CT images?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "question_id": "real_pilot_148"
+  },
+  {
+    "task": "Task6_Longitudinal_Temporal_Diagnosis",
+    "scan_id": "test_446_b_1",
+    "volume_filename": "test_446_b_1.npy",
+    "question": "In past, arterial wall calcification was: [0]. (Note: 0 indicates absence, and 1 indicates presence.) From multi-stage sequences and present CT. Based on the temporal sequence, what is the present status of arterial wall calcification?",
+    "choices": {
+      "A": "Refractory Lesion (Persistent or recurrent, now present)",
+      "B": "Resolved Lesion (Previously present or recurrent, now absent)",
+      "C": "New Lesion (Absent previously, now present)",
+      "D": "No Abnormality (Always absent)"
+    },
+    "answer_choice": "D",
+    "answer_text": "No Abnormality (Always absent)",
+    "question_id": "real_pilot_149"
+  },
+  {
+    "task": "Task4_Existence_Detection",
+    "scan_id": "test_1007_a_1",
+    "volume_filename": "test_1007_a_1.npy",
+    "question": "Can signs of arterial wall calcification be recognized on the CT scan?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "question_id": "real_pilot_150"
+  }
+]

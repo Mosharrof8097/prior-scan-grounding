@@ -1,0 +1,60 @@
+{
+  "n_evaluated": 7746,
+  "fraction_argmax_differs": 0.12341853860056803,
+  "logit_diff_magnitude": {
+    "mean": 2.0663270809743723,
+    "median": 1.5078125,
+    "q25": 0.6875,
+    "q75": 2.7734375,
+    "max": 24.279296875
+  },
+  "baseline_real_accuracy": 0.21094758585076168,
+  "cd_simulations": {
+    "0.25": {
+      "alpha": 0.25,
+      "accuracy_cd": 0.2069455202685257,
+      "accuracy_real": 0.21094758585076168,
+      "gain": -0.004002065582235993,
+      "ci_95_gain": [
+        -0.006842241156726052,
+        -0.0012877614252517604
+      ],
+      "statistically_significant": false
+    },
+    "0.5": {
+      "alpha": 0.5,
+      "accuracy_cd": 0.20513813581203202,
+      "accuracy_real": 0.21094758585076168,
+      "gain": -0.005809450038729667,
+      "ci_95_gain": [
+        -0.009553317841466564,
+        -0.0019364833462432224
+      ],
+      "statistically_significant": false
+    },
+    "1.0": {
+      "alpha": 1.0,
+      "accuracy_cd": 0.20281435579654014,
+      "accuracy_real": 0.21094758585076168,
+      "gain": -0.008133230054221533,
+      "ci_95_gain": [
+        -0.012780790085205267,
+        -0.003227472243738704
+      ],
+      "statistically_significant": false
+    },
+    "2.0": {
+      "alpha": 2.0,
+      "accuracy_cd": 0.19984508133230056,
+      "accuracy_real": 0.21094758585076168,
+      "gain": -0.011102504518461141,
+      "ci_95_gain": [
+        -0.017041053446940357,
+        -0.0049057578104828295
+      ],
+      "statistically_significant": false
+    }
+  },
+  "verdict": "little room",
+  "verdict_explanation": "None of the evaluated alpha configurations achieved statistically significant gain over real CT (all 95% CIs include 0 or negative). Real and blank logits are strongly coupled (argmax differs in only 12.3% of items). There is little room for standard visual contrastive decoding without visual token recalibration."
+}

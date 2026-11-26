@@ -1,0 +1,2812 @@
+[
+  {
+    "family": "existence",
+    "scan_id": "s0324",
+    "target_structure": "adrenal_gland_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right adrenal gland?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_000086",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0315",
+    "candidate_structures": [
+      "duodenum",
+      "gallbladder",
+      "pancreas",
+      "stomach"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "gallbladder",
+      "B": "stomach",
+      "C": "pancreas",
+      "D": "duodenum"
+    },
+    "answer_choice": "B",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_000102",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0175",
+    "target_structure": "vertebrae_T12",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the vertebrae T12 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_000328",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0263",
+    "target_structure": "vertebrae_C2",
+    "question": "Is the vertebrae C2 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_000346",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0260",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "Not both visualized in the scan",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_000375",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0257",
+    "target_structure": "skull",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the skull visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_000389",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0239",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Neither is visualized in the field of view",
+      "C": "Right kidney",
+      "D": "Left kidney"
+    },
+    "answer_choice": "C",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_000400",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0255",
+    "target_structure": "vertebrae_C7",
+    "question": "Is the vertebrae C7 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_000423",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0236",
+    "target_structure": "rib_left_5",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the rib left 5 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_000445",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0243",
+    "candidate_structures": [
+      "pancreas",
+      "stomach",
+      "duodenum",
+      "liver"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "duodenum",
+      "B": "pancreas",
+      "C": "stomach",
+      "D": "liver"
+    },
+    "answer_choice": "D",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_000496",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0227",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "Not both visualized in the scan",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_000613",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0224",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Left kidney",
+      "C": "Neither is visualized in the field of view",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "A",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_000619",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0222",
+    "candidate_structures": [
+      "adrenal_gland_left",
+      "gallbladder",
+      "duodenum",
+      "liver"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "duodenum",
+      "B": "liver",
+      "C": "left adrenal gland",
+      "D": "gallbladder"
+    },
+    "answer_choice": "B",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_000628",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0220",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Between the left and right upper lung lobes, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Left upper lung lobe",
+      "B": "Neither is visualized in the field of view",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Right upper lung lobe"
+    },
+    "answer_choice": "A",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_000633",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0174",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "A",
+    "answer_text": "Approximately equal volume (within 5%)",
+    "chance_floor": 0.25,
+    "question_id": "q_000704",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0210",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "In 3D axial coordinates, does the liver lie superior or inferior to the right kidney?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "Superior",
+      "C": "Inferior",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_000712",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0171",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_000872",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0165",
+    "candidate_structures": [
+      "liver",
+      "adrenal_gland_right",
+      "stomach",
+      "pancreas"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "stomach",
+      "B": "liver",
+      "C": "pancreas",
+      "D": "right adrenal gland"
+    },
+    "answer_choice": "B",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_000897",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0183",
+    "candidate_structures": [
+      "colon",
+      "small_bowel",
+      "kidney_left",
+      "spleen"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "small bowel",
+      "B": "spleen",
+      "C": "colon",
+      "D": "left kidney"
+    },
+    "answer_choice": "B",
+    "answer_text": "spleen",
+    "chance_floor": 0.25,
+    "question_id": "q_001056",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0119",
+    "target_structure": "superior_vena_cava",
+    "question": "Reviewing the full field of view, does this CT volume capture the superior vena cava?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_001094",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0098",
+    "candidate_structures": [
+      "liver",
+      "spleen",
+      "colon",
+      "gallbladder"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "liver",
+      "B": "colon",
+      "C": "spleen",
+      "D": "gallbladder"
+    },
+    "answer_choice": "A",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_001111",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0106",
+    "target_structure": "rib_right_10",
+    "question": "Reviewing the full field of view, does this CT volume capture the rib right 10?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_001179",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0096",
+    "target_structure": "clavicula_left",
+    "question": "Reviewing the full field of view, does this CT volume capture the left clavicula?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_001248",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0092",
+    "target_structure": "rib_left_8",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the rib left 8 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_001262",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0080",
+    "target_structure": "gluteus_maximus_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right gluteus maximus?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_001307",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0080",
+    "candidate_structures": [
+      "adrenal_gland_right",
+      "gallbladder",
+      "adrenal_gland_left",
+      "kidney_right"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "right adrenal gland",
+      "B": "gallbladder",
+      "C": "right kidney",
+      "D": "left adrenal gland"
+    },
+    "answer_choice": "C",
+    "answer_text": "right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_001312",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0074",
+    "target_structure": "kidney_cyst_right",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the right kidney cyst visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_001373",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0074",
+    "target_structure": "rib_right_5",
+    "question": "Reviewing the full field of view, does this CT volume capture the rib right 5?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_001375",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0069",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_001383",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0070",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Superior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_001400",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0058",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_001439",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0058",
+    "candidate_structures": [
+      "liver",
+      "kidney_right",
+      "small_bowel",
+      "pancreas"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "right kidney",
+      "B": "pancreas",
+      "C": "small bowel",
+      "D": "liver"
+    },
+    "answer_choice": "D",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_001440",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0028",
+    "target_structure": "vertebrae_T3",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the vertebrae T3 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_001495",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0039",
+    "candidate_structures": [
+      "colon",
+      "stomach",
+      "pancreas",
+      "small_bowel"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "colon",
+      "B": "pancreas",
+      "C": "stomach",
+      "D": "small bowel"
+    },
+    "answer_choice": "C",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_001514",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0003",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Comparing bilateral upper lung lobes, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Right upper lung lobe",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left upper lung lobe",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_001624",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1408",
+    "target_structure": "rib_right_1",
+    "question": "Reviewing the full field of view, does this CT volume capture the rib right 1?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_001737",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0748",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Neither is visualized in the field of view",
+      "C": "Left kidney",
+      "D": "Right kidney"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_001763",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0733",
+    "target_structure": "brachiocephalic_trunk",
+    "question": "Reviewing the full field of view, does this CT volume capture the brachiocephalic trunk?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_001873",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0723",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Left kidney",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "A",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_001904",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0708",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Left kidney",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Approximately equal volume (within 5%)",
+    "chance_floor": 0.25,
+    "question_id": "q_001937",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0685",
+    "target_structure": "aorta",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the aorta visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_002080",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0675",
+    "target_structure": "rib_right_11",
+    "question": "Is the rib right 11 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_002134",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0662",
+    "candidate_structures": [
+      "liver",
+      "colon",
+      "small_bowel",
+      "gallbladder"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "liver",
+      "B": "colon",
+      "C": "gallbladder",
+      "D": "small bowel"
+    },
+    "answer_choice": "A",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_002144",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0663",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Superior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002162",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0661",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Inferior",
+      "B": "At the same axial slice level",
+      "C": "Not both visualized in the scan",
+      "D": "Superior"
+    },
+    "answer_choice": "D",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002169",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0644",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Left kidney",
+      "C": "Right kidney",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_002218",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0709",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Neither is visualized in the field of view",
+      "C": "Right kidney",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "C",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_002293",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0638",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "At the same axial slice level",
+      "C": "Superior",
+      "D": "Inferior"
+    },
+    "answer_choice": "C",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002337",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0621",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left kidney",
+      "D": "Right kidney"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_002378",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0628",
+    "candidate_structures": [
+      "gallbladder",
+      "small_bowel",
+      "spleen",
+      "liver"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "gallbladder",
+      "B": "liver",
+      "C": "spleen",
+      "D": "small bowel"
+    },
+    "answer_choice": "B",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_002439",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0606",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "Superior",
+      "C": "Inferior",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002498",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0586",
+    "target_structure": "iliac_artery_left",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the left iliac artery visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_002646",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0586",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "At the same axial slice level",
+      "C": "Inferior",
+      "D": "Superior"
+    },
+    "answer_choice": "D",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002651",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0600",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "At the same axial slice level",
+      "B": "Inferior",
+      "C": "Superior",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "C",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_002677",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0561",
+    "candidate_structures": [
+      "adrenal_gland_left",
+      "gallbladder",
+      "stomach",
+      "colon"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "stomach",
+      "B": "gallbladder",
+      "C": "left adrenal gland",
+      "D": "colon"
+    },
+    "answer_choice": "A",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_002721",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0537",
+    "target_structure": "gluteus_medius_left",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the left gluteus medius visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_002866",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0526",
+    "structures": [
+      "iliopsoas_left",
+      "iliopsoas_right"
+    ],
+    "question": "Comparing bilateral iliopsoas muscles, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Right iliopsoas muscle",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left iliopsoas muscle",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left iliopsoas muscle",
+    "chance_floor": 0.25,
+    "question_id": "q_002902",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0527",
+    "target_structure": "hip_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right hip?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_002906",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0446",
+    "target_structure": "vertebrae_T3",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the vertebrae T3 visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_002924",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0515",
+    "target_structure": "vertebrae_C7",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the vertebrae C7 visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_002962",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0487",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Neither is visualized in the field of view",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Right kidney"
+    },
+    "answer_choice": "A",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_002978",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0566",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left kidney",
+      "D": "Right kidney"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_003030",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0490",
+    "target_structure": "portal_vein_and_splenic_vein",
+    "question": "Reviewing the full field of view, does this CT volume capture the portal vein and splenic vein?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_003087",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0484",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Neither is visualized in the field of view",
+      "C": "Left kidney",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_003127",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0340",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "At the same axial slice level",
+      "C": "Inferior",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_003156",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0477",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_003167",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0505",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "A",
+    "answer_text": "Approximately equal volume (within 5%)",
+    "chance_floor": 0.25,
+    "question_id": "q_003234",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0505",
+    "candidate_structures": [
+      "kidney_left",
+      "stomach",
+      "small_bowel",
+      "duodenum"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "small bowel",
+      "B": "left kidney",
+      "C": "stomach",
+      "D": "duodenum"
+    },
+    "answer_choice": "C",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_003236",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0350",
+    "target_structure": "rib_left_3",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the rib left 3 visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_003252",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1409",
+    "structures": [
+      "hip_left",
+      "hip_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left hip bone larger than the right, or vice versa?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Right hip bone",
+      "D": "Left hip bone"
+    },
+    "answer_choice": "D",
+    "answer_text": "Left hip bone",
+    "chance_floor": 0.25,
+    "question_id": "q_003261",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0441",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "In 3D axial coordinates, does the liver lie superior or inferior to the right kidney?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Superior",
+      "C": "Not both visualized in the scan",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_003331",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0470",
+    "target_structure": "gluteus_medius_left",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the left gluteus medius visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_003605",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0470",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "Superior",
+      "C": "At the same axial slice level",
+      "D": "Inferior"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_003607",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0450",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left kidney",
+      "D": "Right kidney"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_003664",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0362",
+    "target_structure": "vertebrae_T1",
+    "question": "Is the vertebrae T1 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_003675",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0338",
+    "target_structure": "scapula_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right scapula?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_003711",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0338",
+    "target_structure": "atrial_appendage_left",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the left atrial appendage visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_003713",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0372",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Comparing bilateral upper lung lobes, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right upper lung lobe",
+      "C": "Left upper lung lobe",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_003732",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0349",
+    "candidate_structures": [
+      "liver",
+      "gallbladder",
+      "spleen",
+      "kidney_right"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "spleen",
+      "B": "right kidney",
+      "C": "gallbladder",
+      "D": "liver"
+    },
+    "answer_choice": "D",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_003832",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0336",
+    "candidate_structures": [
+      "kidney_right",
+      "kidney_left",
+      "duodenum",
+      "colon"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "right kidney",
+      "B": "duodenum",
+      "C": "left kidney",
+      "D": "colon"
+    },
+    "answer_choice": "C",
+    "answer_text": "left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_003875",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1411",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Not both visualized in the scan",
+      "C": "At the same axial slice level",
+      "D": "Inferior"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_003991",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1412",
+    "target_structure": "scapula_right",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the right scapula visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_004028",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1412",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_004030",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0679",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "In 3D axial coordinates, does the liver lie superior or inferior to the right kidney?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "At the same axial slice level",
+      "C": "Superior",
+      "D": "Inferior"
+    },
+    "answer_choice": "C",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_004072",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0038",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Neither is visualized in the field of view",
+      "D": "Right kidney"
+    },
+    "answer_choice": "A",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_004110",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1415",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "Relative to the right kidney, what is the spatial craniocaudal orientation of the liver?",
+    "choices": {
+      "A": "At the same axial slice level",
+      "B": "Inferior",
+      "C": "Not both visualized in the scan",
+      "D": "Superior"
+    },
+    "answer_choice": "D",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_004125",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1344",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Not both visualized in the scan",
+      "C": "At the same axial slice level",
+      "D": "Inferior"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_004132",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1287",
+    "candidate_structures": [
+      "adrenal_gland_left",
+      "adrenal_gland_right",
+      "spleen",
+      "duodenum"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "left adrenal gland",
+      "B": "right adrenal gland",
+      "C": "spleen",
+      "D": "duodenum"
+    },
+    "answer_choice": "C",
+    "answer_text": "spleen",
+    "chance_floor": 0.25,
+    "question_id": "q_004215",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1276",
+    "candidate_structures": [
+      "kidney_left",
+      "pancreas",
+      "colon",
+      "gallbladder"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "gallbladder",
+      "B": "left kidney",
+      "C": "pancreas",
+      "D": "colon"
+    },
+    "answer_choice": "B",
+    "answer_text": "left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_004279",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1314",
+    "target_structure": "brachiocephalic_trunk",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the brachiocephalic trunk visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_004512",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1309",
+    "target_structure": "rib_left_7",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the rib left 7 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_004557",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1327",
+    "target_structure": "vertebrae_C2",
+    "question": "Is the vertebrae C2 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_004609",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1322",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "In 3D axial coordinates, does the liver lie superior or inferior to the right kidney?",
+    "choices": {
+      "A": "At the same axial slice level",
+      "B": "Not both visualized in the scan",
+      "C": "Superior",
+      "D": "Inferior"
+    },
+    "answer_choice": "C",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_004633",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1285",
+    "candidate_structures": [
+      "kidney_right",
+      "adrenal_gland_right",
+      "pancreas",
+      "spleen"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "right kidney",
+      "B": "spleen",
+      "C": "right adrenal gland",
+      "D": "pancreas"
+    },
+    "answer_choice": "B",
+    "answer_text": "spleen",
+    "chance_floor": 0.25,
+    "question_id": "q_004738",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1240",
+    "target_structure": "inferior_vena_cava",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the inferior vena cava visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_004751",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1264",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Comparing bilateral upper lung lobes, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Neither is visualized in the field of view",
+      "C": "Right upper lung lobe",
+      "D": "Left upper lung lobe"
+    },
+    "answer_choice": "D",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_004765",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1300",
+    "structures": [
+      "stomach",
+      "urinary_bladder"
+    ],
+    "question": "Relative to the urinary bladder, what is the spatial craniocaudal orientation of the stomach?",
+    "choices": {
+      "A": "At the same axial slice level",
+      "B": "Superior",
+      "C": "Inferior",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_004777",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1222",
+    "target_structure": "vertebrae_T5",
+    "question": "Is the vertebrae T5 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_004794",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1249",
+    "target_structure": "prostate",
+    "question": "Reviewing the full field of view, does this CT volume capture the prostate?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_004884",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1249",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Neither is visualized in the field of view",
+      "B": "Left kidney",
+      "C": "Right kidney",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_004887",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1216",
+    "candidate_structures": [
+      "adrenal_gland_right",
+      "kidney_left",
+      "pancreas",
+      "gallbladder"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "gallbladder",
+      "B": "right adrenal gland",
+      "C": "pancreas",
+      "D": "left kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005014",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1215",
+    "target_structure": "humerus_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right humerus?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_005081",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1383",
+    "candidate_structures": [
+      "kidney_left",
+      "stomach",
+      "liver",
+      "adrenal_gland_right"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "right adrenal gland",
+      "B": "left kidney",
+      "C": "liver",
+      "D": "stomach"
+    },
+    "answer_choice": "C",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_005150",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1143",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Relative to the liver, what is the spatial craniocaudal orientation of the heart?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Not both visualized in the scan",
+      "C": "Superior",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "C",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_005201",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1187",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "B",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005249",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1176",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Right kidney",
+      "C": "Neither is visualized in the field of view",
+      "D": "Approximately equal volume (within 5%)"
+    },
+    "answer_choice": "B",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005256",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1176",
+    "candidate_structures": [
+      "adrenal_gland_left",
+      "colon",
+      "spleen",
+      "kidney_right"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "left adrenal gland",
+      "B": "colon",
+      "C": "right kidney",
+      "D": "spleen"
+    },
+    "answer_choice": "C",
+    "answer_text": "right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005258",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1174",
+    "target_structure": "rib_right_6",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the rib right 6 visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_005295",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1174",
+    "candidate_structures": [
+      "kidney_right",
+      "pancreas",
+      "gallbladder",
+      "colon"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "colon",
+      "B": "pancreas",
+      "C": "gallbladder",
+      "D": "right kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005298",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1358",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Neither is visualized in the field of view",
+      "C": "Right kidney",
+      "D": "Left kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005372",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1149",
+    "candidate_structures": [
+      "duodenum",
+      "liver",
+      "gallbladder",
+      "spleen"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "duodenum",
+      "B": "liver",
+      "C": "gallbladder",
+      "D": "spleen"
+    },
+    "answer_choice": "B",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_005437",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1377",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Neither is visualized in the field of view",
+      "D": "Left kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005489",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1377",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_005490",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0973",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left upper lung lobe larger than the right, or vice versa?",
+    "choices": {
+      "A": "Right upper lung lobe",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left upper lung lobe",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_005503",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1128",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Neither is visualized in the field of view",
+      "C": "Left kidney",
+      "D": "Right kidney"
+    },
+    "answer_choice": "A",
+    "answer_text": "Approximately equal volume (within 5%)",
+    "chance_floor": 0.25,
+    "question_id": "q_005566",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1121",
+    "candidate_structures": [
+      "spleen",
+      "adrenal_gland_right",
+      "adrenal_gland_left",
+      "gallbladder"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "gallbladder",
+      "B": "right adrenal gland",
+      "C": "left adrenal gland",
+      "D": "spleen"
+    },
+    "answer_choice": "D",
+    "answer_text": "spleen",
+    "chance_floor": 0.25,
+    "question_id": "q_005632",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1114",
+    "target_structure": "costal_cartilages",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the costal cartilages visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_005657",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1098",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the liver positioned superior or inferior relative to the right kidney?",
+    "choices": {
+      "A": "At the same axial slice level",
+      "B": "Superior",
+      "C": "Not both visualized in the scan",
+      "D": "Inferior"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_005682",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1090",
+    "candidate_structures": [
+      "gallbladder",
+      "stomach",
+      "small_bowel",
+      "colon"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "colon",
+      "B": "stomach",
+      "C": "small bowel",
+      "D": "gallbladder"
+    },
+    "answer_choice": "B",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_005690",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1063",
+    "target_structure": "pulmonary_vein",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the pulmonary vein visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_005691",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1063",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Right kidney",
+      "B": "Neither is visualized in the field of view",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Left kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005695",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1107",
+    "target_structure": "gluteus_minimus_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right gluteus minimus?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_005700",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1057",
+    "candidate_structures": [
+      "small_bowel",
+      "kidney_right",
+      "stomach",
+      "adrenal_gland_right"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "stomach",
+      "B": "right kidney",
+      "C": "right adrenal gland",
+      "D": "small bowel"
+    },
+    "answer_choice": "A",
+    "answer_text": "stomach",
+    "chance_floor": 0.25,
+    "question_id": "q_005836",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0914",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Comparing bilateral upper lung lobes, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Right upper lung lobe",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Left upper lung lobe",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "A",
+    "answer_text": "Right upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_005845",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1419",
+    "target_structure": "common_carotid_artery_left",
+    "question": "Reviewing the full field of view, does this CT volume capture the left common carotid artery?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_005858",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1062",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Approximately equal volume (within 5%)",
+      "C": "Neither is visualized in the field of view",
+      "D": "Right kidney"
+    },
+    "answer_choice": "D",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_005882",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1053",
+    "target_structure": "hip_left",
+    "question": "Reviewing the full field of view, does this CT volume capture the left hip?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_005913",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1037",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "In 3D axial coordinates, does the liver lie superior or inferior to the right kidney?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Superior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_006016",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1029",
+    "target_structure": "clavicula_right",
+    "question": "Reviewing the full field of view, does this CT volume capture the right clavicula?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "B",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_006041",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1025",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Superior",
+      "B": "Inferior",
+      "C": "Not both visualized in the scan",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_006069",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s1382",
+    "candidate_structures": [
+      "duodenum",
+      "adrenal_gland_right",
+      "small_bowel",
+      "adrenal_gland_left"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "left adrenal gland",
+      "B": "right adrenal gland",
+      "C": "duodenum",
+      "D": "small bowel"
+    },
+    "answer_choice": "B",
+    "answer_text": "right adrenal gland",
+    "chance_floor": 0.25,
+    "question_id": "q_006155",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0994",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Left kidney",
+      "B": "Neither is visualized in the field of view",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Right kidney"
+    },
+    "answer_choice": "A",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_006234",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0945",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left kidney larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Left kidney",
+      "C": "Right kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_006448",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0945",
+    "candidate_structures": [
+      "gallbladder",
+      "pancreas",
+      "duodenum",
+      "kidney_left"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "left kidney",
+      "B": "pancreas",
+      "C": "duodenum",
+      "D": "gallbladder"
+    },
+    "answer_choice": "B",
+    "answer_text": "pancreas",
+    "chance_floor": 0.25,
+    "question_id": "q_006450",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0847",
+    "target_structure": "gluteus_minimus_left",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the left gluteus minimus visualized within the field of view?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_006766",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0835",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Not both visualized in the scan",
+      "C": "At the same axial slice level",
+      "D": "Superior"
+    },
+    "answer_choice": "D",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_006934",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0851",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left upper lung lobe larger than the right, or vice versa?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Left upper lung lobe",
+      "C": "Right upper lung lobe",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Right upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_006951",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0829",
+    "target_structure": "lung_middle_lobe_right",
+    "question": "Is the right lung middle lobe completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "B",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_007028",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0826",
+    "candidate_structures": [
+      "kidney_left",
+      "kidney_right",
+      "pancreas",
+      "liver"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "pancreas",
+      "B": "liver",
+      "C": "right kidney",
+      "D": "left kidney"
+    },
+    "answer_choice": "B",
+    "answer_text": "liver",
+    "chance_floor": 0.25,
+    "question_id": "q_007053",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0821",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "In 3D axial coordinates, does the heart lie superior or inferior to the liver?",
+    "choices": {
+      "A": "Not both visualized in the scan",
+      "B": "Superior",
+      "C": "Inferior",
+      "D": "At the same axial slice level"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_007087",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0819",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Comparing bilateral kidneys, which structure exhibits the greater 3D volumetric space in this scan?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "B",
+    "answer_text": "Right kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_007116",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s0802",
+    "structures": [
+      "heart",
+      "liver"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the heart positioned superior or inferior relative to the liver?",
+    "choices": {
+      "A": "Inferior",
+      "B": "Superior",
+      "C": "At the same axial slice level",
+      "D": "Not both visualized in the scan"
+    },
+    "answer_choice": "B",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_007149",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "volume_ranking",
+    "scan_id": "s0802",
+    "candidate_structures": [
+      "duodenum",
+      "small_bowel",
+      "colon",
+      "pancreas"
+    ],
+    "question": "Which of the following segmented anatomical structures occupies the largest 3D volumetric space in this CT scan?",
+    "choices": {
+      "A": "duodenum",
+      "B": "colon",
+      "C": "small bowel",
+      "D": "pancreas"
+    },
+    "answer_choice": "D",
+    "answer_text": "pancreas",
+    "chance_floor": 0.25,
+    "question_id": "q_007150",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s0805",
+    "structures": [
+      "lung_upper_lobe_left",
+      "lung_upper_lobe_right"
+    ],
+    "question": "Based on 3D volumetric assessment, is the left upper lung lobe larger than the right, or vice versa?",
+    "choices": {
+      "A": "Left upper lung lobe",
+      "B": "Right upper lung lobe",
+      "C": "Approximately equal volume (within 5%)",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "A",
+    "answer_text": "Left upper lung lobe",
+    "chance_floor": 0.25,
+    "question_id": "q_007211",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0791",
+    "target_structure": "inferior_vena_cava",
+    "question": "Based on the anatomical coverage of this 3D CT scan, is the inferior vena cava visualized within the field of view?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_007266",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s0791",
+    "target_structure": "rib_left_11",
+    "question": "Reviewing the full field of view, does this CT volume capture the rib left 11?",
+    "choices": {
+      "A": "No",
+      "B": "Yes"
+    },
+    "answer_choice": "A",
+    "answer_text": "No",
+    "chance_floor": 0.5,
+    "question_id": "q_007269",
+    "m3d_domain": "seen_train_val"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1420",
+    "target_structure": "rib_right_8",
+    "question": "Reviewing the full field of view, does this CT volume capture the rib right 8?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_007315",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "existence",
+    "scan_id": "s1421",
+    "target_structure": "rib_right_1",
+    "question": "Is the rib right 1 completely or partially present within this volumetric CT exam?",
+    "choices": {
+      "A": "Yes",
+      "B": "No"
+    },
+    "answer_choice": "A",
+    "answer_text": "Yes",
+    "chance_floor": 0.5,
+    "question_id": "q_007417",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "laterality_volume",
+    "scan_id": "s1422",
+    "structures": [
+      "kidney_left",
+      "kidney_right"
+    ],
+    "question": "Between the left and right kidneys, which occupies a larger anatomical volume?",
+    "choices": {
+      "A": "Approximately equal volume (within 5%)",
+      "B": "Right kidney",
+      "C": "Left kidney",
+      "D": "Neither is visualized in the field of view"
+    },
+    "answer_choice": "C",
+    "answer_text": "Left kidney",
+    "chance_floor": 0.25,
+    "question_id": "q_007427",
+    "m3d_domain": "unseen_test"
+  },
+  {
+    "family": "spatial_topography",
+    "scan_id": "s1423",
+    "structures": [
+      "liver",
+      "kidney_right"
+    ],
+    "question": "Along the craniocaudal (superior-inferior) anatomical axis, is the centroid of the liver positioned superior or inferior relative to the right kidney?",
+    "choices": {
+      "A": "Superior",
+      "B": "Not both visualized in the scan",
+      "C": "At the same axial slice level",
+      "D": "Inferior"
+    },
+    "answer_choice": "A",
+    "answer_text": "Superior",
+    "chance_floor": 0.25,
+    "question_id": "q_007435",
+    "m3d_domain": "unseen_test"
+  }
+]

@@ -1,0 +1,5 @@
+task,n,acc_real_ct,acc_blank_ct,acc_swap_donor,acc_shuf_slices,acc_shuf_opts,acc_text_only,delta_blank,p_mcnemar_blank,mean_delta_logp
+overall,7746,0.2109,0.2343,0.2098,0.2156,0.2109,0.1936,-0.0234,0.0,-0.8028
+Task4_Existence_Detection,2000,0.4135,0.5,0.409,0.431,0.4135,0.3165,-0.0865,0.0,-1.2553
+Task6_Longitudinal_Temporal_Diagnosis,2873,0.1462,0.1511,0.1455,0.1469,0.1462,0.1542,-0.0049,0.27525,-0.3754
+Task5_Static_Temporal_Diagnosis,2873,0.1347,0.1326,0.1354,0.1344,0.1347,0.1476,0.0021,0.617299,-0.9151

@@ -1,45 +1,68 @@
-# ---- data & environment: never version these ----
+# ---- 1. Data & Medical CT Volumes (Large Binaries, Never Version) ----
 3D-RAD_Dataset/
-thesis_env/
-.cache/
+3D-RAD-T/
+*.npy
+*.npz
+*.nii
+*.nii.gz
+*.dcm
 preview_images/*.npy
 
 # the de-leaked variant is regenerable from leak_analysis/build_3drad_t.py
-3D-RAD-T/
-
-# split manifests are regenerable from leak_analysis/save_split_manifests.py,
-# and train_qa.csv is ~27k rows; keep the summary, drop the bulk
+# split manifests are regenerable from leak_analysis/save_split_manifests.py
 split_manifests/*_qa.csv
 **/split_*_qa.csv
 
-# ---- Kaggle run outputs ----
-# Weights and optimizer state (700 MB) plus their trimmed upload copy. The metrics that the
-# write-up actually cites are copied into retrain/metrics/ and tracked there.
-retrain/results/
-retrain/audit_upload/
-
-# ---- model weights (large binaries) ----
+# ---- 2. Checkpoints, Weights & Training States (Up to & Over 20 MB) ----
 *.pt
 *.pth
 *.safetensors
-*.zip
+*.ckpt
+*.bin
+*.model
+*.onnx
+*.h5
+checkpoint*/
+*_checkpoint.csv
+retrain/results/
+retrain/audit_upload/
+retrain/audit_upload_epochs_2_3/
+backups/
+baseline_training_pipeline/baseline result/
+inference_audit/interface audit result/
 
-# ---- python ----
+# ---- 3. Compressed Archives (All .zip, .tar, etc.) ----
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ---- 4. Reference Papers & Literature Review Documents ----
+perper ref/
+literature review /
+literature review*/
+reports/author/
+reports/proposals/
+
+# ---- 5. Part B Archive & Legacy Noise Runs ----
+partB_benchmark/archive/
+
+# ---- 6. Python Environment & Compilation Caches ----
+thesis_env/
+venv/
+.env
+.cache/
 __pycache__/
 *.py[cod]
+*$py.class
 .ipynb_checkpoints/
 
-# ---- reference papers ----
-# 20 published PDFs, ~168 MB. Redistributing paywalled papers publicly breaches
-# publisher licences, and git history would keep them permanently. Kept locally only;
-# every one of them is cited in the literature review.
-perper ref/
-
-# ---- editor / os ----
+# ---- 7. Editor & OS Artifacts ----
 .DS_Store
 __MACOSX/
 .~lock.*#
-
-# local backup copies of Kaggle outputs (large, regenerable only by retraining)
-backups/
-retrain/audit_upload_epochs_2_3/
+*.swp
+*.swo
+*.bak

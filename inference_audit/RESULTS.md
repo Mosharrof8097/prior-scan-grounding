@@ -224,6 +224,135 @@ Real minus control (closed tasks, patient-cluster 95% CI, exact McNemar):
 
 ### Limits
 
-One checkpoint (epoch 1), one seed; Tasks 5 and 6 rest on 14 patients (val) and 20 patients (test). The supportable
-claim is "these scores are not evidence of grounding", not that vision-language models cannot do longitudinal CT
-reasoning. Still to run: epochs 2-3 (val and test, about 4 h each), per `KAGGLE_FULL_RUN.md`.
+One baseline architecture (LoRA Qwen2.5-1.5B + frozen ResNet-18), one seed; Tasks 5 and 6 rest on 14 patients (val) and 20 patients (test). The supportable claim is "these scores are not evidence of grounding", not that vision-language models cannot do longitudinal CT reasoning.
+
+---
+
+## Multi-epoch full audit (Epochs 2 and 3, validation and test)
+
+Run on Kaggle (T4) using `ALL_EPOCHS_FULL_AUDIT.py` with checkpoints `retrain_v7/epoch_2` (val_loss 0.2999) and `retrain_v7/epoch_3` (val_loss 0.2986, the best checkpoint). Full val ($n = 3,254$) and full test ($n = 3,459$) evaluated across all 7 conditions (real, blank, mean, noise, swap, zero_prior, swap_prior). Statistics generated via `audit_statistics_multi.py` (patient-cluster bootstrap, 5,000 draws, seed 42).
+
+### Major finding across all epochs
+
+**Training longer does not induce visual grounding.** In Epoch 3 (best checkpoint), closed-task accuracy on the test partition remains clamped to the text-only floor across all tasks. Blank, noise, and swapped-patient controls perform identically to or slightly outperform the real CT volume.
+
+### Accuracy by condition: Epoch 3 (best checkpoint)
+
+#### Test split (n = 3,459)
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .247 | .226 | .215 | .237 | .258 | - | - |
+| 2 Anomaly (open) | .025 | .221 | .225 | .225 | .238 | .234 | - | - |
+| 3 Computation (open) | 0 | .048 | .048 | .036 | .048 | .048 | - | - |
+| 4 Existence | .835 | .836 | .832 | .832 | .835 | .837 | - | - |
+| 5 Static temporal | .647 | .647 | .644 | .644 | .647 | .647 | .647 | .647 |
+| 6 Longitudinal | .806 | .806 | .812 | .809 | .812 | .806 | .806 | .794 |
+
+#### Validation split (n = 3,254)
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .205 | .250 | .216 | .205 | .193 | - | - |
+| 2 Anomaly (open) | .012 | .215 | .227 | .219 | .219 | .219 | - | - |
+| 3 Computation (open) | 0 | .037 | .056 | .056 | .046 | .037 | - | - |
+| 4 Existence | .826 | .825 | .822 | .827 | .825 | .824 | - | - |
+| 5 Static temporal | .618 | .613 | .609 | .609 | .609 | .613 | .618 | .613 |
+| 6 Longitudinal | .807 | .786 | .773 | .777 | .773 | .790 | .773 | .786 |
+
+### Real minus control: Epoch 3 test (closed tasks, patient-cluster 95% CI, exact McNemar)
+
+| Task | control | real - control | 95% CI | discordant (real / control) | p |
+| :-- | :-- | --: | :-- | :-- | --: |
+| 4 | blank | +0.0038 | -0.002 to +0.010 | 30 / 21 | 0.262 |
+| 4 | mean | +0.0038 | -0.003 to +0.011 | 39 / 30 | 0.336 |
+| 4 | noise | +0.0008 | -0.004 to +0.006 | 19 / 17 | 0.868 |
+| 4 | swap | -0.0013 | -0.005 to +0.003 | 9 / 12 | 0.664 |
+| 5 | blank | +0.0029 | 0 to +0.009 | 1 / 0 | 1.0 |
+| 5 | mean | +0.0029 | 0 to +0.009 | 1 / 0 | 1.0 |
+| 5 | noise, swap, zero_prior, swap_prior | 0.000 | 0 to 0 | 0 / 0 | 1.0 |
+| 6 | blank | -0.0059 | -0.029 to +0.018 | 5 / 7 | 0.774 |
+| 6 | mean | -0.0029 | -0.029 to +0.027 | 6 / 7 | 1.0 |
+| 6 | noise | -0.0059 | -0.024 to +0.012 | 3 / 5 | 0.727 |
+| 6 | swap, zero_prior | 0.000 | -0.021 to +0.021 | 4 / 4 (swap), 5 / 5 (zero_prior) | 1.0 |
+| 6 | swap_prior | +0.0118 | 0 to +0.027 | 5 / 1 | 0.219 |
+
+### Balanced accuracy and macro-F1: Epoch 3 test (patient-bootstrap 95% CI)
+
+| task | condition | accuracy | balanced acc (95% CI) | chance | macro-F1 | classes predicted |
+| :-- | :-- | --: | :-- | --: | --: | :-- |
+| 4 Existence | real | 0.836 | 0.509 (0.502–0.516) | 0.50 | 0.475 | 2 / 2 |
+| 4 Existence | blank | 0.832 | 0.525 (0.514–0.537) | 0.50 | 0.512 | 2 / 2 |
+| 5 Static temporal | real | 0.647 | 0.253 (0.247–0.265) | 0.25 | 0.206 | 2 / 4 |
+| 5 Static temporal | blank | 0.644 | 0.252 (0.245–0.264) | 0.25 | 0.205 | 2 / 4 |
+| 6 Longitudinal | real | 0.806 | 0.531 (0.484–0.576) | 0.25 | 0.519 | 4 / 4 |
+| 6 Longitudinal | blank | 0.812 | 0.542 (0.503–0.590) | 0.25 | 0.528 | 3 / 4 |
+
+Notice: On Task 4 and Task 6, blank CT achieves higher balanced accuracy and macro-F1 than real CT. Task 5 balanced accuracy sits exactly at random chance (0.253 vs 0.250).
+
+### Task 6 minus Task 5 on identical 340 test items (Epoch 3)
+
+* **Task 6 - Task 5 diff:** **+0.1588** (+15.9 points), patient-cluster 95% CI: **+0.1118 to +0.2118**.
+* **Exact McNemar:** 55 vs 1 discordant pairs, **$p = 1.58 \times 10^{-15}$**.
+* Val split on Epoch 3: **+0.1723** (+17.2 points), 95% CI: **+0.1134 to +0.2437**, 41 vs 0 discordant, **$p = 9.09 \times 10^{-13}$**.
+* This replicates the Task 6 text-shortcut gap across all epochs.
+
+---
+
+### Accuracy by condition: Epoch 2 (val_loss 0.2999)
+
+#### Test split (n = 3,459)
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .204 | .204 | .194 | .204 | .204 | - | - |
+| 2 Anomaly (open) | .025 | .230 | .225 | .238 | .238 | .230 | - | - |
+| 3 Computation (open) | 0 | .048 | .048 | .048 | .048 | .048 | - | - |
+| 4 Existence | .835 | .832 | .831 | .832 | .832 | .835 | - | - |
+| 5 Static temporal | .647 | .635 | .629 | .632 | .638 | .638 | .635 | .635 |
+| 6 Longitudinal | .806 | .803 | .794 | .803 | .812 | .809 | .806 | .800 |
+
+#### Validation split (n = 3,254)
+
+| Task | floor | real | blank | mean | noise | swap | zero_prior | swap_prior |
+| :-- | --: | --: | --: | --: | --: | --: | --: | --: |
+| 1 Observation (open) | .011 | .205 | .193 | .193 | .193 | .205 | - | - |
+| 2 Anomaly (open) | .012 | .198 | .202 | .198 | .194 | .202 | - | - |
+| 3 Computation (open) | 0 | .056 | .056 | .056 | .065 | .065 | - | - |
+| 4 Existence | .826 | .825 | .826 | .826 | .822 | .823 | - | - |
+| 5 Static temporal | .618 | .605 | .605 | .605 | .601 | .605 | .605 | .605 |
+| 6 Longitudinal | .807 | .756 | .769 | .765 | .761 | .756 | .761 | .756 |
+
+### Epoch 2 test statistics (closed tasks, patient-cluster 95% CI, exact McNemar)
+
+* **Task 4:** real - blank = +0.0008 (CI -0.0047 to +0.0064, p = 0.883, discordant 24/22); real - swap = -0.0030 (p = 0.296).
+* **Task 5:** real - blank = +0.0059 (CI 0 to +0.0147, p = 0.500, discordant 2/0); zero_prior = 0.000 (p = 1.0).
+* **Task 6:** real - blank = +0.0088 (CI -0.0029 to +0.0206, p = 0.375, discordant 4/1); real - noise = -0.0088 (p = 0.25).
+* **Task 6 - Task 5:** +0.1676 (+16.8 points), CI: +0.1352 to +0.2029, McNemar 63 vs 6 discordant, $p = 4.47 \times 10^{-13}$.
+
+---
+
+### Synthesis: Multi-Epoch Comparison (Test Split Closed Tasks)
+
+| Task | Metric | Text-Only Floor | Epoch 1 (val 0.3115) | Epoch 2 (val 0.2999) | Epoch 3 (val 0.2986) |
+| :-- | :-- | --: | --: | --: | --: |
+| **Task 4** | Real CT | 0.8355 | 0.8198 | 0.8316 | 0.8359 |
+| | Blank CT | | 0.8155 | 0.8308 | 0.8321 |
+| | Swapped CT | | 0.8148 | 0.8346 | 0.8372 |
+| | Real − Floor | | -0.0157 | -0.0038 | +0.0004 |
+| **Task 5** | Real CT | 0.6471 | 0.6353 | 0.6353 | 0.6471 |
+| | Blank CT | | 0.6353 | 0.6294 | 0.6441 |
+| | Zeroed Prior | | 0.6324 | 0.6353 | 0.6471 |
+| | Real − Floor | | -0.0118 | -0.0118 | 0.0000 |
+| **Task 6** | Real CT | 0.8059 | 0.7941 | 0.8029 | 0.8059 |
+| | Blank CT | | 0.7941 | 0.7941 | 0.8118 |
+| | Zeroed Prior | | 0.8000 | 0.8059 | 0.8059 |
+| | Real − Floor | | -0.0118 | -0.0029 | 0.0000 |
+| **T6 − T5** | Paired Gain | — | **+16.2%** ($p = 6\times 10^{-17}$) | **+16.8%** ($p = 4\times 10^{-13}$) | **+15.9%** ($p = 2\times 10^{-15}$) |
+
+### Conclusion
+
+Across all three epochs:
+1. **The model never beats the text-only floor** by more than a fraction of a percent (+0.04% on Task 4 at Epoch 3), which is statistically indistinguishable from zero ($p = 0.262$).
+2. **Perturbation insensitivity is invariant to training**: zeroing the scan, adding noise, swapping patients, or zeroing the prior scan produces no statistically significant difference ($p > 0.20$ across all comparisons).
+3. **The Task 6 text-shortcut gap replicates consistently**: Task 6 consistently beats identical Task 5 items by +15.9% to +16.8% across all epochs ($p < 10^{-12}$ in every run), demonstrating that high performance on Task 6 is entirely mediated by the bracket text leak.

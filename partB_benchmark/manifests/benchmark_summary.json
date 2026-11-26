@@ -1,0 +1,22 @@
+{
+  "total_questions": 7465,
+  "total_ct_cases": 1228,
+  "domain_distribution": {
+    "seen_train_val": 6911,
+    "unseen_test": 554
+  },
+  "question_family_distribution": {
+    "existence": 4912,
+    "laterality_volume": 987,
+    "volume_ranking": 797,
+    "spatial_topography": 769
+  },
+  "answer_choice_distribution": {
+    "B": 3095,
+    "A": 3065,
+    "D": 676,
+    "C": 629
+  },
+  "majority_answer_floor": 0.4146014735432016,
+  "random_chance_expectation": 0.33
+}
