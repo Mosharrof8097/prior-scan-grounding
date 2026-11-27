@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this benchmark audit, code, or manifests in your research, please cite it as below."
+authors:
+  - family-names: Hossain
+    given-names: Md Mosharrof
+    affiliation: "Department of Computer Science and Engineering, Mymensingh Engineering College, Mymensingh, Bangladesh"
+title: "Do 3D Medical Vision-Language Models Actually Read the Scan? A Counterfactual Audit of Shortcut Learning and Anatomical Invariance from Trained Baselines to Foundation Models"
+version: 1.0.1
+date-released: 2026-11-27
+url: "https://github.com/Mosharrof8097/prior-scan-grounding"
+license: Apache-2.0
+keywords:
+  - 3D medical vision-language models
+  - counterfactual audit
+  - visual shortcut learning
+  - anatomical invariance
+  - medical AI evaluation
