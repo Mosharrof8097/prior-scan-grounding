@@ -1,5 +1,8 @@
 # Do 3D medical VLMs actually read the scan?
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24590508.svg)](https://doi.org/10.5281/zenodo.24590508)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 An audit of visual grounding in 3D medical vision-language models (VLMs) on chest/whole-body CT.
 B.Sc. thesis, planned as a paper. Roadmap and checklist: [`PLAN.md`](PLAN.md).
 
